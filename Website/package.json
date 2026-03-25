@@ -1,0 +1,22 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "framer:check": "node scripts/framer-check.mjs",
+    "framer:sync": "npm run framer:prep-videos && node scripts/framer-sync.mjs",
+    "framer:publish": "node scripts/framer-publish.mjs",
+    "framer:prep-videos": "node scripts/generate-latest-videos.mjs",
+    "framer:deploy": "npm run framer:prep-videos && npm run framer:publish"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "framer-api": "^0.1.4"
+  },
+  "private": true
+}

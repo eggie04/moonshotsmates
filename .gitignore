@@ -1,2 +1,6 @@
 .DS_Store
 data/*.db
+
+# Website
+Website/node_modules/
+Website/.env
