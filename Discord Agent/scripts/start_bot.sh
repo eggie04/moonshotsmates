@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BOT_DIR="/Users/citadel/MoonshotsMates/Discord Agent"
+BOT_DIR="/Users/citadel/Projects/MoonshotsMates/Discord Agent"
 PLIST_SRC="$BOT_DIR/launchd/com.moonshots.firstmate.plist"
 LAUNCH_AGENTS_DIR="$HOME/Library/LaunchAgents"
 PLIST_DST="$LAUNCH_AGENTS_DIR/com.moonshots.firstmate.plist"

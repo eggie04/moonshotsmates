@@ -5,7 +5,7 @@ This bot automates core community actions for MoonshotsMates:
 - Posts an episode recap when a new item appears in your RSS feed
 - Or polls a YouTube channel `/videos` page and recaps the newest upload
 - Or posts recap when a new episode link is posted in your Discord episode channel
-- Posts a daily discussion question
+- Creates a dedicated thread for each episode recap and posts discussion questions in that thread
 - Posts a daily meme
 - Tracks daily joins and posts a growth update targeting 3 new users/day
 

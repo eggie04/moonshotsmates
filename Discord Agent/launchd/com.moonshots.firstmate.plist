@@ -7,12 +7,12 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/Users/citadel/MoonshotsMates/Discord Agent/.venv/bin/python3</string>
-    <string>/Users/citadel/MoonshotsMates/Discord Agent/bot.py</string>
+    <string>/Users/citadel/Projects/MoonshotsMates/Discord Agent/.venv/bin/python3</string>
+    <string>/Users/citadel/Projects/MoonshotsMates/Discord Agent/bot.py</string>
   </array>
 
   <key>WorkingDirectory</key>
-  <string>/Users/citadel/MoonshotsMates/Discord Agent</string>
+  <string>/Users/citadel/Projects/MoonshotsMates/Discord Agent</string>
 
   <key>RunAtLoad</key>
   <true/>
@@ -21,9 +21,9 @@
   <true/>
 
   <key>StandardOutPath</key>
-  <string>/Users/citadel/MoonshotsMates/Discord Agent/data/bot.log</string>
+  <string>/Users/citadel/Projects/MoonshotsMates/Discord Agent/data/bot.log</string>
 
   <key>StandardErrorPath</key>
-  <string>/Users/citadel/MoonshotsMates/Discord Agent/data/bot.log</string>
+  <string>/Users/citadel/Projects/MoonshotsMates/Discord Agent/data/bot.log</string>
 </dict>
 </plist>

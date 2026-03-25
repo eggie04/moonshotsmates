@@ -48,6 +48,7 @@ FALLBACK_MEME_TEMPLATE_IDS = [
     "ancient-aliens",
     "batman-slapping-robin",
 ]
+THREAD_NAME_MAX_LENGTH = 100
 
 
 class MoonshotsMatesBot(commands.Bot):
@@ -160,6 +161,81 @@ class MoonshotsMatesBot(commands.Bot):
         except discord.DiscordException:
             return None
 
+    @staticmethod
+    def _build_episode_thread_name(title: str) -> str:
+        cleaned = re.sub(r"\s+", " ", (title or "").strip())
+        if not cleaned:
+            return "Episode discussion"
+
+        if re.match(r"^\d{1,5}\s*\|", cleaned):
+            return cleaned[:THREAD_NAME_MAX_LENGTH].rstrip()
+
+        match = re.match(r"^(?:episode\s*)?#?(\d{1,5})\s*[:|\-]\s*(.+)$", cleaned, flags=re.IGNORECASE)
+        if match:
+            episode_num, rest = match.group(1), match.group(2).strip()
+            return f"{episode_num}| {rest}"[:THREAD_NAME_MAX_LENGTH].rstrip()
+
+        match = re.search(r"\b(?:episode\s*)?#?(\d{1,5})\b", cleaned, flags=re.IGNORECASE)
+        if match:
+            episode_num = match.group(1)
+            rest = re.sub(
+                rf"\b(?:episode\s*)?#?{re.escape(episode_num)}\b[:|\-]?\s*",
+                "",
+                cleaned,
+                count=1,
+                flags=re.IGNORECASE,
+            ).strip(" -|:")
+            if rest:
+                return f"{episode_num}| {rest}"[:THREAD_NAME_MAX_LENGTH].rstrip()
+            return f"{episode_num}| Episode discussion"
+
+        return cleaned[:THREAD_NAME_MAX_LENGTH].rstrip()
+
+    async def _get_latest_episode_thread(self) -> discord.Thread | None:
+        thread_id = self.state.get_latest_episode_thread_id()
+        if not thread_id:
+            return None
+
+        channel = self.get_channel(thread_id)
+        if isinstance(channel, discord.Thread):
+            return channel
+
+        try:
+            fetched = await self.fetch_channel(thread_id)
+        except discord.DiscordException:
+            return None
+        if isinstance(fetched, discord.Thread):
+            return fetched
+        return None
+
+    async def _generate_discussion_question(self) -> str:
+        question = await asyncio.to_thread(self.ai.generate_discussion_question)
+        return question or fallback_discussion_question()
+
+    async def _post_episode_with_thread(
+        self,
+        channel: discord.TextChannel,
+        title: str,
+        recap: str,
+        link: str,
+        heading: str = "🚀 **New MoonshotsMates Episode**",
+    ) -> None:
+        episode_message = await channel.send(f"{heading}\n\n{recap}\n\n🔗 {link}")
+        thread_name = self._build_episode_thread_name(title)
+
+        try:
+            thread = await episode_message.create_thread(name=thread_name, reason="Episode discussion thread")
+        except discord.DiscordException as exc:
+            logger.warning("Could not create episode thread for '%s': %s", title, exc)
+            return
+
+        self.state.set_latest_episode_thread_id(thread.id)
+        question = await self._generate_discussion_question()
+        try:
+            await thread.send(f"💬 **Episode Discussion Question**\n{question}")
+        except discord.DiscordException as exc:
+            logger.warning("Could not post episode discussion question in thread %s: %s", thread.id, exc)
+
     async def _post_recap_from_discord_link(self, url: str, message_id: int) -> None:
         channel = await self._get_text_channel(self.settings.episode_channel_id)
         if not channel:
@@ -177,7 +253,13 @@ class MoonshotsMatesBot(commands.Bot):
         if not recap:
             recap = fallback_episode_recap(title, description, url)
 
-        await channel.send(f"🚀 **New MoonshotsMates Episode Recap**\n\n{recap}\n\n🔗 {url}")
+        await self._post_episode_with_thread(
+            channel=channel,
+            title=title,
+            recap=recap,
+            link=url,
+            heading="🚀 **New MoonshotsMates Episode Recap**",
+        )
         self.state.save_episode(guid, title)
         logger.info("Posted recap from Discord link: %s", url)
 
@@ -233,8 +315,7 @@ class MoonshotsMatesBot(commands.Bot):
         if not recap:
             recap = fallback_episode_recap(title, description, link)
 
-        message = f"🚀 **New MoonshotsMates Episode**\n\n{recap}\n\n🔗 {link}"
-        await channel.send(message)
+        await self._post_episode_with_thread(channel=channel, title=title, recap=recap, link=link)
         self.state.save_episode(guid, title)
         logger.info("Posted recap for RSS episode: %s", title)
 
@@ -272,8 +353,7 @@ class MoonshotsMatesBot(commands.Bot):
         if not recap:
             recap = fallback_episode_recap(title, description, link)
 
-        message = f"🚀 **New MoonshotsMates Episode**\n\n{recap}\n\n🔗 {link}"
-        await channel.send(message)
+        await self._post_episode_with_thread(channel=channel, title=title, recap=recap, link=link)
         self.state.save_episode(guid, title)
         logger.info("Posted recap for YouTube episode: %s", title)
 
@@ -340,12 +420,19 @@ class MoonshotsMatesBot(commands.Bot):
 
     async def post_daily_discussion(self) -> None:
         channel = await self._get_text_channel(self.settings.discussion_channel_id)
-        if not channel:
-            logger.warning("Discussion channel not found")
-            return
+        question = await self._generate_discussion_question()
 
-        question = await asyncio.to_thread(self.ai.generate_discussion_question)
-        question = question or fallback_discussion_question()
+        thread = await self._get_latest_episode_thread()
+        if thread:
+            try:
+                await thread.send(f"💬 **Daily Discussion Question**\n{question}")
+                return
+            except discord.DiscordException as exc:
+                logger.warning("Could not post daily discussion in latest thread %s: %s", thread.id, exc)
+
+        if not channel:
+            logger.warning("Discussion channel not found and no latest episode thread is available")
+            return
         await channel.send(f"💬 **Daily Discussion Question**\n{question}")
 
     async def post_daily_meme(self, manual: bool = False) -> None:

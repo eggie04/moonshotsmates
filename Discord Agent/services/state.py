@@ -49,6 +49,15 @@ class StateStore:
             )
             """
         )
+        cur.execute(
+            """
+            CREATE TABLE IF NOT EXISTS meta (
+                key TEXT PRIMARY KEY,
+                value TEXT NOT NULL,
+                updated_at TEXT NOT NULL
+            )
+            """
+        )
         self.conn.commit()
 
     def has_episode(self, guid: str) -> bool:
@@ -114,3 +123,33 @@ class StateStore:
             (year, template_id, datetime.now(timezone.utc).isoformat()),
         )
         self.conn.commit()
+
+    def set_meta(self, key: str, value: str) -> None:
+        now = datetime.now(timezone.utc).isoformat()
+        cur = self.conn.cursor()
+        cur.execute(
+            """
+            INSERT INTO meta (key, value, updated_at)
+            VALUES (?, ?, ?)
+            ON CONFLICT(key) DO UPDATE SET value = excluded.value, updated_at = excluded.updated_at
+            """,
+            (key, value, now),
+        )
+        self.conn.commit()
+
+    def get_meta(self, key: str) -> str | None:
+        cur = self.conn.cursor()
+        cur.execute("SELECT value FROM meta WHERE key = ?", (key,))
+        row = cur.fetchone()
+        return str(row[0]) if row else None
+
+    def set_latest_episode_thread_id(self, thread_id: int) -> None:
+        self.set_meta("latest_episode_thread_id", str(thread_id))
+
+    def get_latest_episode_thread_id(self) -> int | None:
+        raw = self.get_meta("latest_episode_thread_id")
+        if not raw:
+            return None
+        if raw.isdigit():
+            return int(raw)
+        return None
