@@ -4,3 +4,7 @@ data/*.db
 # Website
 Website/node_modules/
 Website/.env
+
+# Generated local Vercel metadata
+.vercel/
+public/.vercel/
