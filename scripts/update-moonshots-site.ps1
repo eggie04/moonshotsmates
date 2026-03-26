@@ -78,6 +78,11 @@ if (Test-Path $IndexFile) {
     }
   }
 
+  # Preserve standards mode. Missing doctype can break wheel scrolling/Lenis behavior.
+  if ($withoutBadgeScript -notmatch '^\s*<!doctype html>') {
+    $withoutBadgeScript = "<!doctype html>`n" + $withoutBadgeScript.TrimStart()
+  }
+
   if ($withoutBadgeScript -ne $html) {
     [System.IO.File]::WriteAllText(
       (Resolve-Path $IndexFile),
