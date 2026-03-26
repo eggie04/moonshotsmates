@@ -51,10 +51,37 @@ if (Test-Path $IndexFile) {
     'https://framerusercontent.com/',
     [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
   )
-  if ($normalized -ne $html) {
+  # Remove legacy JS badge-stripper (it can interfere with runtime behavior) and use CSS-only hide.
+  $withoutBadgeScript = [regex]::Replace(
+    $normalized,
+    '<script id="self-hosted-framer-hide-badge-script">[\s\S]*?</script>',
+    '',
+    [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+  )
+  $badgeCss = @"
+<style id="self-hosted-framer-hide-badge">
+  #__framer-badge-container,
+  .__framer-badge,
+  [aria-label="Made in Framer"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+"@
+  if ($withoutBadgeScript -notmatch 'id="self-hosted-framer-hide-badge"') {
+    if ($withoutBadgeScript -match '</head>') {
+      $withoutBadgeScript = $withoutBadgeScript -replace '</head>', ($badgeCss + '</head>')
+    } else {
+      $withoutBadgeScript = $badgeCss + $withoutBadgeScript
+    }
+  }
+
+  if ($withoutBadgeScript -ne $html) {
     [System.IO.File]::WriteAllText(
       (Resolve-Path $IndexFile),
-      $normalized,
+      $withoutBadgeScript,
       [System.Text.UTF8Encoding]::new($false)
     )
   }
