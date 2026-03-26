@@ -9,7 +9,19 @@ This repo is configured for the `moonshotsmates` Vercel project.
 
 Because this GitHub repo is connected to Vercel, pushes to `main` trigger production deploys.
 
-## Update from Framer (local)
+## One-click publish to prod
+
+Double-click:
+
+- `Publish Moonshots To Prod.cmd`
+
+This does end-to-end:
+
+1. Syncs latest published Framer output into `public/`.
+2. Commits only when there are actual changes.
+3. Pushes to `main` so Vercel auto-deploys prod.
+
+## Update only (no git push)
 
 Double-click:
 
@@ -27,7 +39,7 @@ This does:
 2. Mirrors staged output into `public/`.
 3. Copies staged `vercel.json` into repo root.
 
-Then commit and push:
+Then commit and push manually:
 
 ```powershell
 git add public vercel.json scripts\update-moonshots-site.ps1 "Update Moonshots Site.cmd"
