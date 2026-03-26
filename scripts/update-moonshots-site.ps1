@@ -41,4 +41,23 @@ if (Test-Path $VercelConfig) {
   Copy-Item -LiteralPath $VercelConfig -Destination (Join-Path $RepoRoot "vercel.json") -Force
 }
 
+$IndexFile = Join-Path $TargetDir "index.html"
+if (Test-Path $IndexFile) {
+  $html = Get-Content -LiteralPath $IndexFile -Raw
+  # Ensure scheme-less Framer CDN URLs always resolve remotely (1:1 parity with Framer output).
+  $normalized = [regex]::Replace(
+    $html,
+    '(?<!https?://)(?<!//)framerusercontent\.com/',
+    'https://framerusercontent.com/',
+    [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+  )
+  if ($normalized -ne $html) {
+    [System.IO.File]::WriteAllText(
+      (Resolve-Path $IndexFile),
+      $normalized,
+      [System.Text.UTF8Encoding]::new($false)
+    )
+  }
+}
+
 Write-Host "Done. Updated public/ and vercel.json"
