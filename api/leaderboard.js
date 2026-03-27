@@ -15,7 +15,10 @@ module.exports = async function handler(req, res) {
   const page = toPositiveInt(req.query?.page, 1)
 
   const cache = sanitizeLeaderboardCache(await getJson(LEADERBOARD_CACHE_KEY, {}))
-  const rows = Object.values(cache).sort((a, b) => b.score - a.score)
+  const rows = Object.values(cache).sort((a, b) => {
+    if (b.ideasPerSecond !== a.ideasPerSecond) return b.ideasPerSecond - a.ideasPerSecond
+    return b.score - a.score
+  })
 
   const total = rows.length
   const totalPages = Math.max(1, Math.ceil(total / pageSize))
