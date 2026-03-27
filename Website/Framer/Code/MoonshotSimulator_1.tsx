@@ -41,6 +41,11 @@ const ACCOUNT_NAME_KEY = "moonshotSimulatorAccountNameV1"
 const ACCOUNT_PIN_KEY = "moonshotSimulatorAccountPinV1"
 const LEADERBOARD_PAGE_SIZE = 10
 const ACCOUNT_AUTOSAVE_INTERVAL_MS = 5 * 60 * 1000
+const BUTTON_PRESS_TRANSFORM = "translateY(1px) scale(0.992)"
+const BUTTON_RELEASE_TRANSFORM = "translateY(0) scale(1)"
+const BUTTON_PRESS_BRIGHTNESS = "brightness(1.04)"
+const BUTTON_RELEASE_BRIGHTNESS = "brightness(1)"
+const BUTTON_TRANSITION = "transform 24ms linear, filter 40ms linear, box-shadow 90ms ease-out"
 
 const baseUpgrades: Upgrade[] = [
   { id: "book", name: "Read Accelerando", desc: "+1 Idea per manual click", baseCost: 15, costMultiplier: 1.5, count: 0, isClickUpgrade: true, power: 1 },
@@ -148,6 +153,7 @@ export default function MoonshotSimulator() {
   const [isRefreshingLeaderboard, setIsRefreshingLeaderboard] = React.useState(false)
   const [hasUnsavedChanges, setHasUnsavedChanges] = React.useState(false)
   const [isSavingNow, setIsSavingNow] = React.useState(false)
+  const [pressedButtonId, setPressedButtonId] = React.useState<string | null>(null)
 
   const refreshLeaderboard = React.useCallback(async (page: number) => {
     setIsRefreshingLeaderboard(true)
@@ -310,6 +316,21 @@ export default function MoonshotSimulator() {
     })
   }
 
+  const getPressHandlers = (buttonId: string, disabled = false) =>
+    disabled
+      ? {}
+      : {
+          onPointerDown: () => setPressedButtonId(buttonId),
+          onPointerUp: () => setPressedButtonId((current) => (current === buttonId ? null : current)),
+          onPointerLeave: () => setPressedButtonId((current) => (current === buttonId ? null : current)),
+          onPointerCancel: () => setPressedButtonId((current) => (current === buttonId ? null : current)),
+        }
+
+  const getPressedStyle = (buttonId: string): React.CSSProperties => ({
+    transform: pressedButtonId === buttonId ? BUTTON_PRESS_TRANSFORM : BUTTON_RELEASE_TRANSFORM,
+    filter: pressedButtonId === buttonId ? BUTTON_PRESS_BRIGHTNESS : BUTTON_RELEASE_BRIGHTNESS,
+  })
+
   return (
     <div style={wrapStyle}>
       <h2 style={{ margin: 0, fontSize: 28 }}>Moonshot Simulator</h2>
@@ -321,7 +342,7 @@ export default function MoonshotSimulator() {
           <div style={{ display: "grid", gap: 8 }}>
             <input value={profileNameInput} onChange={(event) => setProfileNameInput(event.target.value)} placeholder="Profile Name" style={inputStyle} maxLength={24} />
             <input value={profilePinInput} onChange={(event) => setProfilePinInput(event.target.value)} placeholder="PIN (4+ chars)" type="password" style={inputStyle} maxLength={32} />
-            <button style={smallActionButtonStyle} onClick={() => void signIn()} disabled={isSigningIn}>
+            <button style={{ ...smallActionButtonStyle, ...getPressedStyle("sign-in") }} onClick={() => void signIn()} disabled={isSigningIn} {...getPressHandlers("sign-in", isSigningIn)}>
               {isSigningIn ? "Signing In..." : "Sign In / Create Profile"}
             </button>
             {authError ? <div style={{ color: "#FF8E8E", fontSize: 13 }}>{authError}</div> : null}
@@ -330,7 +351,7 @@ export default function MoonshotSimulator() {
       ) : (
         <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
           <div style={{ fontSize: 13, opacity: 0.85 }}>Signed in as: {signedInProfile}</div>
-          <button style={smallActionButtonStyle} onClick={signOut}>
+          <button style={{ ...smallActionButtonStyle, ...getPressedStyle("sign-out") }} onClick={signOut} {...getPressHandlers("sign-out")}>
             Sign Out
           </button>
         </div>
@@ -342,7 +363,12 @@ export default function MoonshotSimulator() {
         <div style={{ marginTop: 6, color: "#9BB3C9" }}>{game.ideasPerSecond.toLocaleString()} Ideas / sec</div>
       </div>
 
-      <button style={{ ...mainButtonStyle, opacity: signedInProfile ? 1 : 0.5, cursor: signedInProfile ? "pointer" : "not-allowed" }} onClick={clickBrainstorm} disabled={!signedInProfile}>
+      <button
+        style={{ ...mainButtonStyle, ...getPressedStyle("generate-idea"), opacity: signedInProfile ? 1 : 0.5, cursor: signedInProfile ? "pointer" : "not-allowed" }}
+        onClick={clickBrainstorm}
+        disabled={!signedInProfile}
+        {...getPressHandlers("generate-idea", !signedInProfile)}
+      >
         GENERATE IDEA
       </button>
 
@@ -351,7 +377,13 @@ export default function MoonshotSimulator() {
           const currentCost = costFor(upgrade)
           const disabled = !signedInProfile || game.ideas < currentCost
           return (
-            <button key={upgrade.id} onClick={() => buyUpgrade(index)} disabled={disabled} style={{ ...upgradeButtonStyle, opacity: disabled ? 0.55 : 1 }}>
+            <button
+              key={upgrade.id}
+              onClick={() => buyUpgrade(index)}
+              disabled={disabled}
+              style={{ ...upgradeButtonStyle, ...getPressedStyle(`upgrade-${upgrade.id}`), opacity: disabled ? 0.55 : 1 }}
+              {...getPressHandlers(`upgrade-${upgrade.id}`, disabled)}
+            >
               <div>
                 <div style={{ fontWeight: 700 }}>
                   {upgrade.name} (Owned: {upgrade.count})
@@ -368,7 +400,12 @@ export default function MoonshotSimulator() {
         <div style={{ fontWeight: 700, fontSize: 18 }}>Leaderboard</div>
         <div style={{ marginTop: 6, display: "flex", gap: 8, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
           <div style={{ fontSize: 12, opacity: 0.72 }}>Ranked signed-in users: {totalLeaderboardUsers.toLocaleString()} total</div>
-          <button style={smallActionButtonStyle} onClick={() => void refreshLeaderboard(leaderboardPage)} disabled={isRefreshingLeaderboard}>
+          <button
+            style={{ ...smallActionButtonStyle, ...getPressedStyle("refresh-leaderboard") }}
+            onClick={() => void refreshLeaderboard(leaderboardPage)}
+            disabled={isRefreshingLeaderboard}
+            {...getPressHandlers("refresh-leaderboard", isRefreshingLeaderboard)}
+          >
             {isRefreshingLeaderboard ? "Refreshing..." : "Refresh Leaderboard"}
           </button>
         </div>
@@ -397,16 +434,18 @@ export default function MoonshotSimulator() {
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <button
-              style={{ ...smallActionButtonStyle, opacity: leaderboardPage <= 1 ? 0.5 : 1 }}
+              style={{ ...smallActionButtonStyle, ...getPressedStyle("leaderboard-prev"), opacity: leaderboardPage <= 1 ? 0.5 : 1 }}
               disabled={leaderboardPage <= 1}
               onClick={() => void refreshLeaderboard(leaderboardPage - 1)}
+              {...getPressHandlers("leaderboard-prev", leaderboardPage <= 1)}
             >
               Previous
             </button>
             <button
-              style={{ ...smallActionButtonStyle, opacity: leaderboardPage >= totalLeaderboardPages ? 0.5 : 1 }}
+              style={{ ...smallActionButtonStyle, ...getPressedStyle("leaderboard-next"), opacity: leaderboardPage >= totalLeaderboardPages ? 0.5 : 1 }}
               disabled={leaderboardPage >= totalLeaderboardPages}
               onClick={() => void refreshLeaderboard(leaderboardPage + 1)}
+              {...getPressHandlers("leaderboard-next", leaderboardPage >= totalLeaderboardPages)}
             >
               Next
             </button>
@@ -417,7 +456,12 @@ export default function MoonshotSimulator() {
       <div style={{ fontSize: 12, opacity: 0.7, marginTop: 12 }}>Progress auto-saves to cloud for your signed-in profile.</div>
       {signedInProfile ? (
         <div style={{ marginTop: 8, display: "flex", justifyContent: "center", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-          <button style={smallActionButtonStyle} onClick={() => void saveNow()} disabled={isSavingNow || !hasUnsavedChanges}>
+          <button
+            style={{ ...smallActionButtonStyle, ...getPressedStyle("save-now") }}
+            onClick={() => void saveNow()}
+            disabled={isSavingNow || !hasUnsavedChanges}
+            {...getPressHandlers("save-now", isSavingNow || !hasUnsavedChanges)}
+          >
             {isSavingNow ? "Saving..." : "Save Now"}
           </button>
           <div style={{ fontSize: 12, opacity: 0.72 }}>
@@ -461,6 +505,9 @@ const mainButtonStyle: React.CSSProperties = {
   fontWeight: 700,
   padding: "16px 28px",
   borderRadius: 50,
+  transition: BUTTON_TRANSITION,
+  willChange: "transform, filter",
+  boxShadow: "0 8px 18px rgba(0, 255, 204, 0.2)",
 }
 
 const upgradesStyle: React.CSSProperties = { marginTop: 22, display: "grid", gap: 10 }
@@ -477,6 +524,9 @@ const upgradeButtonStyle: React.CSSProperties = {
   gap: 10,
   cursor: "pointer",
   textAlign: "left",
+  transition: BUTTON_TRANSITION,
+  willChange: "transform, filter",
+  boxShadow: "0 6px 14px rgba(0, 0, 0, 0.25)",
 }
 
 const leaderboardWrapStyle: React.CSSProperties = { marginTop: 22, borderTop: "1px solid #2B2B2B", paddingTop: 16, textAlign: "left" }
@@ -511,4 +561,7 @@ const smallActionButtonStyle: React.CSSProperties = {
   color: "#D6E9FF",
   cursor: "pointer",
   fontFamily: "inherit",
+  transition: BUTTON_TRANSITION,
+  willChange: "transform, filter",
+  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.22)",
 }
