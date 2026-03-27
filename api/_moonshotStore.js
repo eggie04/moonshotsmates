@@ -139,6 +139,7 @@ function accountKey(normalizedName) {
 }
 
 const ACCOUNT_INDEX_KEY = "moonshot:account-index:v1"
+const LEADERBOARD_CACHE_KEY = "moonshot:leaderboard-cache:v1"
 
 function sanitizeAccountIndex(input) {
   if (!Array.isArray(input)) return []
@@ -152,11 +153,38 @@ function sanitizeAccountIndex(input) {
     .filter(Boolean)
 }
 
+function sanitizeLeaderboardCache(input) {
+  if (!input || typeof input !== "object" || Array.isArray(input)) return {}
+
+  const result = {}
+  for (const [rawKey, rawValue] of Object.entries(input)) {
+    const normalizedName = normalizeAccountName(rawKey)
+    if (!normalizedName) continue
+
+    const value = rawValue || {}
+    const name = String(value.name || normalizedName).trim().slice(0, 24) || normalizedName
+    const score = Math.max(0, Math.floor(Number(value.score) || 0))
+    const ideasPerSecond = Math.max(0, Math.floor(Number(value.ideasPerSecond) || 0))
+    const updatedAt = new Date(value.updatedAt || Date.now()).toISOString()
+
+    result[normalizedName] = {
+      name,
+      score,
+      ideasPerSecond,
+      updatedAt,
+    }
+  }
+
+  return result
+}
+
 module.exports = {
   ACCOUNT_INDEX_KEY,
+  LEADERBOARD_CACHE_KEY,
   defaultState,
   sanitizeGameState,
   sanitizeAccountIndex,
+  sanitizeLeaderboardCache,
   getJson,
   setJson,
   normalizeAccountName,

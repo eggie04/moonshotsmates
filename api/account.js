@@ -1,9 +1,11 @@
 const crypto = require("node:crypto")
 const {
   ACCOUNT_INDEX_KEY,
+  LEADERBOARD_CACHE_KEY,
   defaultState,
   sanitizeGameState,
   sanitizeAccountIndex,
+  sanitizeLeaderboardCache,
   getJson,
   setJson,
   normalizeAccountName,
@@ -48,6 +50,17 @@ module.exports = async function handler(req, res) {
     await setJson(ACCOUNT_INDEX_KEY, nextIndex)
   }
 
+  async function upsertLeaderboardCache(gameState) {
+    const current = sanitizeLeaderboardCache(await getJson(LEADERBOARD_CACHE_KEY, {}))
+    current[normalizedName] = {
+      name: displayName,
+      score: Math.max(0, Math.floor(Number(gameState?.ideas) || 0)),
+      ideasPerSecond: Math.max(0, Math.floor(Number(gameState?.ideasPerSecond) || 0)),
+      updatedAt: new Date().toISOString(),
+    }
+    await setJson(LEADERBOARD_CACHE_KEY, current)
+  }
+
   if (!existing) {
     if (action === "save") {
       return res.status(404).json({ error: "Profile not found. Sign in first to create it." })
@@ -62,6 +75,7 @@ module.exports = async function handler(req, res) {
     }
     await setJson(key, created)
     await upsertAccountIndex()
+    await upsertLeaderboardCache(created.game)
     return res.status(200).json({ ok: true, profileName: created.displayName, game: created.game, created: true })
   }
 
@@ -78,10 +92,12 @@ module.exports = async function handler(req, res) {
     }
     await setJson(key, updated)
     await upsertAccountIndex()
+    await upsertLeaderboardCache(updated.game)
     return res.status(200).json({ ok: true })
   }
 
   await upsertAccountIndex()
+  await upsertLeaderboardCache(existing.game)
   return res.status(200).json({
     ok: true,
     profileName: existing.displayName || normalizedName,

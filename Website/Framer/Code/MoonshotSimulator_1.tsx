@@ -40,6 +40,7 @@ const SAVE_KEY = "moonshotSimulatorStateV2"
 const ACCOUNT_NAME_KEY = "moonshotSimulatorAccountNameV1"
 const ACCOUNT_PIN_KEY = "moonshotSimulatorAccountPinV1"
 const LEADERBOARD_PAGE_SIZE = 10
+const ACCOUNT_AUTOSAVE_INTERVAL_MS = 5 * 60 * 1000
 
 const baseUpgrades: Upgrade[] = [
   { id: "book", name: "Read Accelerando", desc: "+1 Idea per manual click", baseCost: 15, costMultiplier: 1.5, count: 0, isClickUpgrade: true, power: 1 },
@@ -144,8 +145,12 @@ export default function MoonshotSimulator() {
   const [hydrated, setHydrated] = React.useState(false)
   const [isSigningIn, setIsSigningIn] = React.useState(false)
   const [authError, setAuthError] = React.useState("")
+  const [isRefreshingLeaderboard, setIsRefreshingLeaderboard] = React.useState(false)
+  const [hasUnsavedChanges, setHasUnsavedChanges] = React.useState(false)
+  const [isSavingNow, setIsSavingNow] = React.useState(false)
 
   const refreshLeaderboard = React.useCallback(async (page: number) => {
+    setIsRefreshingLeaderboard(true)
     try {
       const next = await fetchLeaderboard(page)
       setLeaderboard(next.leaderboard)
@@ -153,6 +158,7 @@ export default function MoonshotSimulator() {
       setTotalLeaderboardPages(next.pagination.totalPages)
       setTotalLeaderboardUsers(next.pagination.total)
     } catch (_) {}
+    setIsRefreshingLeaderboard(false)
   }, [])
 
   React.useEffect(() => {
@@ -225,21 +231,33 @@ export default function MoonshotSimulator() {
     const pin = localStorage.getItem(ACCOUNT_PIN_KEY) || profilePinInput
     if (!name || !pin) return
 
-    const timer = window.setTimeout(() => {
-      void saveAccountGame(name, pin, game)
-      void refreshLeaderboard(leaderboardPage)
-    }, 800)
+    setHasUnsavedChanges(true)
+  }, [game, mounted, hydrated, signedInProfile])
 
-    return () => window.clearTimeout(timer)
-  }, [game, mounted, hydrated, signedInProfile, profileNameInput, profilePinInput, leaderboardPage, refreshLeaderboard])
+  const saveNow = React.useCallback(async () => {
+    if (!signedInProfile) return
+    const name = localStorage.getItem(ACCOUNT_NAME_KEY) || profileNameInput
+    const pin = localStorage.getItem(ACCOUNT_PIN_KEY) || profilePinInput
+    if (!name || !pin) return
+
+    setIsSavingNow(true)
+    try {
+      await saveAccountGame(name, pin, game)
+      setHasUnsavedChanges(false)
+    } catch (_) {
+    } finally {
+      setIsSavingNow(false)
+    }
+  }, [signedInProfile, profileNameInput, profilePinInput, game])
 
   React.useEffect(() => {
-    if (!mounted || !hydrated) return
+    if (!mounted || !hydrated || !signedInProfile) return
     const timer = window.setInterval(() => {
-      void refreshLeaderboard(leaderboardPage)
-    }, 5000)
+      if (!hasUnsavedChanges) return
+      void saveNow()
+    }, ACCOUNT_AUTOSAVE_INTERVAL_MS)
     return () => window.clearInterval(timer)
-  }, [mounted, hydrated, leaderboardPage, refreshLeaderboard])
+  }, [mounted, hydrated, signedInProfile, hasUnsavedChanges, saveNow])
 
   const signIn = async () => {
     const name = profileNameInput.trim()
@@ -257,6 +275,7 @@ export default function MoonshotSimulator() {
       localStorage.setItem(ACCOUNT_PIN_KEY, pin)
       setSignedInProfile(loaded.profileName)
       setGame(loaded.game)
+      setHasUnsavedChanges(false)
       await refreshLeaderboard(1)
     } catch (error) {
       setAuthError(error instanceof Error ? error.message : "Could not sign in")
@@ -271,6 +290,7 @@ export default function MoonshotSimulator() {
     setSignedInProfile("")
     setAuthError("")
     setGame(defaultState())
+    setHasUnsavedChanges(false)
   }
 
   const clickBrainstorm = () => setGame((previous) => ({ ...previous, ideas: previous.ideas + previous.ideasPerClick }))
@@ -346,8 +366,11 @@ export default function MoonshotSimulator() {
 
       <div style={leaderboardWrapStyle}>
         <div style={{ fontWeight: 700, fontSize: 18 }}>Leaderboard</div>
-        <div style={{ marginTop: 6, fontSize: 12, opacity: 0.72 }}>
-          Ranked signed-in users: {totalLeaderboardUsers.toLocaleString()} total
+        <div style={{ marginTop: 6, display: "flex", gap: 8, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
+          <div style={{ fontSize: 12, opacity: 0.72 }}>Ranked signed-in users: {totalLeaderboardUsers.toLocaleString()} total</div>
+          <button style={smallActionButtonStyle} onClick={() => void refreshLeaderboard(leaderboardPage)} disabled={isRefreshingLeaderboard}>
+            {isRefreshingLeaderboard ? "Refreshing..." : "Refresh Leaderboard"}
+          </button>
         </div>
 
         <div style={{ marginTop: 10, display: "grid", gap: 6 }}>
@@ -392,6 +415,16 @@ export default function MoonshotSimulator() {
       </div>
 
       <div style={{ fontSize: 12, opacity: 0.7, marginTop: 12 }}>Progress auto-saves to cloud for your signed-in profile.</div>
+      {signedInProfile ? (
+        <div style={{ marginTop: 8, display: "flex", justifyContent: "center", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
+          <button style={smallActionButtonStyle} onClick={() => void saveNow()} disabled={isSavingNow || !hasUnsavedChanges}>
+            {isSavingNow ? "Saving..." : "Save Now"}
+          </button>
+          <div style={{ fontSize: 12, opacity: 0.72 }}>
+            {hasUnsavedChanges ? "Unsaved changes pending" : "All changes saved"}
+          </div>
+        </div>
+      ) : null}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-const { ACCOUNT_INDEX_KEY, accountKey, sanitizeAccountIndex, sanitizeGameState, getJson } = require("./_moonshotStore")
+const { LEADERBOARD_CACHE_KEY, sanitizeLeaderboardCache, getJson } = require("./_moonshotStore")
 
 function toPositiveInt(value, fallback) {
   const parsed = Number(value)
@@ -14,24 +14,8 @@ module.exports = async function handler(req, res) {
   const pageSize = Math.min(50, toPositiveInt(req.query?.pageSize, 10))
   const page = toPositiveInt(req.query?.page, 1)
 
-  const accountIndex = sanitizeAccountIndex(await getJson(ACCOUNT_INDEX_KEY, []))
-
-  const rows = (
-    await Promise.all(
-      accountIndex.map(async (entry) => {
-        const account = await getJson(accountKey(entry.normalizedName), null)
-        if (!account || !account.game) return null
-        const game = sanitizeGameState(account.game)
-        return {
-          name: String(account.displayName || entry.displayName || entry.normalizedName).slice(0, 24),
-          score: Math.floor(game.ideas),
-          ideasPerSecond: Math.floor(game.ideasPerSecond),
-        }
-      })
-    )
-  )
-    .filter(Boolean)
-    .sort((a, b) => b.score - a.score)
+  const cache = sanitizeLeaderboardCache(await getJson(LEADERBOARD_CACHE_KEY, {}))
+  const rows = Object.values(cache).sort((a, b) => b.score - a.score)
 
   const total = rows.length
   const totalPages = Math.max(1, Math.ceil(total / pageSize))
