@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BOT_DIR="/Users/citadel/MoonshotsMates/Discord Agent"
+BOT_DIR="/Users/citadel/Projects/MoonshotsMates/Discord Agent"
 SCRIPTS_DIR="$BOT_DIR/scripts"
 LOG_FILE="$BOT_DIR/data/bot.log"
 STATUS="$("$SCRIPTS_DIR/status_bot.sh" || echo "stopped")"
