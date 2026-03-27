@@ -78,6 +78,59 @@ if (Test-Path $IndexFile) {
     }
   }
 
+  # Add durable Moonshot simulator button press feedback in exported Framer HTML.
+  $moonshotButtonCss = @"
+<style id="self-hosted-moonshot-button-press">
+  .moonshot-sim-widget button {
+    transition: transform 24ms linear, filter 40ms linear, box-shadow 90ms ease-out !important;
+    will-change: transform, filter;
+  }
+  .moonshot-sim-widget button:active {
+    transform: translateY(1px) scale(0.992);
+    filter: brightness(1.04);
+  }
+</style>
+"@
+  if ($withoutBadgeScript -notmatch 'id="self-hosted-moonshot-button-press"') {
+    if ($withoutBadgeScript -match '</head>') {
+      $withoutBadgeScript = $withoutBadgeScript -replace '</head>', ($moonshotButtonCss + '</head>')
+    } else {
+      $withoutBadgeScript = $moonshotButtonCss + $withoutBadgeScript
+    }
+  }
+
+  $moonshotButtonScript = @"
+<script id="self-hosted-moonshot-button-press-script">
+  (() => {
+    const attachMoonshotWidgetClass = () => {
+      const headings = document.querySelectorAll("h2");
+      for (const heading of headings) {
+        if ((heading.textContent || "").trim() !== "Moonshot Simulator") continue;
+        const widgetRoot = heading.closest("div");
+        if (!widgetRoot) return false;
+        widgetRoot.classList.add("moonshot-sim-widget");
+        return true;
+      }
+      return false;
+    };
+
+    if (attachMoonshotWidgetClass()) return;
+    const observer = new MutationObserver(() => {
+      if (!attachMoonshotWidgetClass()) return;
+      observer.disconnect();
+    });
+    observer.observe(document.documentElement, { childList: true, subtree: true });
+  })();
+</script>
+"@
+  if ($withoutBadgeScript -notmatch 'id="self-hosted-moonshot-button-press-script"') {
+    if ($withoutBadgeScript -match '</body>') {
+      $withoutBadgeScript = $withoutBadgeScript -replace '</body>', ($moonshotButtonScript + '</body>')
+    } else {
+      $withoutBadgeScript += $moonshotButtonScript
+    }
+  }
+
   # Preserve standards mode. Missing doctype can break wheel scrolling/Lenis behavior.
   if ($withoutBadgeScript -notmatch '^\s*<!doctype html>') {
     $withoutBadgeScript = "<!doctype html>`n" + $withoutBadgeScript.TrimStart()
@@ -89,6 +142,36 @@ if (Test-Path $IndexFile) {
       $withoutBadgeScript,
       [System.Text.UTF8Encoding]::new($false)
     )
+  }
+}
+
+# Patch known mobile sticky-nav regression in Framer compiled bundles.
+$scriptRoots = Join-Path $TargetDir "framerusercontent.com\sites"
+if (Test-Path $scriptRoots) {
+  $bundleFiles = Get-ChildItem -Path $scriptRoots -Recurse -File -Filter "script_main*.mjs"
+  foreach ($bundle in $bundleFiles) {
+    $bundleText = Get-Content -LiteralPath $bundle.FullName -Raw
+    $patchedBundle = $bundleText
+
+    # Revert mobile nav sticky override to Framer's original absolute centered behavior.
+    $patchedBundle = [regex]::Replace(
+      $patchedBundle,
+      'position:\s*sticky;\s*transform:\s*unset;?',
+      'position: absolute; left: 50%; transform: translateX(-50%);',
+      [System.Text.RegularExpressions.RegexOptions]::IgnoreCase
+    )
+
+    # Remove hardcoded mobile y-offset overrides introduced with sticky experiments.
+    $patchedBundle = $patchedBundle -replace 'overrides:\{Q8FSHRUOI:\{y:200\}\}', 'overrides:{}'
+    $patchedBundle = $patchedBundle -replace 'overrides:\{Q8FSHRUOI:\{y:1285\}\}', 'overrides:{}'
+
+    if ($patchedBundle -ne $bundleText) {
+      [System.IO.File]::WriteAllText(
+        (Resolve-Path $bundle.FullName),
+        $patchedBundle,
+        [System.Text.UTF8Encoding]::new($false)
+      )
+    }
   }
 }
 
