@@ -237,11 +237,6 @@ class MoonshotsMatesBot(commands.Bot):
             return
 
         self.state.set_latest_episode_thread_id(thread.id)
-        question = await self._generate_discussion_question()
-        try:
-            await thread.send(f"💬 **Episode Discussion Question**\n{question}")
-        except discord.DiscordException as exc:
-            logger.warning("Could not post episode discussion question in thread %s: %s", thread.id, exc)
 
     async def _post_recap_from_discord_link(self, url: str, message_id: int) -> None:
         channel = await self._get_text_channel(self.settings.episode_channel_id)
@@ -426,19 +421,13 @@ class MoonshotsMatesBot(commands.Bot):
         return "", "No recent episode URL found in episode channel history."
 
     async def post_daily_discussion(self) -> None:
-        channel = await self._get_text_channel(self.settings.discussion_channel_id)
+        # Daily discussion should always be a fresh post in the main episode
+        # discussion channel, not inside episode threads.
+        channel = await self._get_text_channel(self.settings.episode_channel_id)
         question = await self._generate_discussion_question()
 
-        thread = await self._get_latest_episode_thread()
-        if thread:
-            try:
-                await thread.send(f"💬 **Daily Discussion Question**\n{question}")
-                return
-            except discord.DiscordException as exc:
-                logger.warning("Could not post daily discussion in latest thread %s: %s", thread.id, exc)
-
         if not channel:
-            logger.warning("Discussion channel not found and no latest episode thread is available")
+            logger.warning("Episode discussion channel not found for daily discussion post")
             return
         await channel.send(f"💬 **Daily Discussion Question**\n{question}")
 
