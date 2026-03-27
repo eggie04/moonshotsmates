@@ -9,6 +9,26 @@ This repo is configured for the `moonshotsmates` Vercel project.
 
 Because this GitHub repo is connected to Vercel, pushes to `main` trigger production deploys.
 
+## Moonshot simulator persistence
+
+The simulator now uses Vercel Serverless API routes:
+
+- `POST /api/account` for profile sign-in and profile progress saves (cross-device).
+- `GET/POST /api/leaderboard` for global leaderboard entries.
+
+Cross-device progress works with a simple profile model:
+
+- Enter `Profile Name` + `PIN` in the widget.
+- New profile names are auto-created on first sign-in.
+- Reuse the same name+PIN on another device to load the same progress.
+
+For durable storage across deploys and instances, configure Vercel KV environment variables:
+
+- `KV_REST_API_URL`
+- `KV_REST_API_TOKEN`
+
+Without those variables, the API falls back to in-memory storage (not durable).
+
 ## One-click publish to prod
 
 Double-click:
