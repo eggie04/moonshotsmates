@@ -170,21 +170,28 @@ class MoonshotsMatesBot(commands.Bot):
         if re.match(r"^\d{1,5}\s*\|", cleaned):
             return cleaned[:THREAD_NAME_MAX_LENGTH].rstrip()
 
+        # Prefer explicit markers like "EP #242" or "Episode 242" to avoid
+        # accidentally using unrelated numbers (for example "$5 Trillion").
+        ep_tag = re.search(r"\bEP(?:ISODE)?\.?\s*#?\s*(\d{1,5})\b", cleaned, flags=re.IGNORECASE)
+        if ep_tag:
+            episode_num = ep_tag.group(1)
+            rest = f"{cleaned[:ep_tag.start()]} {cleaned[ep_tag.end():]}".strip()
+            rest = re.sub(r"\s+", " ", rest)
+            rest = re.sub(r"^\s*[-|:]\s*", "", rest)
+            rest = re.sub(r"\s*[-|:]\s*$", "", rest)
+            if rest:
+                return f"{episode_num}| {rest}"[:THREAD_NAME_MAX_LENGTH].rstrip()
+            return f"{episode_num}| Episode discussion"
+
         match = re.match(r"^(?:episode\s*)?#?(\d{1,5})\s*[:|\-]\s*(.+)$", cleaned, flags=re.IGNORECASE)
         if match:
             episode_num, rest = match.group(1), match.group(2).strip()
             return f"{episode_num}| {rest}"[:THREAD_NAME_MAX_LENGTH].rstrip()
 
-        match = re.search(r"\b(?:episode\s*)?#?(\d{1,5})\b", cleaned, flags=re.IGNORECASE)
+        # Also support suffix formats like "Title ... | 241".
+        match = re.match(r"^(.+?)\s*[:|\-]\s*(\d{1,5})$", cleaned, flags=re.IGNORECASE)
         if match:
-            episode_num = match.group(1)
-            rest = re.sub(
-                rf"\b(?:episode\s*)?#?{re.escape(episode_num)}\b[:|\-]?\s*",
-                "",
-                cleaned,
-                count=1,
-                flags=re.IGNORECASE,
-            ).strip(" -|:")
+            rest, episode_num = match.group(1).strip(), match.group(2)
             if rest:
                 return f"{episode_num}| {rest}"[:THREAD_NAME_MAX_LENGTH].rstrip()
             return f"{episode_num}| Episode discussion"
