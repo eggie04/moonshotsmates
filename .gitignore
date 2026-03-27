@@ -8,3 +8,4 @@ Website/.env
 # Generated local Vercel metadata
 .vercel/
 public/.vercel/
+.vercel
