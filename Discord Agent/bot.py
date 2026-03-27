@@ -7,8 +7,11 @@ import logging
 import os
 import random
 import re
+import shlex
+import subprocess
 from urllib.parse import quote, urlparse
 from datetime import datetime
+from pathlib import Path
 from zoneinfo import ZoneInfo
 
 import aiohttp
@@ -65,6 +68,9 @@ class MoonshotsMatesBot(commands.Bot):
         self.scheduler = AsyncIOScheduler(timezone=settings.timezone)
         self._ready_once = False
         self._meme_template_candidates: list[tuple[str, str]] = []
+        self._auto_video_pipeline_lock = asyncio.Lock()
+        self._repo_root = Path(__file__).resolve().parents[1]
+        self._website_dir = self._repo_root / "Website"
 
     async def setup_hook(self) -> None:
         guild_obj = discord.Object(id=self.settings.guild_id)
@@ -238,6 +244,72 @@ class MoonshotsMatesBot(commands.Bot):
 
         self.state.set_latest_episode_thread_id(thread.id)
 
+    def _run_shell(self, command: str, cwd: Path) -> str:
+        result = subprocess.run(
+            ["/bin/zsh", "-lc", command],
+            cwd=str(cwd),
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"Command failed ({result.returncode}): {command}\n"
+                f"stdout: {result.stdout.strip()}\n"
+                f"stderr: {result.stderr.strip()}"
+            )
+        return result.stdout.strip()
+
+    def _run_auto_video_pipeline_sync(self, guid: str, title: str) -> None:
+        if not self.settings.auto_video_pipeline_enabled:
+            return
+
+        data_file = "Website/Framer/Code/MoonshotsLatestVideos_data.ts"
+
+        self._run_shell("node scripts/generate-latest-videos.mjs", self._website_dir)
+
+        if self.settings.auto_video_framer_sync_enabled:
+            try:
+                self._run_shell("npm run framer:sync", self._website_dir)
+            except Exception as exc:
+                logger.warning("Auto video pipeline: Framer sync/publish failed: %s", exc)
+
+        self._run_shell(f"git add {shlex.quote(data_file)}", self._repo_root)
+
+        diff_status = subprocess.run(
+            ["/bin/zsh", "-lc", f"git diff --cached --quiet -- {shlex.quote(data_file)}"],
+            cwd=str(self._repo_root),
+            capture_output=True,
+            text=True,
+            check=False,
+        ).returncode
+
+        if diff_status == 0:
+            logger.info("Auto video pipeline: no carousel data changes to commit.")
+            return
+        if diff_status != 1:
+            raise RuntimeError("Auto video pipeline: failed checking staged diff status.")
+
+        topic = re.sub(r"\s+", " ", title).strip()[:80]
+        commit_message = f"auto: update latest videos for {topic or guid}"
+        self._run_shell(
+            f"git commit -m {shlex.quote(commit_message)} -- {shlex.quote(data_file)}",
+            self._repo_root,
+        )
+
+        if self.settings.auto_video_push_enabled:
+            self._run_shell("git push origin main", self._repo_root)
+            logger.info("Auto video pipeline: pushed carousel update to origin/main.")
+        else:
+            logger.info("Auto video pipeline: push disabled by AUTO_VIDEO_PUSH_ENABLED.")
+
+    async def _run_auto_video_pipeline(self, guid: str, title: str) -> None:
+        async with self._auto_video_pipeline_lock:
+            try:
+                await asyncio.to_thread(self._run_auto_video_pipeline_sync, guid, title)
+            except Exception as exc:
+                logger.warning("Auto video pipeline failed for %s: %s", guid, exc)
+
     async def _post_recap_from_discord_link(self, url: str, message_id: int) -> None:
         channel = await self._get_text_channel(self.settings.episode_channel_id)
         if not channel:
@@ -263,6 +335,7 @@ class MoonshotsMatesBot(commands.Bot):
             heading="🚀 **New MoonshotsMates Episode Recap**",
         )
         self.state.save_episode(guid, title)
+        await self._run_auto_video_pipeline(guid, title)
         logger.info("Posted recap from Discord link: %s", url)
 
     async def check_new_episode(self) -> None:
@@ -319,6 +392,7 @@ class MoonshotsMatesBot(commands.Bot):
 
         await self._post_episode_with_thread(channel=channel, title=title, recap=recap, link=link)
         self.state.save_episode(guid, title)
+        await self._run_auto_video_pipeline(guid, title)
         logger.info("Posted recap for RSS episode: %s", title)
 
     async def _check_new_episode_youtube(self) -> None:
@@ -357,6 +431,7 @@ class MoonshotsMatesBot(commands.Bot):
 
         await self._post_episode_with_thread(channel=channel, title=title, recap=recap, link=link)
         self.state.save_episode(guid, title)
+        await self._run_auto_video_pipeline(guid, title)
         logger.info("Posted recap for YouTube episode: %s", title)
 
     async def build_latest_recap_preview(self) -> tuple[str, str]:

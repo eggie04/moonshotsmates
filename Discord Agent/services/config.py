@@ -30,6 +30,9 @@ class Settings:
     giphy_api_key: str | None
     invite_channel_id: int | None
     discord_invite_url: str | None
+    auto_video_pipeline_enabled: bool
+    auto_video_push_enabled: bool
+    auto_video_framer_sync_enabled: bool
 
 
 @dataclass(frozen=True)
@@ -61,6 +64,13 @@ def _get_int(name: str, default: int) -> int:
     if value is None or value.strip() == "":
         return default
     return int(value)
+
+
+def _get_bool(name: str, default: bool) -> bool:
+    value = os.getenv(name)
+    if value is None or value.strip() == "":
+        return default
+    return value.strip().lower() in {"1", "true", "yes", "on"}
 
 
 
@@ -161,4 +171,7 @@ def load_settings() -> Settings:
         giphy_api_key=(os.getenv("GIPHY_API_KEY") or "").strip() or None,
         invite_channel_id=invite_channel_id,
         discord_invite_url=invite_meta.invite_url,
+        auto_video_pipeline_enabled=_get_bool("AUTO_VIDEO_PIPELINE_ENABLED", True),
+        auto_video_push_enabled=_get_bool("AUTO_VIDEO_PUSH_ENABLED", True),
+        auto_video_framer_sync_enabled=_get_bool("AUTO_VIDEO_FRAMER_SYNC_ENABLED", True),
     )
