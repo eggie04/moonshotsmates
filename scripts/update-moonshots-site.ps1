@@ -99,6 +99,29 @@ if (Test-Path $IndexFile) {
     }
   }
 
+  # Force stable mobile nav container behavior to avoid sticky/menu regressions.
+  $mobileNavFixCss = @"
+<style id="self-hosted-mobile-nav-fix">
+  @media (max-width: 809.98px) {
+    .framer-jge7m-container {
+      position: absolute !important;
+      left: 50% !important;
+      top: 0 !important;
+      transform: translateX(-50%) !important;
+      z-index: 1000 !important;
+      pointer-events: auto !important;
+    }
+  }
+</style>
+"@
+  if ($withoutBadgeScript -notmatch 'id="self-hosted-mobile-nav-fix"') {
+    if ($withoutBadgeScript -match '</head>') {
+      $withoutBadgeScript = $withoutBadgeScript -replace '</head>', ($mobileNavFixCss + '</head>')
+    } else {
+      $withoutBadgeScript = $mobileNavFixCss + $withoutBadgeScript
+    }
+  }
+
   $moonshotButtonScript = @"
 <script id="self-hosted-moonshot-button-press-script">
   (() => {
