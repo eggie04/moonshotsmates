@@ -21,12 +21,25 @@ type GameState = {
 type LeaderboardEntry = {
   name: string
   score: number
-  createdAt: string
+  ideasPerSecond: number
+}
+
+type LeaderboardResponse = {
+  leaderboard: LeaderboardEntry[]
+  pagination: {
+    page: number
+    pageSize: number
+    total: number
+    totalPages: number
+    hasPrev: boolean
+    hasNext: boolean
+  }
 }
 
 const SAVE_KEY = "moonshotSimulatorStateV2"
 const ACCOUNT_NAME_KEY = "moonshotSimulatorAccountNameV1"
 const ACCOUNT_PIN_KEY = "moonshotSimulatorAccountPinV1"
+const LEADERBOARD_PAGE_SIZE = 10
 
 const baseUpgrades: Upgrade[] = [
   { id: "book", name: "Read Accelerando", desc: "+1 Idea per manual click", baseCost: 15, costMultiplier: 1.5, count: 0, isClickUpgrade: true, power: 1 },
@@ -54,36 +67,45 @@ function sanitizeGameState(input: unknown): GameState {
   }
 }
 
-function sanitizeLeaderboard(entries: unknown): LeaderboardEntry[] {
-  if (!Array.isArray(entries)) return []
-  return entries
-    .map((entry) => {
-      const row = (entry || {}) as Partial<LeaderboardEntry>
-      const name = String(row.name || "").trim().slice(0, 24)
-      if (!name) return null
-      return { name, score: Math.max(0, Math.floor(Number(row.score) || 0)), createdAt: new Date(row.createdAt || Date.now()).toISOString() }
-    })
-    .filter((entry): entry is LeaderboardEntry => Boolean(entry))
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 10)
+function sanitizeLeaderboardResponse(payload: unknown): LeaderboardResponse {
+  const incoming = (payload || {}) as Partial<LeaderboardResponse>
+  const leaderboard = Array.isArray(incoming.leaderboard)
+    ? incoming.leaderboard
+        .map((entry) => {
+          const row = (entry || {}) as Partial<LeaderboardEntry>
+          const name = String(row.name || "").trim().slice(0, 24)
+          if (!name) return null
+          return {
+            name,
+            score: Math.max(0, Math.floor(Number(row.score) || 0)),
+            ideasPerSecond: Math.max(0, Math.floor(Number(row.ideasPerSecond) || 0)),
+          }
+        })
+        .filter((entry): entry is LeaderboardEntry => Boolean(entry))
+    : []
+
+  const page = Math.max(1, Math.floor(Number(incoming.pagination?.page) || 1))
+  const pageSize = Math.max(1, Math.floor(Number(incoming.pagination?.pageSize) || LEADERBOARD_PAGE_SIZE))
+  const total = Math.max(0, Math.floor(Number(incoming.pagination?.total) || leaderboard.length))
+  const totalPages = Math.max(1, Math.floor(Number(incoming.pagination?.totalPages) || 1))
+
+  return {
+    leaderboard,
+    pagination: {
+      page,
+      pageSize,
+      total,
+      totalPages,
+      hasPrev: page > 1,
+      hasNext: page < totalPages,
+    },
+  }
 }
 
-async function fetchLeaderboard(): Promise<LeaderboardEntry[]> {
-  const response = await fetch("/api/leaderboard")
+async function fetchLeaderboard(page: number): Promise<LeaderboardResponse> {
+  const response = await fetch(`/api/leaderboard?page=${page}&pageSize=${LEADERBOARD_PAGE_SIZE}`)
   if (!response.ok) throw new Error("Could not load leaderboard")
-  const payload = (await response.json()) as { leaderboard?: unknown }
-  return sanitizeLeaderboard(payload.leaderboard)
-}
-
-async function submitLeaderboardEntry(name: string, score: number): Promise<LeaderboardEntry[]> {
-  const response = await fetch("/api/leaderboard", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, score }),
-  })
-  if (!response.ok) throw new Error("Could not save leaderboard")
-  const payload = (await response.json()) as { leaderboard?: unknown }
-  return sanitizeLeaderboard(payload.leaderboard)
+  return sanitizeLeaderboardResponse(await response.json())
 }
 
 async function loadAccount(name: string, pin: string): Promise<{ profileName: string; game: GameState }> {
@@ -112,7 +134,9 @@ function costFor(upgrade: Upgrade): number {
 export default function MoonshotSimulator() {
   const [game, setGame] = React.useState<GameState>(() => defaultState())
   const [leaderboard, setLeaderboard] = React.useState<LeaderboardEntry[]>([])
-  const [playerName, setPlayerName] = React.useState("")
+  const [leaderboardPage, setLeaderboardPage] = React.useState(1)
+  const [totalLeaderboardPages, setTotalLeaderboardPages] = React.useState(1)
+  const [totalLeaderboardUsers, setTotalLeaderboardUsers] = React.useState(0)
   const [profileNameInput, setProfileNameInput] = React.useState("")
   const [profilePinInput, setProfilePinInput] = React.useState("")
   const [signedInProfile, setSignedInProfile] = React.useState("")
@@ -121,14 +145,29 @@ export default function MoonshotSimulator() {
   const [isSigningIn, setIsSigningIn] = React.useState(false)
   const [authError, setAuthError] = React.useState("")
 
+  const refreshLeaderboard = React.useCallback(async (page: number) => {
+    try {
+      const next = await fetchLeaderboard(page)
+      setLeaderboard(next.leaderboard)
+      setLeaderboardPage(next.pagination.page)
+      setTotalLeaderboardPages(next.pagination.totalPages)
+      setTotalLeaderboardUsers(next.pagination.total)
+    } catch (_) {}
+  }, [])
+
   React.useEffect(() => {
     setMounted(true)
     let cancelled = false
 
     const run = async () => {
       try {
-        const cachedBoard = await fetchLeaderboard()
-        if (!cancelled) setLeaderboard(cachedBoard)
+        const next = await fetchLeaderboard(1)
+        if (!cancelled) {
+          setLeaderboard(next.leaderboard)
+          setLeaderboardPage(next.pagination.page)
+          setTotalLeaderboardPages(next.pagination.totalPages)
+          setTotalLeaderboardUsers(next.pagination.total)
+        }
       } catch (_) {}
 
       try {
@@ -146,11 +185,11 @@ export default function MoonshotSimulator() {
 
       setProfileNameInput(savedName)
       setProfilePinInput(savedPin)
+
       try {
         const loaded = await loadAccount(savedName, savedPin)
         if (!cancelled) {
           setSignedInProfile(loaded.profileName)
-          setPlayerName(loaded.profileName)
           setGame(loaded.game)
         }
       } catch (_) {
@@ -185,11 +224,22 @@ export default function MoonshotSimulator() {
     const name = localStorage.getItem(ACCOUNT_NAME_KEY) || profileNameInput
     const pin = localStorage.getItem(ACCOUNT_PIN_KEY) || profilePinInput
     if (!name || !pin) return
+
     const timer = window.setTimeout(() => {
       void saveAccountGame(name, pin, game)
+      void refreshLeaderboard(leaderboardPage)
     }, 800)
+
     return () => window.clearTimeout(timer)
-  }, [game, mounted, hydrated, signedInProfile, profileNameInput, profilePinInput])
+  }, [game, mounted, hydrated, signedInProfile, profileNameInput, profilePinInput, leaderboardPage, refreshLeaderboard])
+
+  React.useEffect(() => {
+    if (!mounted || !hydrated) return
+    const timer = window.setInterval(() => {
+      void refreshLeaderboard(leaderboardPage)
+    }, 5000)
+    return () => window.clearInterval(timer)
+  }, [mounted, hydrated, leaderboardPage, refreshLeaderboard])
 
   const signIn = async () => {
     const name = profileNameInput.trim()
@@ -206,8 +256,8 @@ export default function MoonshotSimulator() {
       localStorage.setItem(ACCOUNT_NAME_KEY, name)
       localStorage.setItem(ACCOUNT_PIN_KEY, pin)
       setSignedInProfile(loaded.profileName)
-      setPlayerName((current) => current || loaded.profileName)
       setGame(loaded.game)
+      await refreshLeaderboard(1)
     } catch (error) {
       setAuthError(error instanceof Error ? error.message : "Could not sign in")
     } finally {
@@ -238,16 +288,6 @@ export default function MoonshotSimulator() {
 
       return { ideas: previous.ideas - currentCost, ideasPerClick, ideasPerSecond, upgrades }
     })
-  }
-
-  const submitScore = async () => {
-    const effectiveName = (playerName.trim() || signedInProfile).slice(0, 24)
-    if (!effectiveName) return
-    try {
-      const next = await submitLeaderboardEntry(effectiveName, Math.floor(game.ideas))
-      setLeaderboard(next)
-      setPlayerName(effectiveName)
-    } catch (_) {}
   }
 
   return (
@@ -306,26 +346,48 @@ export default function MoonshotSimulator() {
 
       <div style={leaderboardWrapStyle}>
         <div style={{ fontWeight: 700, fontSize: 18 }}>Leaderboard</div>
-        <div style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap" }}>
-          <input value={playerName} onChange={(event) => setPlayerName(event.target.value)} placeholder="Display Name (optional)" style={inputStyle} maxLength={24} />
-          <button style={smallActionButtonStyle} onClick={() => void submitScore()} disabled={!signedInProfile}>
-            Save Score
-          </button>
+        <div style={{ marginTop: 6, fontSize: 12, opacity: 0.72 }}>
+          Ranked signed-in users: {totalLeaderboardUsers.toLocaleString()} total
         </div>
 
         <div style={{ marginTop: 10, display: "grid", gap: 6 }}>
           {leaderboard.length === 0 ? (
-            <div style={{ opacity: 0.75, fontSize: 14 }}>No scores yet. Set the first benchmark.</div>
+            <div style={{ opacity: 0.75, fontSize: 14 }}>No signed-in users ranked yet.</div>
           ) : (
-            leaderboard.map((entry, index) => (
-              <div key={`${entry.name}-${entry.createdAt}-${index}`} style={leaderboardRowStyle}>
-                <span>
-                  {index + 1}. {entry.name}
-                </span>
-                <span>{Math.floor(entry.score).toLocaleString()}</span>
-              </div>
-            ))
+            leaderboard.map((entry, index) => {
+              const rank = (leaderboardPage - 1) * LEADERBOARD_PAGE_SIZE + index + 1
+              return (
+                <div key={`${entry.name}-${rank}`} style={leaderboardRowStyle}>
+                  <span>
+                    {rank}. {entry.name} {entry.score.toLocaleString()}
+                  </span>
+                  <span>{entry.ideasPerSecond.toLocaleString()} ideas/sec</span>
+                </div>
+              )
+            })
           )}
+        </div>
+
+        <div style={{ marginTop: 10, display: "flex", gap: 8, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap" }}>
+          <div style={{ fontSize: 12, opacity: 0.72 }}>
+            Page {leaderboardPage} / {totalLeaderboardPages}
+          </div>
+          <div style={{ display: "flex", gap: 8 }}>
+            <button
+              style={{ ...smallActionButtonStyle, opacity: leaderboardPage <= 1 ? 0.5 : 1 }}
+              disabled={leaderboardPage <= 1}
+              onClick={() => void refreshLeaderboard(leaderboardPage - 1)}
+            >
+              Previous
+            </button>
+            <button
+              style={{ ...smallActionButtonStyle, opacity: leaderboardPage >= totalLeaderboardPages ? 0.5 : 1 }}
+              disabled={leaderboardPage >= totalLeaderboardPages}
+              onClick={() => void refreshLeaderboard(leaderboardPage + 1)}
+            >
+              Next
+            </button>
+          </div>
         </div>
       </div>
 

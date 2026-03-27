@@ -78,23 +78,6 @@ function sanitizeGameState(input) {
   }
 }
 
-function sanitizeLeaderboard(entries) {
-  if (!Array.isArray(entries)) return []
-
-  return entries
-    .map((entry) => {
-      const name = String(entry?.name || "").trim().slice(0, 24)
-      const score = Math.max(0, Math.floor(Number(entry?.score) || 0))
-      const createdAt = new Date(entry?.createdAt || Date.now()).toISOString()
-
-      if (!name) return null
-      return { name, score, createdAt }
-    })
-    .filter(Boolean)
-    .sort((a, b) => b.score - a.score)
-    .slice(0, 25)
-}
-
 async function kvGet(key) {
   if (!KV_URL || !KV_TOKEN) return null
   const response = await fetch(`${KV_URL}/get/${encodeURIComponent(key)}`, {
@@ -155,13 +138,25 @@ function accountKey(normalizedName) {
   return `moonshot:account:${normalizedName}`
 }
 
-const LEADERBOARD_KEY = "moonshot:leaderboard:v1"
+const ACCOUNT_INDEX_KEY = "moonshot:account-index:v1"
+
+function sanitizeAccountIndex(input) {
+  if (!Array.isArray(input)) return []
+  return input
+    .map((row) => {
+      const normalizedName = normalizeAccountName(row?.normalizedName)
+      if (!normalizedName) return null
+      const displayName = String(row?.displayName || normalizedName).trim().slice(0, 24) || normalizedName
+      return { normalizedName, displayName }
+    })
+    .filter(Boolean)
+}
 
 module.exports = {
-  LEADERBOARD_KEY,
+  ACCOUNT_INDEX_KEY,
   defaultState,
   sanitizeGameState,
-  sanitizeLeaderboard,
+  sanitizeAccountIndex,
   getJson,
   setJson,
   normalizeAccountName,

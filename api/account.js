@@ -1,5 +1,14 @@
 const crypto = require("node:crypto")
-const { defaultState, sanitizeGameState, getJson, setJson, normalizeAccountName, accountKey } = require("./_moonshotStore")
+const {
+  ACCOUNT_INDEX_KEY,
+  defaultState,
+  sanitizeGameState,
+  sanitizeAccountIndex,
+  getJson,
+  setJson,
+  normalizeAccountName,
+  accountKey,
+} = require("./_moonshotStore")
 
 function hashPin(pin) {
   return crypto.createHash("sha256").update(String(pin || "")).digest("hex")
@@ -28,6 +37,16 @@ module.exports = async function handler(req, res) {
   const key = accountKey(normalizedName)
   const existing = await getJson(key, null)
   const pinHash = hashPin(pin)
+  const displayName = rawName.trim().slice(0, 24) || normalizedName
+
+  async function upsertAccountIndex() {
+    const currentIndex = sanitizeAccountIndex(await getJson(ACCOUNT_INDEX_KEY, []))
+    const withoutCurrent = currentIndex.filter((entry) => entry.normalizedName !== normalizedName)
+    const nextIndex = [...withoutCurrent, { normalizedName, displayName }]
+      .sort((a, b) => a.displayName.localeCompare(b.displayName))
+      .slice(0, 5000)
+    await setJson(ACCOUNT_INDEX_KEY, nextIndex)
+  }
 
   if (!existing) {
     if (action === "save") {
@@ -36,12 +55,13 @@ module.exports = async function handler(req, res) {
 
     const created = {
       normalizedName,
-      displayName: rawName.trim().slice(0, 24) || normalizedName,
+      displayName,
       pinHash,
       game: defaultState(),
       updatedAt: new Date().toISOString(),
     }
     await setJson(key, created)
+    await upsertAccountIndex()
     return res.status(200).json({ ok: true, profileName: created.displayName, game: created.game, created: true })
   }
 
@@ -52,13 +72,16 @@ module.exports = async function handler(req, res) {
   if (action === "save") {
     const updated = {
       ...existing,
+      displayName,
       game: sanitizeGameState(body.game),
       updatedAt: new Date().toISOString(),
     }
     await setJson(key, updated)
+    await upsertAccountIndex()
     return res.status(200).json({ ok: true })
   }
 
+  await upsertAccountIndex()
   return res.status(200).json({
     ok: true,
     profileName: existing.displayName || normalizedName,

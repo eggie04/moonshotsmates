@@ -14,13 +14,14 @@ Because this GitHub repo is connected to Vercel, pushes to `main` trigger produc
 The simulator now uses Vercel Serverless API routes:
 
 - `POST /api/account` for profile sign-in and profile progress saves (cross-device).
-- `GET/POST /api/leaderboard` for global leaderboard entries.
+- `GET /api/leaderboard` for ranked signed-in users (paged, 10 per page by default).
 
-Cross-device progress works with a simple profile model:
+Cross-device progress and leaderboard work with a simple profile model:
 
 - Enter `Profile Name` + `PIN` in the widget.
 - New profile names are auto-created on first sign-in.
 - Reuse the same name+PIN on another device to load the same progress.
+- Leaderboard updates automatically from signed-in account progress (`ideas` and `ideas/sec`).
 
 For durable storage across deploys and instances, configure Vercel KV environment variables:
 
