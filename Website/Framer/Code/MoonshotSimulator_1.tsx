@@ -41,11 +41,12 @@ const ACCOUNT_NAME_KEY = "moonshotSimulatorAccountNameV1"
 const ACCOUNT_PIN_KEY = "moonshotSimulatorAccountPinV1"
 const LEADERBOARD_PAGE_SIZE = 10
 const ACCOUNT_AUTOSAVE_INTERVAL_MS = 5 * 60 * 1000
-const BUTTON_PRESS_TRANSFORM = "translateY(1px) scale(0.992)"
+const BUTTON_PRESS_TRANSFORM = "translateY(2px) scale(0.985)"
 const BUTTON_RELEASE_TRANSFORM = "translateY(0) scale(1)"
-const BUTTON_PRESS_BRIGHTNESS = "brightness(1.04)"
+const BUTTON_PRESS_BRIGHTNESS = "brightness(0.92) saturate(1.08)"
 const BUTTON_RELEASE_BRIGHTNESS = "brightness(1)"
-const BUTTON_TRANSITION = "transform 24ms linear, filter 40ms linear, box-shadow 90ms ease-out"
+const BUTTON_MIN_ACTIVE_MS = 85
+const BUTTON_TRANSITION = "transform 80ms ease, filter 80ms ease, box-shadow 120ms ease"
 
 const baseUpgrades: Upgrade[] = [
   { id: "book", name: "Read Accelerando", desc: "+1 Idea per manual click", baseCost: 15, costMultiplier: 1.5, count: 0, isClickUpgrade: true, power: 1 },
@@ -154,6 +155,50 @@ export default function MoonshotSimulator() {
   const [hasUnsavedChanges, setHasUnsavedChanges] = React.useState(false)
   const [isSavingNow, setIsSavingNow] = React.useState(false)
   const [pressedButtonId, setPressedButtonId] = React.useState<string | null>(null)
+  const pressedAtRef = React.useRef(0)
+  const clearPressedTimerRef = React.useRef<number | null>(null)
+
+  const clearPressedTimer = React.useCallback(() => {
+    if (clearPressedTimerRef.current !== null) {
+      window.clearTimeout(clearPressedTimerRef.current)
+      clearPressedTimerRef.current = null
+    }
+  }, [])
+
+  const markPressed = React.useCallback(
+    (buttonId: string) => {
+      clearPressedTimer()
+      pressedAtRef.current = performance.now()
+      setPressedButtonId(buttonId)
+    },
+    [clearPressedTimer]
+  )
+
+  const releasePressed = React.useCallback(
+    (buttonId: string) => {
+      const elapsed = performance.now() - pressedAtRef.current
+      const remaining = Math.max(0, BUTTON_MIN_ACTIVE_MS - elapsed)
+      clearPressedTimer()
+
+      if (remaining === 0) {
+        setPressedButtonId((current) => (current === buttonId ? null : current))
+        return
+      }
+
+      clearPressedTimerRef.current = window.setTimeout(() => {
+        setPressedButtonId((current) => (current === buttonId ? null : current))
+        clearPressedTimerRef.current = null
+      }, remaining)
+    },
+    [clearPressedTimer]
+  )
+
+  React.useEffect(
+    () => () => {
+      clearPressedTimer()
+    },
+    [clearPressedTimer]
+  )
 
   const refreshLeaderboard = React.useCallback(async (page: number) => {
     setIsRefreshingLeaderboard(true)
@@ -320,10 +365,23 @@ export default function MoonshotSimulator() {
     disabled
       ? {}
       : {
-          onPointerDown: () => setPressedButtonId(buttonId),
-          onPointerUp: () => setPressedButtonId((current) => (current === buttonId ? null : current)),
-          onPointerLeave: () => setPressedButtonId((current) => (current === buttonId ? null : current)),
-          onPointerCancel: () => setPressedButtonId((current) => (current === buttonId ? null : current)),
+          onPointerDown: () => markPressed(buttonId),
+          onPointerUp: () => releasePressed(buttonId),
+          onPointerLeave: () => releasePressed(buttonId),
+          onPointerCancel: () => releasePressed(buttonId),
+          onMouseDown: () => markPressed(buttonId),
+          onMouseUp: () => releasePressed(buttonId),
+          onMouseLeave: () => releasePressed(buttonId),
+          onTouchStart: () => markPressed(buttonId),
+          onTouchEnd: () => releasePressed(buttonId),
+          onTouchCancel: () => releasePressed(buttonId),
+          onKeyDown: (event: React.KeyboardEvent<HTMLButtonElement>) => {
+            if (event.key === "Enter" || event.key === " ") markPressed(buttonId)
+          },
+          onKeyUp: (event: React.KeyboardEvent<HTMLButtonElement>) => {
+            if (event.key === "Enter" || event.key === " ") releasePressed(buttonId)
+          },
+          onBlur: () => releasePressed(buttonId),
         }
 
   const getPressedStyle = (buttonId: string): React.CSSProperties => ({
