@@ -9,6 +9,7 @@ import random
 import re
 import shlex
 import subprocess
+from urllib.request import Request, urlopen
 from urllib.parse import quote, urlparse
 from datetime import datetime
 from pathlib import Path
@@ -263,14 +264,68 @@ class MoonshotsMatesBot(commands.Bot):
                 f"Command failed ({result.returncode}): {command}\n"
                 f"stdout: {result.stdout.strip()}\n"
                 f"stderr: {result.stderr.strip()}"
-            )
+        )
         return result.stdout.strip()
+
+    def _sync_public_mirror_from_framer(self) -> bool:
+        source_url = (os.getenv("FRAMER_PUBLIC_MIRROR_URL") or "https://moonshotsmates.framer.ai/").strip()
+        target_file = self._repo_root / "public" / "index.html"
+        request = Request(source_url, headers={"User-Agent": "MoonshotsMatesBot/1.0"})
+        with urlopen(request, timeout=30) as response:
+            html_doc = response.read().decode("utf-8", errors="ignore")
+
+        html_doc = re.sub(
+            r'(?<!https://)(?<!http://)(?<!//)framerusercontent\.com/',
+            "https://framerusercontent.com/",
+            html_doc,
+            flags=re.IGNORECASE,
+        )
+        html_doc = re.sub(
+            r'<script id="self-hosted-framer-hide-badge-script">[\s\S]*?</script>',
+            "",
+            html_doc,
+            flags=re.IGNORECASE,
+        )
+
+        badge_css = """
+<style id="self-hosted-framer-hide-badge">
+  #__framer-badge-container,
+  .__framer-badge,
+  [aria-label="Made in Framer"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+</style>
+""".strip()
+
+        if 'id="self-hosted-framer-hide-badge"' not in html_doc:
+            if re.search(r"</head>", html_doc, flags=re.IGNORECASE):
+                html_doc = re.sub(r"</head>", f"{badge_css}\n</head>", html_doc, count=1, flags=re.IGNORECASE)
+            else:
+                html_doc = f"{badge_css}\n{html_doc}"
+
+        if not re.match(r"^\s*<!doctype html>", html_doc, flags=re.IGNORECASE):
+            html_doc = "<!doctype html>\n" + html_doc.lstrip()
+
+        previous = target_file.read_text(encoding="utf-8") if target_file.exists() else ""
+        if previous == html_doc:
+            return False
+
+        target_file.parent.mkdir(parents=True, exist_ok=True)
+        target_file.write_text(html_doc, encoding="utf-8")
+        return True
 
     def _run_auto_video_pipeline_sync(self, guid: str, title: str) -> None:
         if not self.settings.auto_video_pipeline_enabled:
             return
 
-        data_file = "Website/Framer/Code/MoonshotsLatestVideos_data.ts"
+        tracked_files = [
+            "Website/Framer/Code/MoonshotsLatestVideos_data.ts",
+            "Website/Framer/Code/MoonshotsCarouselDrop.tsx",
+            "public/index.html",
+        ]
 
         self._run_shell("node scripts/generate-latest-videos.mjs", self._website_dir)
 
@@ -280,10 +335,17 @@ class MoonshotsMatesBot(commands.Bot):
             except Exception as exc:
                 logger.warning("Auto video pipeline: Framer sync/publish failed: %s", exc)
 
-        self._run_shell(f"git add {shlex.quote(data_file)}", self._repo_root)
+        try:
+            mirror_changed = self._sync_public_mirror_from_framer()
+            logger.info("Auto video pipeline: public mirror %s.", "updated" if mirror_changed else "already current")
+        except Exception as exc:
+            logger.warning("Auto video pipeline: mirror sync from Framer failed: %s", exc)
+
+        quoted_files = " ".join(shlex.quote(path) for path in tracked_files)
+        self._run_shell(f"git add {quoted_files}", self._repo_root)
 
         diff_status = subprocess.run(
-            ["/bin/zsh", "-lc", f"git diff --cached --quiet -- {shlex.quote(data_file)}"],
+            ["/bin/zsh", "-lc", f"git diff --cached --quiet -- {quoted_files}"],
             cwd=str(self._repo_root),
             capture_output=True,
             text=True,
@@ -299,7 +361,7 @@ class MoonshotsMatesBot(commands.Bot):
         topic = re.sub(r"\s+", " ", title).strip()[:80]
         commit_message = f"auto: update latest videos for {topic or guid}"
         self._run_shell(
-            f"git commit -m {shlex.quote(commit_message)} -- {shlex.quote(data_file)}",
+            f"git commit -m {shlex.quote(commit_message)} -- {quoted_files}",
             self._repo_root,
         )
 

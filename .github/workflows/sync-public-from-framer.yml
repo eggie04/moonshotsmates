@@ -1,0 +1,73 @@
+name: Sync Public Mirror From Framer
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-public-from-framer
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Mirror Framer HTML into public/index.html
+        run: |
+          set -euo pipefail
+          curl -fsSL https://moonshotsmates.framer.ai/ -o /tmp/moonshots_framer_latest.html
+          node <<'NODE'
+          const fs = require("node:fs");
+          const path = require("node:path");
+          const src = "/tmp/moonshots_framer_latest.html";
+          const out = path.join(process.cwd(), "public", "index.html");
+          let html = fs.readFileSync(src, "utf8");
+          html = html.replace(/(?<!https?:\/\/)(?<!\/\/)framerusercontent\.com\//gi, "https://framerusercontent.com/");
+          html = html.replace(/<script id="self-hosted-framer-hide-badge-script">[\s\S]*?<\/script>/gi, "");
+          const badgeCss = `<style id="self-hosted-framer-hide-badge">
+            #__framer-badge-container,
+            .__framer-badge,
+            [aria-label="Made in Framer"] {
+              display: none !important;
+              opacity: 0 !important;
+              visibility: hidden !important;
+              pointer-events: none !important;
+            }
+          </style>
+          `;
+          if (!/id="self-hosted-framer-hide-badge"/i.test(html)) {
+            if (/<\/head>/i.test(html)) html = html.replace(/<\/head>/i, `${badgeCss}</head>`);
+            else html = `${badgeCss}${html}`;
+          }
+          if (!/^\s*<!doctype html>/i.test(html)) html = `<!doctype html>\n${html.trimStart()}`;
+          fs.mkdirSync(path.dirname(out), { recursive: true });
+          fs.writeFileSync(out, html, "utf8");
+          console.log(`Updated ${out}`);
+          NODE
+
+      - name: Commit and push if changed
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- public/index.html; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/index.html
+          git commit -m "chore: sync public mirror with latest Framer publish"
+          git push
