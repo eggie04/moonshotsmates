@@ -304,7 +304,22 @@ class MoonshotsMatesBot(commands.Bot):
         )
 
         if self.settings.auto_video_push_enabled:
-            self._run_shell("git push origin main", self._repo_root)
+            try:
+                self._run_shell("git push origin main", self._repo_root)
+            except RuntimeError as exc:
+                # Recover from non-fast-forward updates when remote main moved ahead.
+                # Rebase this local auto-commit on latest origin/main, then retry push.
+                error_text = str(exc).lower()
+                push_race = (
+                    "failed to push some refs" in error_text
+                    or "fetch first" in error_text
+                    or "non-fast-forward" in error_text
+                )
+                if not push_race:
+                    raise
+                logger.warning("Auto video pipeline: push rejected; rebasing on origin/main and retrying.")
+                self._run_shell("git pull --rebase --autostash origin main", self._repo_root)
+                self._run_shell("git push origin main", self._repo_root)
             logger.info("Auto video pipeline: pushed carousel update to origin/main.")
         else:
             logger.info("Auto video pipeline: push disabled by AUTO_VIDEO_PUSH_ENABLED.")
