@@ -15,10 +15,12 @@ class Settings:
     discussion_channel_id: int
     meme_channel_id: int
     growth_channel_id: int
+    business_idea_channel_id: int | None
     timezone: str
     discussion_hour: int
     meme_hour: int
     growth_check_hour: int
+    business_idea_hour: int
     episode_source_mode: str
     episode_feed_url: str | None
     youtube_channel_url: str | None
@@ -26,6 +28,7 @@ class Settings:
     ai_api_key: str | None
     ai_model: str
     meme_ai_model: str
+    idea_ai_model: str
     ai_base_url: str | None
     giphy_api_key: str | None
     invite_channel_id: int | None
@@ -135,6 +138,7 @@ def load_settings() -> Settings:
     discussion_channel_id = _optional_int("DISCORD_DISCUSSION_CHANNEL_ID") or episode_channel_id
     meme_channel_id = _optional_int("DISCORD_MEME_CHANNEL_ID") or discussion_channel_id
     growth_channel_id = _optional_int("DISCORD_GROWTH_CHANNEL_ID") or discussion_channel_id
+    business_idea_channel_id = _optional_int("DISCORD_BUSINESS_IDEA_CHANNEL_ID")
 
     episode_source_mode = os.getenv("EPISODE_SOURCE_MODE", "discord").strip().lower()
     if episode_source_mode not in {"discord", "rss", "youtube"}:
@@ -156,10 +160,12 @@ def load_settings() -> Settings:
         discussion_channel_id=discussion_channel_id,
         meme_channel_id=meme_channel_id,
         growth_channel_id=growth_channel_id,
+        business_idea_channel_id=business_idea_channel_id,
         timezone=os.getenv("TIMEZONE", "America/Chicago"),
         discussion_hour=_get_int("DISCUSSION_HOUR", default=9),
         meme_hour=_get_int("MEME_HOUR", default=12),
         growth_check_hour=_get_int("GROWTH_CHECK_HOUR", default=18),
+        business_idea_hour=_get_int("BUSINESS_IDEA_HOUR", default=11),
         episode_source_mode=episode_source_mode,
         episode_feed_url=feed_url,
         youtube_channel_url=youtube_channel_url,
@@ -167,6 +173,13 @@ def load_settings() -> Settings:
         ai_api_key=(os.getenv("AI_API_KEY") or os.getenv("OPENAI_API_KEY") or "").strip() or None,
         ai_model=(os.getenv("AI_MODEL") or os.getenv("OPENAI_MODEL") or "gpt-4.1-mini").strip(),
         meme_ai_model=(os.getenv("MEME_AI_MODEL") or os.getenv("AI_MODEL") or os.getenv("OPENAI_MODEL") or "gpt-4.1-mini").strip(),
+        idea_ai_model=(
+            os.getenv("IDEA_AI_MODEL")
+            or os.getenv("MEME_AI_MODEL")
+            or os.getenv("AI_MODEL")
+            or os.getenv("OPENAI_MODEL")
+            or "arcee-ai/trinity-large-preview:free"
+        ).strip(),
         ai_base_url=(os.getenv("AI_BASE_URL") or "").strip() or None,
         giphy_api_key=(os.getenv("GIPHY_API_KEY") or "").strip() or None,
         invite_channel_id=invite_channel_id,

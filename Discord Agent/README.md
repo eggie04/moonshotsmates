@@ -8,6 +8,7 @@ This bot automates core community actions for MoonshotsMates:
 - Creates a dedicated thread for each episode recap and posts discussion questions in that thread
 - Posts a daily meme
 - Tracks daily joins and posts a growth update targeting 3 new users/day
+- Posts a daily business idea generation summary with attached deep plans
 
 ## Important note on "adding 3 users per day"
 
@@ -41,7 +42,7 @@ Fill `.env`:
 
 - `DISCORD_TOKEN` from Discord portal
 - `DISCORD_INVITE_URL` (pre-filled for MoonshotsMates)
-- Optional channel IDs for discussion/meme/growth (defaults to `episode-discussion`)
+- Optional channel IDs for discussion/meme/growth/business ideas (defaults to `episode-discussion` where applicable)
 - `EPISODE_SOURCE_MODE=discord` is recommended for your setup
 - If `EPISODE_SOURCE_MODE=rss`, set `EPISODE_FEED_URL`
 - If `EPISODE_SOURCE_MODE=youtube`, set `YOUTUBE_CHANNEL_URL` (example: `https://www.youtube.com/@peterdiamandis`)
@@ -59,6 +60,7 @@ AI_API_KEY=your_openrouter_key
 AI_BASE_URL=https://openrouter.ai/api/v1
 AI_MODEL=openrouter/free
 MEME_AI_MODEL=openrouter/free
+IDEA_AI_MODEL=arcee-ai/trinity-large-preview:free
 ```
 
 If no AI key is set, bot still runs using built-in fallback templates.
@@ -96,6 +98,7 @@ python bot.py
 - `/post_discussion_now`
 - `/post_meme_now`
 - `/post_growth_now`
+- `/post_business_ideas_now`
 
 ## Schedule defaults
 
@@ -104,6 +107,7 @@ Timezone and schedule are configurable via `.env`:
 - Discussion: `09:00`
 - Meme: `12:00`
 - Growth: `18:00`
+- Business ideas: `11:00`
 - Episode polling: every `30` minutes
 
 ## Intents required

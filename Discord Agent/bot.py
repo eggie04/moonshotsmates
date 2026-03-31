@@ -100,6 +100,12 @@ class MoonshotsMatesBot(commands.Bot):
             id="daily_growth",
             replace_existing=True,
         )
+        self.scheduler.add_job(
+            self.post_daily_business_ideas,
+            CronTrigger(hour=self.settings.business_idea_hour, minute=0, timezone=tz),
+            id="daily_business_ideas",
+            replace_existing=True,
+        )
 
         if self.settings.episode_source_mode in {"rss", "youtube"}:
             self.scheduler.add_job(
@@ -740,6 +746,65 @@ class MoonshotsMatesBot(commands.Bot):
 
         await channel.send(f"📈 **Daily Growth Goal**\n{post}")
 
+    async def post_daily_business_ideas(self, manual: bool = False) -> bool:
+        del manual  # Reserved for future behavior toggles to keep method signature aligned with other jobs.
+
+        channel_id = self.settings.business_idea_channel_id
+        if channel_id is None:
+            logger.warning("Business idea channel ID is not configured")
+            return False
+
+        channel = await self._get_text_channel(channel_id)
+        if not channel:
+            logger.warning("Business idea channel not found")
+            return False
+
+        raw = await asyncio.to_thread(self.ai.generate_business_ideas, self.settings.idea_ai_model)
+        if not raw:
+            logger.warning("Business idea generation returned empty content")
+            return False
+
+        summary_message, attachment_body = self._format_business_idea_post(raw)
+        today = datetime.now(ZoneInfo(self.settings.timezone)).date().isoformat()
+        filename = f"business-ideas-{today}.md"
+        attachment = discord.File(fp=io.BytesIO(attachment_body.encode("utf-8")), filename=filename)
+        await channel.send(summary_message, file=attachment)
+        return True
+
+    @classmethod
+    def _format_business_idea_post(cls, raw: str) -> tuple[str, str]:
+        full_body = (raw or "").strip()
+        if not full_body:
+            return (
+                "💡 **Daily Business Idea Generator**\n\nNo content generated today.",
+                "No business ideas were generated.",
+            )
+
+        step3_marker = re.search(r"(?im)^(?:#+\s*)?step\s*3\b", full_body)
+        if step3_marker:
+            summary_body = full_body[: step3_marker.start()].strip()
+        else:
+            summary_body = full_body
+
+        if not summary_body:
+            summary_body = full_body
+
+        summary_body = cls._truncate_discord_text(summary_body, 1500)
+        message = (
+            "💡 **Daily Business Idea Generator**\n\n"
+            "## Step 1 + Step 2 Snapshot\n"
+            f"{summary_body}\n\n"
+            "_Full Step 3 deep business plans are attached as a Markdown file._"
+        )
+        return cls._truncate_discord_text(message, 1900), full_body
+
+    @staticmethod
+    def _truncate_discord_text(value: str, max_chars: int) -> str:
+        if len(value) <= max_chars:
+            return value
+        truncated = value[: max_chars - 20].rstrip()
+        return f"{truncated}\n\n...(truncated)"
+
     async def _download_image_as_file(self, image_url: str, preferred_filename: str | None = None) -> discord.File | None:
         timeout = aiohttp.ClientTimeout(total=15)
         try:
@@ -1055,6 +1120,21 @@ async def post_growth_now(interaction: discord.Interaction) -> None:
     await interaction.response.defer(ephemeral=True)
     await bot.post_daily_growth_update()
     await interaction.followup.send("Posted growth update.", ephemeral=True)
+
+
+@bot.tree.command(name="post_business_ideas_now", description="Post today's business ideas now")
+@app_commands.guilds(discord.Object(id=settings.guild_id))
+@app_commands.default_permissions(manage_guild=True)
+async def post_business_ideas_now(interaction: discord.Interaction) -> None:
+    await interaction.response.defer(ephemeral=True)
+    posted = await bot.post_daily_business_ideas(manual=True)
+    if posted:
+        await interaction.followup.send("Posted business ideas.", ephemeral=True)
+    else:
+        await interaction.followup.send(
+            "Business idea post skipped. Check channel config and bot logs for details.",
+            ephemeral=True,
+        )
 
 
 @bot.tree.command(name="preview_latest_recap", description="Preview latest recap without posting publicly")
