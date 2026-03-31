@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "fzKVYNBg50E",
+      title: "Why Owning a Car Won't Make Sense, Robotaxi Plans, and Uber’s Trillion $ Market | Dara Khosrowshahi",
+      url: "https://www.youtube.com/watch?v=fzKVYNBg50E",
+      embedUrl: "https://www.youtube.com/embed/fzKVYNBg50E",
+    },
+    {
       id: "wMLcIWLlcWg",
       title: "Elon's $5 Trillion Bet, the End of Human Drivers, and Chamath's Market Warning | EP #242",
       url: "https://www.youtube.com/watch?v=wMLcIWLlcWg",
