@@ -251,6 +251,22 @@ class MoonshotsMatesBot(commands.Bot):
 
         self.state.set_latest_episode_thread_id(thread.id)
 
+    async def _send_admin_alert(self, heading: str, details: str) -> None:
+        channel_id = self.settings.admin_channel_id or self.settings.growth_channel_id
+
+        channel = await self._get_text_channel(channel_id)
+        if not channel:
+            logger.warning("Admin alert channel not found")
+            return
+
+        timestamp = datetime.now(ZoneInfo(self.settings.timezone)).isoformat(timespec="seconds")
+        body = (
+            f"⚠️ **{heading}**\n"
+            f"Time: `{timestamp}`\n"
+            f"```text\n{(details or 'No details provided')[:1500]}\n```"
+        )
+        await channel.send(body[:1900])
+
     def _run_shell(self, command: str, cwd: Path) -> str:
         result = subprocess.run(
             ["/bin/zsh", "-lc", command],
@@ -392,6 +408,13 @@ class MoonshotsMatesBot(commands.Bot):
                 await asyncio.to_thread(self._run_auto_video_pipeline_sync, guid, title)
             except Exception as exc:
                 logger.warning("Auto video pipeline failed for %s: %s", guid, exc)
+                try:
+                    await self._send_admin_alert(
+                        "Auto Video Pipeline Failed",
+                        f"guid={guid}\ntitle={title}\nerror={exc}",
+                    )
+                except Exception as alert_exc:
+                    logger.warning("Failed to deliver admin alert: %s", alert_exc)
 
     async def _post_recap_from_discord_link(self, url: str, message_id: int) -> None:
         channel = await self._get_text_channel(self.settings.episode_channel_id)

@@ -42,7 +42,7 @@ Fill `.env`:
 
 - `DISCORD_TOKEN` from Discord portal
 - `DISCORD_INVITE_URL` (pre-filled for MoonshotsMates)
-- Optional channel IDs for discussion/meme/growth/business ideas (defaults to `episode-discussion` where applicable)
+- Optional channel IDs for discussion/meme/growth/business ideas/admin alerts (defaults to `episode-discussion` where applicable)
 - `EPISODE_SOURCE_MODE=discord` is recommended for your setup
 - If `EPISODE_SOURCE_MODE=rss`, set `EPISODE_FEED_URL`
 - If `EPISODE_SOURCE_MODE=youtube`, set `YOUTUBE_CHANNEL_URL` (example: `https://www.youtube.com/@peterdiamandis`)

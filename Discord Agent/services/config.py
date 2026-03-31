@@ -16,6 +16,7 @@ class Settings:
     meme_channel_id: int
     growth_channel_id: int
     business_idea_channel_id: int | None
+    admin_channel_id: int | None
     timezone: str
     discussion_hour: int
     meme_hour: int
@@ -139,6 +140,7 @@ def load_settings() -> Settings:
     meme_channel_id = _optional_int("DISCORD_MEME_CHANNEL_ID") or discussion_channel_id
     growth_channel_id = _optional_int("DISCORD_GROWTH_CHANNEL_ID") or discussion_channel_id
     business_idea_channel_id = _optional_int("DISCORD_BUSINESS_IDEA_CHANNEL_ID")
+    admin_channel_id = _optional_int("DISCORD_ADMIN_CHANNEL_ID")
 
     episode_source_mode = os.getenv("EPISODE_SOURCE_MODE", "discord").strip().lower()
     if episode_source_mode not in {"discord", "rss", "youtube"}:
@@ -161,6 +163,7 @@ def load_settings() -> Settings:
         meme_channel_id=meme_channel_id,
         growth_channel_id=growth_channel_id,
         business_idea_channel_id=business_idea_channel_id,
+        admin_channel_id=admin_channel_id,
         timezone=os.getenv("TIMEZONE", "America/Chicago"),
         discussion_hour=_get_int("DISCUSSION_HOUR", default=9),
         meme_hour=_get_int("MEME_HOUR", default=12),
