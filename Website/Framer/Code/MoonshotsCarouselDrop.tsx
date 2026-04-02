@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "Mh9yC4j0_rI",
+      title: "Uber’s Robotaxi Playbook, 20M Workers by 2035 & AI Won’t Replace Everyone | Dara Khosrowshahi | 244",
+      url: "https://www.youtube.com/watch?v=Mh9yC4j0_rI",
+      embedUrl: "https://www.youtube.com/embed/Mh9yC4j0_rI",
+    },
+    {
       id: "fzKVYNBg50E",
       title: "Why Owning a Car Won't Make Sense, Robotaxi Plans, and Uber’s Trillion $ Market | Dara Khosrowshahi",
       url: "https://www.youtube.com/watch?v=fzKVYNBg50E",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic: Just 1% of AI Goldmine | MOONSHOTS",
       url: "https://www.youtube.com/watch?v=J7_mYJm5lEk",
       embedUrl: "https://www.youtube.com/embed/J7_mYJm5lEk",
-    },
-    {
-      id: "uOGHXAfvK8w",
-      title: "NVIDIA's $1 Trillion Prediction, Anthropic Beats OpenAI, Tesla vs. TSMC & The CS Job Collapse | 240",
-      url: "https://www.youtube.com/watch?v=uOGHXAfvK8w",
-      embedUrl: "https://www.youtube.com/embed/uOGHXAfvK8w",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
