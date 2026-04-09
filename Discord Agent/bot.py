@@ -347,7 +347,9 @@ class MoonshotsMatesBot(commands.Bot):
 
         if self.settings.auto_video_framer_sync_enabled:
             try:
-                self._run_shell("npm run framer:sync", self._website_dir)
+                # Force publish during automated pipeline so Framer updates are
+                # deployable even when publish env vars are not set globally.
+                self._run_shell("FRAMER_PUBLISH=1 npm run framer:sync", self._website_dir)
             except Exception as exc:
                 logger.warning("Auto video pipeline: Framer sync/publish failed: %s", exc)
 
