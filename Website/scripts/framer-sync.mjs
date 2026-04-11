@@ -5,6 +5,12 @@ import { getConfig, toPosixPath, withFramerClient } from "./lib.mjs"
 const CODE_EXTENSIONS = new Set([".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs"])
 const MAX_RETRIES = Number(process.env.FRAMER_SYNC_MAX_RETRIES || 4)
 const RETRY_DELAY_MS = Number(process.env.FRAMER_SYNC_RETRY_DELAY_MS || 2500)
+const SKIP_FILES = new Set(
+  (process.env.FRAMER_SYNC_SKIP_FILES || "MoonshotsLatestVideos_data.ts")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean)
+)
 
 async function walkFiles(dir) {
   const items = await readdir(dir, { withFileTypes: true })
@@ -131,10 +137,15 @@ await withFramerClient(async (framer) => {
   for (const absPath of localFiles) {
     const relPath = toPosixPath(path.relative(localRoot, absPath))
     const remotePath = normalizeRemotePath(relPath, config.remotePrefix)
+    const remoteName = toPosixPath(path.basename(remotePath))
+    if (SKIP_FILES.has(remoteName)) {
+      skipped += 1
+      console.log(`Skip (configured): ${remotePath}`)
+      continue
+    }
     const code = await readFile(absPath, "utf8")
 
     const remoteSafePath = toFramerSafePath(remotePath)
-    const remoteName = toPosixPath(path.basename(remotePath))
     const existing =
       remoteByPath.get(remotePath) || remoteBySafePath.get(remoteSafePath) || remoteByName.get(remoteName)
 
