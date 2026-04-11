@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "cFI-SqnvQK8",
+      title: "SpaceX Goes Public, Claude’s Mythos Release, and the US Data Center Delay | EP #246",
+      url: "https://www.youtube.com/watch?v=cFI-SqnvQK8",
+      embedUrl: "https://www.youtube.com/embed/cFI-SqnvQK8",
+    },
+    {
       id: "Goa6c6Qz__I",
       title: "How AI Is Building a Platform to Design Living Things | Ben Lamm (Colossal) | EP #245",
       url: "https://www.youtube.com/watch?v=Goa6c6Qz__I",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Elon's $5 Trillion Bet, the End of Human Drivers, and Chamath's Market Warning | EP #242",
       url: "https://www.youtube.com/watch?v=wMLcIWLlcWg",
       embedUrl: "https://www.youtube.com/embed/wMLcIWLlcWg",
-    },
-    {
-      id: "DpwmmXmzvfo",
-      title: "Eric Schmidt: America’s Energy Problem, China’s Winning the Physical AI Race, & AGI Countdown | 241",
-      url: "https://www.youtube.com/watch?v=DpwmmXmzvfo",
-      embedUrl: "https://www.youtube.com/embed/DpwmmXmzvfo",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
