@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "5ak26W2YNRY",
+      title: "Elon Musk vs. Sam Altman, AI Job Loss, and OpenAI’s $852B Valuation | EP #247",
+      url: "https://www.youtube.com/watch?v=5ak26W2YNRY",
+      embedUrl: "https://www.youtube.com/embed/5ak26W2YNRY",
+    },
+    {
       id: "cFI-SqnvQK8",
       title: "SpaceX Goes Public, Claude’s Mythos Release, and the US Data Center Delay | EP #246",
       url: "https://www.youtube.com/watch?v=cFI-SqnvQK8",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Why Owning a Car Won't Make Sense, Robotaxi Plans, and Uber’s Trillion $ Market | Dara Khosrowshahi",
       url: "https://www.youtube.com/watch?v=fzKVYNBg50E",
       embedUrl: "https://www.youtube.com/embed/fzKVYNBg50E",
-    },
-    {
-      id: "wMLcIWLlcWg",
-      title: "Elon's $5 Trillion Bet, the End of Human Drivers, and Chamath's Market Warning | EP #242",
-      url: "https://www.youtube.com/watch?v=wMLcIWLlcWg",
-      embedUrl: "https://www.youtube.com/embed/wMLcIWLlcWg",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
