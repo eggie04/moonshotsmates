@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "LVvleNtllPk",
+      title: "Amazon Takes on Starlink, Opus 4.7 vs. Mythos, and Stanford's AI Scorecard | #248",
+      url: "https://www.youtube.com/watch?v=LVvleNtllPk",
+      embedUrl: "https://www.youtube.com/embed/LVvleNtllPk",
+    },
+    {
       id: "5ak26W2YNRY",
       title: "Elon Musk vs. Sam Altman, AI Job Loss, and OpenAI’s $852B Valuation | EP #247",
       url: "https://www.youtube.com/watch?v=5ak26W2YNRY",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Uber’s Robotaxi Playbook, 20M Workers by 2035 & AI Won’t Replace Everyone | Dara Khosrowshahi | 244",
       url: "https://www.youtube.com/watch?v=Mh9yC4j0_rI",
       embedUrl: "https://www.youtube.com/embed/Mh9yC4j0_rI",
-    },
-    {
-      id: "fzKVYNBg50E",
-      title: "Why Owning a Car Won't Make Sense, Robotaxi Plans, and Uber’s Trillion $ Market | Dara Khosrowshahi",
-      url: "https://www.youtube.com/watch?v=fzKVYNBg50E",
-      embedUrl: "https://www.youtube.com/embed/fzKVYNBg50E",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
