@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "Bj0i-yvIUQs",
+      title: "Iran's AI Supply Chain Threat, Claude vs. SaaS, and Elon's $60B Cursor Bet | EP #249",
+      url: "https://www.youtube.com/watch?v=Bj0i-yvIUQs",
+      embedUrl: "https://www.youtube.com/embed/Bj0i-yvIUQs",
+    },
+    {
       id: "LVvleNtllPk",
       title: "Amazon Takes on Starlink, Opus 4.7 vs. Mythos, and Stanford's AI Scorecard | #248",
       url: "https://www.youtube.com/watch?v=LVvleNtllPk",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "How AI Is Building a Platform to Design Living Things | Ben Lamm (Colossal) | EP #245",
       url: "https://www.youtube.com/watch?v=Goa6c6Qz__I",
       embedUrl: "https://www.youtube.com/embed/Goa6c6Qz__I",
-    },
-    {
-      id: "Mh9yC4j0_rI",
-      title: "Uber’s Robotaxi Playbook, 20M Workers by 2035 & AI Won’t Replace Everyone | Dara Khosrowshahi | 244",
-      url: "https://www.youtube.com/watch?v=Mh9yC4j0_rI",
-      embedUrl: "https://www.youtube.com/embed/Mh9yC4j0_rI",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
