@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "4IM866W7yGc",
+      title: "Age Reversal in 2026: The Longevity Singularity & David’s Updated Protocols | David Sinclair EP #250",
+      url: "https://www.youtube.com/watch?v=4IM866W7yGc",
+      embedUrl: "https://www.youtube.com/embed/4IM866W7yGc",
+    },
+    {
       id: "Bj0i-yvIUQs",
       title: "Iran's AI Supply Chain Threat, Claude vs. SaaS, and Elon's $60B Cursor Bet | EP #249",
       url: "https://www.youtube.com/watch?v=Bj0i-yvIUQs",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "SpaceX Goes Public, Claude’s Mythos Release, and the US Data Center Delay | EP #246",
       url: "https://www.youtube.com/watch?v=cFI-SqnvQK8",
       embedUrl: "https://www.youtube.com/embed/cFI-SqnvQK8",
-    },
-    {
-      id: "Goa6c6Qz__I",
-      title: "How AI Is Building a Platform to Design Living Things | Ben Lamm (Colossal) | EP #245",
-      url: "https://www.youtube.com/watch?v=Goa6c6Qz__I",
-      embedUrl: "https://www.youtube.com/embed/Goa6c6Qz__I",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
