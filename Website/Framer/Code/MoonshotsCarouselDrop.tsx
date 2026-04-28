@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "D8ohmtB8MdI",
+      title: "New Episode",
+      url: "https://www.youtube.com/watch?v=D8ohmtB8MdI",
+      embedUrl: "https://www.youtube.com/embed/D8ohmtB8MdI",
+    },
+    {
       id: "4IM866W7yGc",
       title: "Age Reversal in 2026: The Longevity Singularity & David’s Updated Protocols | David Sinclair EP #250",
       url: "https://www.youtube.com/watch?v=4IM866W7yGc",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Elon Musk vs. Sam Altman, AI Job Loss, and OpenAI’s $852B Valuation | EP #247",
       url: "https://www.youtube.com/watch?v=5ak26W2YNRY",
       embedUrl: "https://www.youtube.com/embed/5ak26W2YNRY",
-    },
-    {
-      id: "cFI-SqnvQK8",
-      title: "SpaceX Goes Public, Claude’s Mythos Release, and the US Data Center Delay | EP #246",
-      url: "https://www.youtube.com/watch?v=cFI-SqnvQK8",
-      embedUrl: "https://www.youtube.com/embed/cFI-SqnvQK8",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
