@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "RCbJKkG_mZs",
+      title: "Anthropic’s $65B Week, The AI Model Race, and ChatGPT Beats Doctors | EP #252",
+      url: "https://www.youtube.com/watch?v=RCbJKkG_mZs",
+      embedUrl: "https://www.youtube.com/embed/RCbJKkG_mZs",
+    },
+    {
       id: "D8ohmtB8MdI",
       title: "New Episode",
       url: "https://www.youtube.com/watch?v=D8ohmtB8MdI",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Amazon Takes on Starlink, Opus 4.7 vs. Mythos, and Stanford's AI Scorecard | #248",
       url: "https://www.youtube.com/watch?v=LVvleNtllPk",
       embedUrl: "https://www.youtube.com/embed/LVvleNtllPk",
-    },
-    {
-      id: "5ak26W2YNRY",
-      title: "Elon Musk vs. Sam Altman, AI Job Loss, and OpenAI’s $852B Valuation | EP #247",
-      url: "https://www.youtube.com/watch?v=5ak26W2YNRY",
-      embedUrl: "https://www.youtube.com/embed/5ak26W2YNRY",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
