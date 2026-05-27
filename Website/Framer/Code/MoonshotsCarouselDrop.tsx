@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "I9c8STV7Hnw",
+      title: "New Episode",
+      url: "https://www.youtube.com/watch?v=I9c8STV7Hnw",
+      embedUrl: "https://www.youtube.com/embed/I9c8STV7Hnw",
+    },
+    {
       id: "RCbJKkG_mZs",
       title: "Anthropic’s $65B Week, The AI Model Race, and ChatGPT Beats Doctors | EP #252",
       url: "https://www.youtube.com/watch?v=RCbJKkG_mZs",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Iran's AI Supply Chain Threat, Claude vs. SaaS, and Elon's $60B Cursor Bet | EP #249",
       url: "https://www.youtube.com/watch?v=Bj0i-yvIUQs",
       embedUrl: "https://www.youtube.com/embed/Bj0i-yvIUQs",
-    },
-    {
-      id: "LVvleNtllPk",
-      title: "Amazon Takes on Starlink, Opus 4.7 vs. Mythos, and Stanford's AI Scorecard | #248",
-      url: "https://www.youtube.com/watch?v=LVvleNtllPk",
-      embedUrl: "https://www.youtube.com/embed/LVvleNtllPk",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
