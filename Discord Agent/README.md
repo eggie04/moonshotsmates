@@ -60,7 +60,7 @@ AI_API_KEY=your_openrouter_key
 AI_BASE_URL=https://openrouter.ai/api/v1
 AI_MODEL=openrouter/free
 MEME_AI_MODEL=openrouter/free
-IDEA_AI_MODEL=arcee-ai/trinity-large-preview:free
+IDEA_AI_MODEL=openrouter/free
 ```
 
 If no AI key is set, bot still runs using built-in fallback templates.

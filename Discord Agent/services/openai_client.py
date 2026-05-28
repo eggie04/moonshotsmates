@@ -12,15 +12,16 @@ class AiHelper:
         key = (api_key or "").strip()
         self.enabled = bool(key) and key != "sk-..."
         self.model = model
-        self.client = OpenAI(api_key=key, base_url=base_url) if self.enabled else None
+        self.client = OpenAI(api_key=key, base_url=base_url, timeout=60.0, max_retries=1) if self.enabled else None
 
     def _chat(self, system_prompt: str, user_prompt: str, model_override: str | None = None) -> str:
         if not self.enabled or not self.client:
             return ""
         model = model_override or self.model
-        try:
+
+        def create_completion(target_model: str) -> str:
             response = self.client.chat.completions.create(
-                model=model,
+                model=target_model,
                 messages=[
                     {"role": "system", "content": system_prompt},
                     {"role": "user", "content": user_prompt},
@@ -28,11 +29,19 @@ class AiHelper:
                 temperature=0.7,
             )
             content = response.choices[0].message.content if response.choices else ""
-            if isinstance(content, str):
-                return content.strip()
-            return ""
+            return content.strip() if isinstance(content, str) else ""
+
+        try:
+            return create_completion(model)
         except Exception as exc:
-            logger.warning("OpenAI call failed, using fallback content: %s", exc)
+            if model_override and model != self.model:
+                logger.warning("AI model %s failed; retrying with %s: %s", model, self.model, exc)
+                try:
+                    return create_completion(self.model)
+                except Exception as fallback_exc:
+                    logger.warning("Fallback AI model failed, using fallback content: %s", fallback_exc)
+                    return ""
+            logger.warning("AI call failed, using fallback content: %s", exc)
             return ""
 
     def generate_episode_recap(self, title: str, description: str, link: str) -> str:
@@ -198,7 +207,11 @@ def fallback_discussion_question() -> str:
 
 
 def fallback_meme_caption() -> str:
-    return "When your moonshot thesis is down 20% but the fundamentals got better."
+    return (
+        "Template: Drake Hotline Bling\n"
+        "Top Text: Waiting for perfect certainty\n"
+        "Bottom Text: Shipping the moonshot anyway"
+    )
 
 
 

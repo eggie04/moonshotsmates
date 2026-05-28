@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import asyncio
+import fcntl
 import html
 import io
 import logging
@@ -30,6 +31,7 @@ from services.openai_client import (
     fallback_discussion_question,
     fallback_episode_recap,
     fallback_growth_prompt,
+    fallback_meme_caption,
 )
 from services.state import StateStore
 
@@ -686,12 +688,9 @@ class MoonshotsMatesBot(commands.Bot):
 
         for attempt in range(5):
             raw = await asyncio.to_thread(self.ai.generate_meme_caption, topic_context, self.settings.meme_ai_model)
-            if not raw:
-                continue
-
-            _, top_text, bottom_text = self._parse_meme_fields(raw)
+            _, top_text, bottom_text = self._parse_meme_fields(raw or "")
             if not top_text and not bottom_text:
-                continue
+                _, top_text, bottom_text = self._parse_meme_fields(fallback_meme_caption())
 
             template_key, template_payload = await self._pick_meme_template(used_templates)
             signature = self._meme_signature(template_key, top_text, bottom_text)
@@ -1106,58 +1105,32 @@ class ProcessLock:
     def __init__(self, path: str) -> None:
         self.path = path
         self.pid = os.getpid()
-        self.acquired = False
+        self.file: io.TextIOWrapper | None = None
 
     def acquire(self) -> bool:
         os.makedirs(os.path.dirname(self.path), exist_ok=True)
-        existing_pid = self._read_pid()
-        if existing_pid and self._is_running(existing_pid):
-            return False
-
-        if existing_pid and not self._is_running(existing_pid):
-            try:
-                os.remove(self.path)
-            except OSError:
-                pass
-
         try:
-            with open(self.path, "w", encoding="utf-8") as f:
-                f.write(str(self.pid))
-            self.acquired = True
+            lock_file = open(self.path, "a+", encoding="utf-8")
+            fcntl.flock(lock_file.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            lock_file.seek(0)
+            lock_file.truncate()
+            lock_file.write(str(self.pid))
+            lock_file.flush()
+            self.file = lock_file
             return True
-        except OSError:
+        except (BlockingIOError, OSError):
+            if "lock_file" in locals():
+                lock_file.close()
             return False
 
     def release(self) -> None:
-        if not self.acquired:
+        if self.file is None:
             return
-        current = self._read_pid()
-        if current == self.pid:
-            try:
-                os.remove(self.path)
-            except OSError:
-                pass
-        self.acquired = False
-
-    def _read_pid(self) -> int | None:
         try:
-            with open(self.path, "r", encoding="utf-8") as f:
-                raw = f.read().strip()
-            if raw.isdigit():
-                return int(raw)
-            return None
-        except OSError:
-            return None
-
-    @staticmethod
-    def _is_running(pid: int) -> bool:
-        if pid <= 0:
-            return False
-        try:
-            os.kill(pid, 0)
-            return True
-        except OSError:
-            return False
+            fcntl.flock(self.file.fileno(), fcntl.LOCK_UN)
+        finally:
+            self.file.close()
+            self.file = None
 
 
 @bot.tree.command(name="post_recap_check", description="Check feed now and post recap if a new episode exists")
@@ -1277,7 +1250,7 @@ async def post_latest_recap_now(interaction: discord.Interaction) -> None:
 
 
 if __name__ == "__main__":
-    lock = ProcessLock("/Users/citadel/MoonshotsMates/Discord Agent/data/bot.pid")
+    lock = ProcessLock(str(Path(__file__).resolve().parent / "data" / "bot.pid"))
     if not lock.acquire():
         logger.error("Another bot process is already running. Exiting.")
         raise SystemExit(1)

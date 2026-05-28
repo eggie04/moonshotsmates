@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SERVICE="gui/$(id -u)/com.moonshots.firstmate"
-if launchctl print "$SERVICE" >/dev/null 2>&1; then
+if launchctl print "$SERVICE" 2>/dev/null | grep -q 'pid = '; then
   echo "running"
 else
   echo "stopped"

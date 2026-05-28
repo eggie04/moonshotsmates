@@ -181,7 +181,7 @@ def load_settings() -> Settings:
             or os.getenv("MEME_AI_MODEL")
             or os.getenv("AI_MODEL")
             or os.getenv("OPENAI_MODEL")
-            or "arcee-ai/trinity-large-preview:free"
+            or "gpt-4.1-mini"
         ).strip(),
         ai_base_url=(os.getenv("AI_BASE_URL") or "").strip() or None,
         giphy_api_key=(os.getenv("GIPHY_API_KEY") or "").strip() or None,
