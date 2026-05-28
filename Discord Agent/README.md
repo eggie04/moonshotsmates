@@ -31,7 +31,7 @@ Discord bots should not auto-add users or DM/spam people. This agent uses a comp
 ## 2. Configure project
 
 ```bash
-cd "/Users/citadel/MoonshotsMates/Discord Agent"
+cd "Discord Agent"
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
@@ -41,7 +41,7 @@ cp .env.example .env
 Fill `.env`:
 
 - `DISCORD_TOKEN` from Discord portal
-- `DISCORD_INVITE_URL` (pre-filled for MoonshotsMates)
+- `DISCORD_INVITE_URL` (optional, used in growth prompts)
 - Optional channel IDs for discussion/meme/growth/business ideas/admin alerts (defaults to `episode-discussion` where applicable)
 - `EPISODE_SOURCE_MODE=discord` is recommended for your setup
 - If `EPISODE_SOURCE_MODE=rss`, set `EPISODE_FEED_URL`
@@ -56,7 +56,7 @@ You can run AI generation with a free-tier key via OpenRouter:
 2. Set in `.env`:
 
 ```bash
-AI_API_KEY=your_openrouter_key
+AI_API_KEY=<your_openrouter_key>
 AI_BASE_URL=https://openrouter.ai/api/v1
 AI_MODEL=openrouter/free
 MEME_AI_MODEL=openrouter/free
@@ -81,7 +81,7 @@ If these keys are unset, the bot simply skips those sources.
 Gemini has an official API free tier with API key auth. Use:
 
 ```bash
-AI_API_KEY=your_google_ai_studio_key
+AI_API_KEY=<your_google_ai_studio_key>
 AI_BASE_URL=https://generativelanguage.googleapis.com/v1beta/openai/
 AI_MODEL=gemini-2.0-flash-lite
 ```

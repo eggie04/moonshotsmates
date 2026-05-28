@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-BOT_DIR="/Users/citadel/Projects/MoonshotsMates/Discord Agent"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 PLUGIN_SRC="$BOT_DIR/scripts/moonshots-bot.15s.sh"
 SWIFTBAR_DIR="$HOME/Library/Application Support/SwiftBar/Plugins"
 PLUGIN_DST="$SWIFTBAR_DIR/moonshots-bot.15s.sh"
