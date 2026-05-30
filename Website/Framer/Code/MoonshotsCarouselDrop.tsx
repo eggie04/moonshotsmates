@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "dtuPovnf4XQ",
+      title: "New Episode",
+      url: "https://www.youtube.com/watch?v=dtuPovnf4XQ",
+      embedUrl: "https://www.youtube.com/embed/dtuPovnf4XQ",
+    },
+    {
       id: "I9c8STV7Hnw",
       title: "New Episode",
       url: "https://www.youtube.com/watch?v=I9c8STV7Hnw",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Age Reversal in 2026: The Longevity Singularity & David’s Updated Protocols | David Sinclair EP #250",
       url: "https://www.youtube.com/watch?v=4IM866W7yGc",
       embedUrl: "https://www.youtube.com/embed/4IM866W7yGc",
-    },
-    {
-      id: "Bj0i-yvIUQs",
-      title: "Iran's AI Supply Chain Threat, Claude vs. SaaS, and Elon's $60B Cursor Bet | EP #249",
-      url: "https://www.youtube.com/watch?v=Bj0i-yvIUQs",
-      embedUrl: "https://www.youtube.com/embed/Bj0i-yvIUQs",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
