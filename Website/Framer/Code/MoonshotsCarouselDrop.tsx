@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "aMyubFA106U",
+      title: "New Episode",
+      url: "https://www.youtube.com/watch?v=aMyubFA106U",
+      embedUrl: "https://www.youtube.com/embed/aMyubFA106U",
+    },
+    {
       id: "dtuPovnf4XQ",
       title: "New Episode",
       url: "https://www.youtube.com/watch?v=dtuPovnf4XQ",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "New Episode",
       url: "https://www.youtube.com/watch?v=D8ohmtB8MdI",
       embedUrl: "https://www.youtube.com/embed/D8ohmtB8MdI",
-    },
-    {
-      id: "4IM866W7yGc",
-      title: "Age Reversal in 2026: The Longevity Singularity & David’s Updated Protocols | David Sinclair EP #250",
-      url: "https://www.youtube.com/watch?v=4IM866W7yGc",
-      embedUrl: "https://www.youtube.com/embed/4IM866W7yGc",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
