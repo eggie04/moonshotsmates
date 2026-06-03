@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "XjzowGpF628",
+      title: "New Episode",
+      url: "https://www.youtube.com/watch?v=XjzowGpF628",
+      embedUrl: "https://www.youtube.com/embed/XjzowGpF628",
+    },
+    {
       id: "aMyubFA106U",
       title: "New Episode",
       url: "https://www.youtube.com/watch?v=aMyubFA106U",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic’s $65B Week, The AI Model Race, and ChatGPT Beats Doctors | EP #252",
       url: "https://www.youtube.com/watch?v=RCbJKkG_mZs",
       embedUrl: "https://www.youtube.com/embed/RCbJKkG_mZs",
-    },
-    {
-      id: "D8ohmtB8MdI",
-      title: "New Episode",
-      url: "https://www.youtube.com/watch?v=D8ohmtB8MdI",
-      embedUrl: "https://www.youtube.com/embed/D8ohmtB8MdI",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
