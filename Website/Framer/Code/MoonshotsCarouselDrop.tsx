@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "isd2y37j8v4",
+      title: "New Episode",
+      url: "https://www.youtube.com/watch?v=isd2y37j8v4",
+      embedUrl: "https://www.youtube.com/embed/isd2y37j8v4",
+    },
+    {
       id: "P2HJEz3oqLs",
       title: "New Episode",
       url: "https://www.youtube.com/watch?v=P2HJEz3oqLs",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "New Episode",
       url: "https://www.youtube.com/watch?v=aMyubFA106U",
       embedUrl: "https://www.youtube.com/embed/aMyubFA106U",
-    },
-    {
-      id: "dtuPovnf4XQ",
-      title: "New Episode",
-      url: "https://www.youtube.com/watch?v=dtuPovnf4XQ",
-      embedUrl: "https://www.youtube.com/embed/dtuPovnf4XQ",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
