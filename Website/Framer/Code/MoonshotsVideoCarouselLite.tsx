@@ -9,31 +9,31 @@ export default function MoonshotsVideoCarouselLiteV2() {
   const videos = [
     {
       id: "BX9ofqxmeYw",
-      title: "New Episode",
+      title: "SpaceX IPOs at $2.89T Market Cap, US Govt Suspends Fable & Mythos 5, Altman Delays OpenAI’s IPO |265",
       url: "https://www.youtube.com/watch?v=BX9ofqxmeYw",
       embedUrl: "https://www.youtube.com/embed/BX9ofqxmeYw",
     },
     {
       id: "isd2y37j8v4",
-      title: "New Episode",
+      title: "Brian Armstrong on Bitcoin, Anthropic Drops Fable 5 & Mythos 5, NewLimit's $435M Age-Reversal | 264",
       url: "https://www.youtube.com/watch?v=isd2y37j8v4",
       embedUrl: "https://www.youtube.com/embed/isd2y37j8v4",
     },
     {
       id: "P2HJEz3oqLs",
-      title: "New Episode",
+      title: "Emerging Situation: Anthropic's Global Pause, Recursive Self-Improvement, and AI Personhood Arrives",
       url: "https://www.youtube.com/watch?v=P2HJEz3oqLs",
       embedUrl: "https://www.youtube.com/embed/P2HJEz3oqLs",
     },
     {
       id: "hyeoYsVl1No",
-      title: "New Episode",
+      title: "Anthropic Files $965B IPO, Trump Signs AI Executive Order, and ChatGPT Crosses 1B Users | EP #262",
       url: "https://www.youtube.com/watch?v=hyeoYsVl1No",
       embedUrl: "https://www.youtube.com/embed/hyeoYsVl1No",
     },
     {
       id: "XjzowGpF628",
-      title: "New Episode",
+      title: "Ray Kurzweil on Why We’re Living in the Singularity | EP #261",
       url: "https://www.youtube.com/watch?v=XjzowGpF628",
       embedUrl: "https://www.youtube.com/embed/XjzowGpF628",
     },

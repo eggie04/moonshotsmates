@@ -4,6 +4,7 @@ import { spawnSync } from "node:child_process"
 
 const MAX_VIDEOS = 5
 const SQLITE_QUERY = `SELECT guid, title, posted_at FROM episodes ORDER BY posted_at DESC LIMIT 100;`
+const PLACEHOLDER_TITLES = new Set(["", "New Episode", "Moonshots Episode"])
 
 function decodeEscapedUnicode(text) {
   return text.replace(/\\u([0-9a-fA-F]{4})/g, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
@@ -83,6 +84,40 @@ function buildVideos(rows) {
   return videos
 }
 
+function isPlaceholderTitle(title) {
+  return PLACEHOLDER_TITLES.has((title || "").trim())
+}
+
+async function fetchYouTubeTitle(videoId) {
+  const endpoint = new URL("https://www.youtube.com/oembed")
+  endpoint.searchParams.set("url", `https://www.youtube.com/watch?v=${videoId}`)
+  endpoint.searchParams.set("format", "json")
+
+  const response = await fetch(endpoint)
+  if (!response.ok) {
+    throw new Error(`YouTube oEmbed returned ${response.status} for ${videoId}`)
+  }
+
+  const payload = await response.json()
+  return typeof payload.title === "string" ? payload.title.trim() : ""
+}
+
+async function enrichPlaceholderTitles(videos) {
+  return Promise.all(
+    videos.map(async (video) => {
+      if (!isPlaceholderTitle(video.title)) return video
+
+      try {
+        const title = await fetchYouTubeTitle(video.id)
+        return title ? { ...video, title } : video
+      } catch (error) {
+        console.warn(`Keeping placeholder title for ${video.id}: ${error.message}`)
+        return video
+      }
+    })
+  )
+}
+
 function renderDataFile(videos, dbPath) {
   const payload = JSON.stringify(videos, null, 2)
   const generatedAt = new Date().toISOString()
@@ -128,7 +163,7 @@ function updateInlineItemsForFile(targetPath, videos) {
 
 const dbPath = pickDbPath()
 const rows = readEpisodeRows(dbPath)
-const videos = buildVideos(rows)
+const videos = await enrichPlaceholderTitles(buildVideos(rows))
 
 const outPath = path.resolve(process.cwd(), "Framer/Code/MoonshotsLatestVideos_data.ts")
 writeFileSync(outPath, renderDataFile(videos, dbPath), "utf8")
