@@ -8,34 +8,34 @@ export default function MoonshotsVideoCarouselLiteV2() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
-      id: "aMyubFA106U",
+      id: "BX9ofqxmeYw",
       title: "New Episode",
-      url: "https://www.youtube.com/watch?v=aMyubFA106U",
-      embedUrl: "https://www.youtube.com/embed/aMyubFA106U",
+      url: "https://www.youtube.com/watch?v=BX9ofqxmeYw",
+      embedUrl: "https://www.youtube.com/embed/BX9ofqxmeYw",
     },
     {
-      id: "dtuPovnf4XQ",
+      id: "isd2y37j8v4",
       title: "New Episode",
-      url: "https://www.youtube.com/watch?v=dtuPovnf4XQ",
-      embedUrl: "https://www.youtube.com/embed/dtuPovnf4XQ",
+      url: "https://www.youtube.com/watch?v=isd2y37j8v4",
+      embedUrl: "https://www.youtube.com/embed/isd2y37j8v4",
     },
     {
-      id: "I9c8STV7Hnw",
+      id: "P2HJEz3oqLs",
       title: "New Episode",
-      url: "https://www.youtube.com/watch?v=I9c8STV7Hnw",
-      embedUrl: "https://www.youtube.com/embed/I9c8STV7Hnw",
+      url: "https://www.youtube.com/watch?v=P2HJEz3oqLs",
+      embedUrl: "https://www.youtube.com/embed/P2HJEz3oqLs",
     },
     {
-      id: "RCbJKkG_mZs",
-      title: "Anthropic’s $65B Week, The AI Model Race, and ChatGPT Beats Doctors | EP #252",
-      url: "https://www.youtube.com/watch?v=RCbJKkG_mZs",
-      embedUrl: "https://www.youtube.com/embed/RCbJKkG_mZs",
+      id: "hyeoYsVl1No",
+      title: "New Episode",
+      url: "https://www.youtube.com/watch?v=hyeoYsVl1No",
+      embedUrl: "https://www.youtube.com/embed/hyeoYsVl1No",
     },
     {
-      id: "D8ohmtB8MdI",
+      id: "XjzowGpF628",
       title: "New Episode",
-      url: "https://www.youtube.com/watch?v=D8ohmtB8MdI",
-      embedUrl: "https://www.youtube.com/embed/D8ohmtB8MdI",
+      url: "https://www.youtube.com/watch?v=XjzowGpF628",
+      embedUrl: "https://www.youtube.com/embed/XjzowGpF628",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
