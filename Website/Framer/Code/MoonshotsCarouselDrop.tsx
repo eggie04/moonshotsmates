@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "kPSLLeccrik",
+      title: "The $10B Satellite Empire Putting AI in Orbit, Why Chips Beat Rockets & China's #1 Open Model | #266",
+      url: "https://www.youtube.com/watch?v=kPSLLeccrik",
+      embedUrl: "https://www.youtube.com/embed/kPSLLeccrik",
+    },
+    {
       id: "BX9ofqxmeYw",
       title: "SpaceX IPOs at $2.89T Market Cap, US Govt Suspends Fable & Mythos 5, Altman Delays OpenAI’s IPO |265",
       url: "https://www.youtube.com/watch?v=BX9ofqxmeYw",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic Files $965B IPO, Trump Signs AI Executive Order, and ChatGPT Crosses 1B Users | EP #262",
       url: "https://www.youtube.com/watch?v=hyeoYsVl1No",
       embedUrl: "https://www.youtube.com/embed/hyeoYsVl1No",
-    },
-    {
-      id: "XjzowGpF628",
-      title: "Ray Kurzweil on Why We’re Living in the Singularity | EP #261",
-      url: "https://www.youtube.com/watch?v=XjzowGpF628",
-      embedUrl: "https://www.youtube.com/embed/XjzowGpF628",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
