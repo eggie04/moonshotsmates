@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "-H7J_-zr7pA",
+      title: "US Government Blocks GPT-5.6, Alibaba's AI Theft, and Why OpenAI Is Stalling Their IPO | #267",
+      url: "https://www.youtube.com/watch?v=-H7J_-zr7pA",
+      embedUrl: "https://www.youtube.com/embed/-H7J_-zr7pA",
+    },
+    {
       id: "kPSLLeccrik",
       title: "The $10B Satellite Empire Putting AI in Orbit, Why Chips Beat Rockets & China's #1 Open Model | #266",
       url: "https://www.youtube.com/watch?v=kPSLLeccrik",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Emerging Situation: Anthropic's Global Pause, Recursive Self-Improvement, and AI Personhood Arrives",
       url: "https://www.youtube.com/watch?v=P2HJEz3oqLs",
       embedUrl: "https://www.youtube.com/embed/P2HJEz3oqLs",
-    },
-    {
-      id: "hyeoYsVl1No",
-      title: "Anthropic Files $965B IPO, Trump Signs AI Executive Order, and ChatGPT Crosses 1B Users | EP #262",
-      url: "https://www.youtube.com/watch?v=hyeoYsVl1No",
-      embedUrl: "https://www.youtube.com/embed/hyeoYsVl1No",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
