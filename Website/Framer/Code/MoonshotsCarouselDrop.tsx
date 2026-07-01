@@ -10,14 +10,20 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "XjOLz--C_nQ",
+      title: "Sonnet 5 Drops, Fable 5 Will Return & Fusion’s First Plant Gets Licensed W/ Philip Johnston | #268",
+      url: "https://www.youtube.com/watch?v=XjOLz--C_nQ",
+      embedUrl: "https://www.youtube.com/embed/XjOLz--C_nQ",
+    },
+    {
       id: "ZDKwsDavHCY",
-      title: "Meet Dave Blundin: Who I Am and What I Stand for | Meet the Mates (Bonus Episode)",
+      title: "New Episode",
       url: "https://www.youtube.com/watch?v=ZDKwsDavHCY",
       embedUrl: "https://www.youtube.com/embed/ZDKwsDavHCY",
     },
     {
       id: "-H7J_-zr7pA",
-      title: "US Government Blocks GPT-5.6, Alibaba's AI Theft, and Why OpenAI Is Stalling Their IPO | #267",
+      title: "Anthropic vs. Alibaba, OpenAI Delays Its IPO, and the US Government Blocks GPT-5.6 | #267",
       url: "https://www.youtube.com/watch?v=-H7J_-zr7pA",
       embedUrl: "https://www.youtube.com/embed/-H7J_-zr7pA",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "SpaceX IPOs at $2.89T Market Cap, US Govt Suspends Fable & Mythos 5, Altman Delays OpenAI’s IPO |265",
       url: "https://www.youtube.com/watch?v=BX9ofqxmeYw",
       embedUrl: "https://www.youtube.com/embed/BX9ofqxmeYw",
-    },
-    {
-      id: "isd2y37j8v4",
-      title: "Brian Armstrong on Bitcoin, Anthropic Drops Fable 5 & Mythos 5, NewLimit's $435M Age-Reversal | 264",
-      url: "https://www.youtube.com/watch?v=isd2y37j8v4",
-      embedUrl: "https://www.youtube.com/embed/isd2y37j8v4",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
