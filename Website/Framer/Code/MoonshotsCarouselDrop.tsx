@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "ZDKwsDavHCY",
+      title: "Meet Dave Blundin: Who I Am and What I Stand for | Meet the Mates (Bonus Episode)",
+      url: "https://www.youtube.com/watch?v=ZDKwsDavHCY",
+      embedUrl: "https://www.youtube.com/embed/ZDKwsDavHCY",
+    },
+    {
       id: "-H7J_-zr7pA",
       title: "US Government Blocks GPT-5.6, Alibaba's AI Theft, and Why OpenAI Is Stalling Their IPO | #267",
       url: "https://www.youtube.com/watch?v=-H7J_-zr7pA",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Brian Armstrong on Bitcoin, Anthropic Drops Fable 5 & Mythos 5, NewLimit's $435M Age-Reversal | 264",
       url: "https://www.youtube.com/watch?v=isd2y37j8v4",
       embedUrl: "https://www.youtube.com/embed/isd2y37j8v4",
-    },
-    {
-      id: "P2HJEz3oqLs",
-      title: "Emerging Situation: Anthropic's Global Pause, Recursive Self-Improvement, and AI Personhood Arrives",
-      url: "https://www.youtube.com/watch?v=P2HJEz3oqLs",
-      embedUrl: "https://www.youtube.com/embed/P2HJEz3oqLs",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
