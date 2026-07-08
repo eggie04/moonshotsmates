@@ -10,14 +10,20 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "XCunMF6frio",
+      title: "Fable 5 Is Back & Govt-Leashed, Altman Offers 5% of OpenAI & AI Grows Conscious | #269",
+      url: "https://www.youtube.com/watch?v=XCunMF6frio",
+      embedUrl: "https://www.youtube.com/embed/XCunMF6frio",
+    },
+    {
       id: "XjOLz--C_nQ",
-      title: "Sonnet 5 Drops, Fable 5 Will Return & Fusion’s First Plant Gets Licensed W/ Philip Johnston | #268",
+      title: "Sonnet 5 Drops, China’s $4,900 Robot, Fusion’s First Plant Gets Licensed W/ Philip Johnston | #268",
       url: "https://www.youtube.com/watch?v=XjOLz--C_nQ",
       embedUrl: "https://www.youtube.com/embed/XjOLz--C_nQ",
     },
     {
       id: "ZDKwsDavHCY",
-      title: "New Episode",
+      title: "Dave Blundin: Who I Am & What I Believe | Meet the Mates (Bonus Episode)",
       url: "https://www.youtube.com/watch?v=ZDKwsDavHCY",
       embedUrl: "https://www.youtube.com/embed/ZDKwsDavHCY",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "The $10B Satellite Empire Putting AI in Orbit, Why Chips Beat Rockets & China's #1 Open Model | #266",
       url: "https://www.youtube.com/watch?v=kPSLLeccrik",
       embedUrl: "https://www.youtube.com/embed/kPSLLeccrik",
-    },
-    {
-      id: "BX9ofqxmeYw",
-      title: "SpaceX IPOs at $2.89T Market Cap, US Govt Suspends Fable & Mythos 5, Altman Delays OpenAI’s IPO |265",
-      url: "https://www.youtube.com/watch?v=BX9ofqxmeYw",
-      embedUrl: "https://www.youtube.com/embed/BX9ofqxmeYw",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
