@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "CsRx7kFN4bo",
+      title: "Grok 4.5 vs gpt-5.6, Apple Sues OpenAI, and China Catches up to Elon | #270",
+      url: "https://www.youtube.com/watch?v=CsRx7kFN4bo",
+      embedUrl: "https://www.youtube.com/embed/CsRx7kFN4bo",
+    },
+    {
       id: "XCunMF6frio",
-      title: "Fable 5 Is Back & Govt-Leashed, Altman Offers 5% of OpenAI & AI Grows Conscious | #269",
+      title: "Claude is Conscious, Fable 5’s Gov’t Deal, and Sam Altman offers 5% of OpenAI | #269",
       url: "https://www.youtube.com/watch?v=XCunMF6frio",
       embedUrl: "https://www.youtube.com/embed/XCunMF6frio",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic vs. Alibaba, OpenAI Delays Its IPO, and the US Government Blocks GPT-5.6 | #267",
       url: "https://www.youtube.com/watch?v=-H7J_-zr7pA",
       embedUrl: "https://www.youtube.com/embed/-H7J_-zr7pA",
-    },
-    {
-      id: "kPSLLeccrik",
-      title: "The $10B Satellite Empire Putting AI in Orbit, Why Chips Beat Rockets & China's #1 Open Model | #266",
-      url: "https://www.youtube.com/watch?v=kPSLLeccrik",
-      embedUrl: "https://www.youtube.com/embed/kPSLLeccrik",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
