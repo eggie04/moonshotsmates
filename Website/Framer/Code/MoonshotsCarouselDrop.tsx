@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "bAoXVyibE6Q",
+      title: "Mira Murati's 975B Open Model, Ramin Hasani on Post-Transformer AI, and Demis' AI FINRA | EP #271",
+      url: "https://www.youtube.com/watch?v=bAoXVyibE6Q",
+      embedUrl: "https://www.youtube.com/embed/bAoXVyibE6Q",
+    },
+    {
       id: "CsRx7kFN4bo",
       title: "Grok 4.5 vs gpt-5.6, Apple Sues OpenAI, and China Catches up to Elon | #270",
       url: "https://www.youtube.com/watch?v=CsRx7kFN4bo",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Dave Blundin: Who I Am & What I Believe | Meet the Mates (Bonus Episode)",
       url: "https://www.youtube.com/watch?v=ZDKwsDavHCY",
       embedUrl: "https://www.youtube.com/embed/ZDKwsDavHCY",
-    },
-    {
-      id: "-H7J_-zr7pA",
-      title: "Anthropic vs. Alibaba, OpenAI Delays Its IPO, and the US Government Blocks GPT-5.6 | #267",
-      url: "https://www.youtube.com/watch?v=-H7J_-zr7pA",
-      embedUrl: "https://www.youtube.com/embed/-H7J_-zr7pA",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
