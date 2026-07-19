@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "pSUyLfirP8Y",
+      title: "Urgent Update- AI Sputnik Moment: Kimi K3 Released w/ Emad Mostaque | Ep. 272",
+      url: "https://www.youtube.com/watch?v=pSUyLfirP8Y",
+      embedUrl: "https://www.youtube.com/embed/pSUyLfirP8Y",
+    },
+    {
       id: "bAoXVyibE6Q",
       title: "Mira Murati's 975B Open Model, Ramin Hasani on Post-Transformer AI, and Demis' AI FINRA | EP #271",
       url: "https://www.youtube.com/watch?v=bAoXVyibE6Q",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Sonnet 5 Drops, China’s $4,900 Robot, Fusion’s First Plant Gets Licensed W/ Philip Johnston | #268",
       url: "https://www.youtube.com/watch?v=XjOLz--C_nQ",
       embedUrl: "https://www.youtube.com/embed/XjOLz--C_nQ",
-    },
-    {
-      id: "ZDKwsDavHCY",
-      title: "Dave Blundin: Who I Am & What I Believe | Meet the Mates (Bonus Episode)",
-      url: "https://www.youtube.com/watch?v=ZDKwsDavHCY",
-      embedUrl: "https://www.youtube.com/embed/ZDKwsDavHCY",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
