@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "qPMhduk1qUs",
+      title: "The Hugging Face Breach, Moonshot AI Valued at $20B, and Living to 1,759 Years Old | EP #273",
+      url: "https://www.youtube.com/watch?v=qPMhduk1qUs",
+      embedUrl: "https://www.youtube.com/embed/qPMhduk1qUs",
+    },
+    {
       id: "pSUyLfirP8Y",
       title: "Urgent Update- AI Sputnik Moment: Kimi K3 Released w/ Emad Mostaque | Ep. 272",
       url: "https://www.youtube.com/watch?v=pSUyLfirP8Y",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Claude is Conscious, Fable 5’s Gov’t Deal, and Sam Altman offers 5% of OpenAI | #269",
       url: "https://www.youtube.com/watch?v=XCunMF6frio",
       embedUrl: "https://www.youtube.com/embed/XCunMF6frio",
-    },
-    {
-      id: "XjOLz--C_nQ",
-      title: "Sonnet 5 Drops, China’s $4,900 Robot, Fusion’s First Plant Gets Licensed W/ Philip Johnston | #268",
-      url: "https://www.youtube.com/watch?v=XjOLz--C_nQ",
-      embedUrl: "https://www.youtube.com/embed/XjOLz--C_nQ",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
