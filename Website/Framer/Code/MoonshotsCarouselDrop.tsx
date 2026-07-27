@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "nV_lyWrkBs8",
+      title: "Jared Isaacman: NASA's Moon Base by 2028, Optimus Robots on the Moon, The Truth About UFOs | Ep #274",
+      url: "https://www.youtube.com/watch?v=nV_lyWrkBs8",
+      embedUrl: "https://www.youtube.com/embed/nV_lyWrkBs8",
+    },
+    {
       id: "qPMhduk1qUs",
       title: "The Hugging Face Breach, Moonshot AI Valued at $20B, and Living to 1,759 Years Old | EP #273",
       url: "https://www.youtube.com/watch?v=qPMhduk1qUs",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Grok 4.5 vs gpt-5.6, Apple Sues OpenAI, and China Catches up to Elon | #270",
       url: "https://www.youtube.com/watch?v=CsRx7kFN4bo",
       embedUrl: "https://www.youtube.com/embed/CsRx7kFN4bo",
-    },
-    {
-      id: "XCunMF6frio",
-      title: "Claude is Conscious, Fable 5’s Gov’t Deal, and Sam Altman offers 5% of OpenAI | #269",
-      url: "https://www.youtube.com/watch?v=XCunMF6frio",
-      embedUrl: "https://www.youtube.com/embed/XCunMF6frio",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
