@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "O70Ff5xBnYo",
+      title: "Dario vs Jensen on Open Weights, OpenAI & Anthropic in DC, Xi Exports AI to Global South | EP #275",
+      url: "https://www.youtube.com/watch?v=O70Ff5xBnYo",
+      embedUrl: "https://www.youtube.com/embed/O70Ff5xBnYo",
+    },
+    {
       id: "nV_lyWrkBs8",
-      title: "Jared Isaacman: NASA's Moon Base by 2028, Optimus Robots on the Moon, The Truth About UFOs | Ep #274",
+      title: "Jared Isaacman: NASA's Moon Base by 2028, Optimus Robots on the Moon, and 15 Years to Mars | Ep #274",
       url: "https://www.youtube.com/watch?v=nV_lyWrkBs8",
       embedUrl: "https://www.youtube.com/embed/nV_lyWrkBs8",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Mira Murati's 975B Open Model, Ramin Hasani on Post-Transformer AI, and Demis' AI FINRA | EP #271",
       url: "https://www.youtube.com/watch?v=bAoXVyibE6Q",
       embedUrl: "https://www.youtube.com/embed/bAoXVyibE6Q",
-    },
-    {
-      id: "CsRx7kFN4bo",
-      title: "Grok 4.5 vs gpt-5.6, Apple Sues OpenAI, and China Catches up to Elon | #270",
-      url: "https://www.youtube.com/watch?v=CsRx7kFN4bo",
-      embedUrl: "https://www.youtube.com/embed/CsRx7kFN4bo",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
