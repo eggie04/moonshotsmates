@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "pU2T0N9NWYo",
+      title: "Moonshots LIVE 2026",
+      url: "https://www.youtube.com/watch?v=pU2T0N9NWYo",
+      embedUrl: "https://www.youtube.com/embed/pU2T0N9NWYo",
+    },
+    {
       id: "O70Ff5xBnYo",
       title: "Dario vs Jensen on Open Weights, OpenAI & Anthropic in DC, Xi Exports AI to Global South | EP #275",
       url: "https://www.youtube.com/watch?v=O70Ff5xBnYo",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Urgent Update- AI Sputnik Moment: Kimi K3 Released w/ Emad Mostaque | Ep. 272",
       url: "https://www.youtube.com/watch?v=pSUyLfirP8Y",
       embedUrl: "https://www.youtube.com/embed/pSUyLfirP8Y",
-    },
-    {
-      id: "bAoXVyibE6Q",
-      title: "Mira Murati's 975B Open Model, Ramin Hasani on Post-Transformer AI, and Demis' AI FINRA | EP #271",
-      url: "https://www.youtube.com/watch?v=bAoXVyibE6Q",
-      embedUrl: "https://www.youtube.com/embed/bAoXVyibE6Q",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
