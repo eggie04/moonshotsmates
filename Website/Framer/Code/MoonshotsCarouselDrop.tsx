@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "iHv-vNM_XtU",
+      title: "Michael Kratsios on the New Golden Age of American Science | EP #276",
+      url: "https://www.youtube.com/watch?v=iHv-vNM_XtU",
+      embedUrl: "https://www.youtube.com/embed/iHv-vNM_XtU",
+    },
+    {
       id: "pU2T0N9NWYo",
       title: "Moonshots LIVE 2026",
       url: "https://www.youtube.com/watch?v=pU2T0N9NWYo",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "The Hugging Face Breach, Moonshot AI Valued at $20B, and Living to 1,759 Years Old | EP #273",
       url: "https://www.youtube.com/watch?v=qPMhduk1qUs",
       embedUrl: "https://www.youtube.com/embed/qPMhduk1qUs",
-    },
-    {
-      id: "pSUyLfirP8Y",
-      title: "Urgent Update- AI Sputnik Moment: Kimi K3 Released w/ Emad Mostaque | Ep. 272",
-      url: "https://www.youtube.com/watch?v=pSUyLfirP8Y",
-      embedUrl: "https://www.youtube.com/embed/pSUyLfirP8Y",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
