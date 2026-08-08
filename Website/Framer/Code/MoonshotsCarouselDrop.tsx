@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "Jku8b2YKuy0",
+      title: "Google’s Jeff Dean Exits, SpaceX Hits $100B in Rev & OpenAI’s Astra Solves Decade-Old Math Problems",
+      url: "https://www.youtube.com/watch?v=Jku8b2YKuy0",
+      embedUrl: "https://www.youtube.com/embed/Jku8b2YKuy0",
+    },
+    {
       id: "iHv-vNM_XtU",
-      title: "Michael Kratsios on the New Golden Age of American Science | EP #276",
+      title: "How the White House Plans to 10x Scientific Productivity | Michael Kratsios | EP #276",
       url: "https://www.youtube.com/watch?v=iHv-vNM_XtU",
       embedUrl: "https://www.youtube.com/embed/iHv-vNM_XtU",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Jared Isaacman: NASA's Moon Base by 2028, Optimus Robots on the Moon, and 15 Years to Mars | Ep #274",
       url: "https://www.youtube.com/watch?v=nV_lyWrkBs8",
       embedUrl: "https://www.youtube.com/embed/nV_lyWrkBs8",
-    },
-    {
-      id: "qPMhduk1qUs",
-      title: "The Hugging Face Breach, Moonshot AI Valued at $20B, and Living to 1,759 Years Old | EP #273",
-      url: "https://www.youtube.com/watch?v=qPMhduk1qUs",
-      embedUrl: "https://www.youtube.com/embed/qPMhduk1qUs",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
