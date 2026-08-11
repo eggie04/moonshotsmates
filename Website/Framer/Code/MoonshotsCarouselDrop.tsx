@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "Q6PTLG71NGc",
+      title: "Sergey Brin Retakes Gemini, 4 Labs Lose Containment, Compute Trades at NYSE w/ Kush Bavaria | EP 278",
+      url: "https://www.youtube.com/watch?v=Q6PTLG71NGc",
+      embedUrl: "https://www.youtube.com/embed/Q6PTLG71NGc",
+    },
+    {
       id: "Jku8b2YKuy0",
       title: "Google’s Jeff Dean Exits, SpaceX Hits $100B in Rev & OpenAI’s Astra Solves Decade-Old Math Problems",
       url: "https://www.youtube.com/watch?v=Jku8b2YKuy0",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Dario vs Jensen on Open Weights, OpenAI & Anthropic in DC, Xi Exports AI to Global South | EP #275",
       url: "https://www.youtube.com/watch?v=O70Ff5xBnYo",
       embedUrl: "https://www.youtube.com/embed/O70Ff5xBnYo",
-    },
-    {
-      id: "nV_lyWrkBs8",
-      title: "Jared Isaacman: NASA's Moon Base by 2028, Optimus Robots on the Moon, and 15 Years to Mars | Ep #274",
-      url: "https://www.youtube.com/watch?v=nV_lyWrkBs8",
-      embedUrl: "https://www.youtube.com/embed/nV_lyWrkBs8",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
