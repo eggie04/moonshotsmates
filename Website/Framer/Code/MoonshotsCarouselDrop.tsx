@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "uoGnH0REG7A",
+      title: "Bernie Demands the Labs Stop, Wall Street Turns GPUs Into Bonds, Grok 4.7 Takes #1 ft. Emad Mostaque",
+      url: "https://www.youtube.com/watch?v=uoGnH0REG7A",
+      embedUrl: "https://www.youtube.com/embed/uoGnH0REG7A",
+    },
+    {
       id: "Q6PTLG71NGc",
-      title: "Sergey Brin Retakes Gemini, 4 Labs Lose Containment, Compute Trades at NYSE w/ Kush Bavaria | EP 278",
+      title: "Bots Hit 57% of the Web, China Simulates 1B Agents, 4 Labs Lose Containment w/ Kush Bavaria | EP 278",
       url: "https://www.youtube.com/watch?v=Q6PTLG71NGc",
       embedUrl: "https://www.youtube.com/embed/Q6PTLG71NGc",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Moonshots LIVE 2026",
       url: "https://www.youtube.com/watch?v=pU2T0N9NWYo",
       embedUrl: "https://www.youtube.com/embed/pU2T0N9NWYo",
-    },
-    {
-      id: "O70Ff5xBnYo",
-      title: "Dario vs Jensen on Open Weights, OpenAI & Anthropic in DC, Xi Exports AI to Global South | EP #275",
-      url: "https://www.youtube.com/watch?v=O70Ff5xBnYo",
-      embedUrl: "https://www.youtube.com/embed/O70Ff5xBnYo",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
