@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "LUFJE5QkINg",
+      title: "200GW Hiding in Grid, Sodium Batteries 10x Cheaper, Wave-Powered Datacenters w/ Ramez Naam | EP #280",
+      url: "https://www.youtube.com/watch?v=LUFJE5QkINg",
+      embedUrl: "https://www.youtube.com/embed/LUFJE5QkINg",
+    },
+    {
       id: "uoGnH0REG7A",
       title: "Bernie Demands the Labs Stop, Wall Street Turns GPUs Into Bonds, Grok 4.7 Takes #1 ft. Emad Mostaque",
       url: "https://www.youtube.com/watch?v=uoGnH0REG7A",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "How the White House Plans to 10x Scientific Productivity | Michael Kratsios | EP #276",
       url: "https://www.youtube.com/watch?v=iHv-vNM_XtU",
       embedUrl: "https://www.youtube.com/embed/iHv-vNM_XtU",
-    },
-    {
-      id: "pU2T0N9NWYo",
-      title: "Moonshots LIVE 2026",
-      url: "https://www.youtube.com/watch?v=pU2T0N9NWYo",
-      embedUrl: "https://www.youtube.com/embed/pU2T0N9NWYo",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
