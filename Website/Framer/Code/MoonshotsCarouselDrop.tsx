@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "Slle5_AxBzs",
+      title: "China’s Endgame: ASI Timelines, US-China Relations, and the $1.7T AI Bubble With Alvin Graylin | 281",
+      url: "https://www.youtube.com/watch?v=Slle5_AxBzs",
+      embedUrl: "https://www.youtube.com/embed/Slle5_AxBzs",
+    },
+    {
       id: "LUFJE5QkINg",
       title: "200GW Hiding in Grid, Sodium Batteries 10x Cheaper, Wave-Powered Datacenters w/ Ramez Naam | EP #280",
       url: "https://www.youtube.com/watch?v=LUFJE5QkINg",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Google’s Jeff Dean Exits, SpaceX Hits $100B in Rev & OpenAI’s Astra Solves Decade-Old Math Problems",
       url: "https://www.youtube.com/watch?v=Jku8b2YKuy0",
       embedUrl: "https://www.youtube.com/embed/Jku8b2YKuy0",
-    },
-    {
-      id: "iHv-vNM_XtU",
-      title: "How the White House Plans to 10x Scientific Productivity | Michael Kratsios | EP #276",
-      url: "https://www.youtube.com/watch?v=iHv-vNM_XtU",
-      embedUrl: "https://www.youtube.com/embed/iHv-vNM_XtU",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
