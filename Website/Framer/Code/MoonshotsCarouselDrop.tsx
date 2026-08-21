@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "TaJH0D2FKN8",
+      title: "OpenAI Pauses Frontier Training, Elon's 100X Prediction Lands, Robot Beats Usain Bolt | EP#282",
+      url: "https://www.youtube.com/watch?v=TaJH0D2FKN8",
+      embedUrl: "https://www.youtube.com/embed/TaJH0D2FKN8",
+    },
+    {
       id: "Slle5_AxBzs",
       title: "China’s Endgame: ASI Timelines, US-China Relations, and the $1.7T AI Bubble With Alvin Graylin | 281",
       url: "https://www.youtube.com/watch?v=Slle5_AxBzs",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Bots Hit 57% of the Web, China Simulates 1B Agents, 4 Labs Lose Containment w/ Kush Bavaria | EP 278",
       url: "https://www.youtube.com/watch?v=Q6PTLG71NGc",
       embedUrl: "https://www.youtube.com/embed/Q6PTLG71NGc",
-    },
-    {
-      id: "Jku8b2YKuy0",
-      title: "Google’s Jeff Dean Exits, SpaceX Hits $100B in Rev & OpenAI’s Astra Solves Decade-Old Math Problems",
-      url: "https://www.youtube.com/watch?v=Jku8b2YKuy0",
-      embedUrl: "https://www.youtube.com/embed/Jku8b2YKuy0",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
