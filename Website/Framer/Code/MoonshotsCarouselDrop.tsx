@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "0mOXQ4_kY04",
+      title: "Sam Altman: Singularity Slow-Down, Emad Runs 18 Grokbots, Waymo Slashes Hardware 83% | EP #283",
+      url: "https://www.youtube.com/watch?v=0mOXQ4_kY04",
+      embedUrl: "https://www.youtube.com/embed/0mOXQ4_kY04",
+    },
+    {
       id: "TaJH0D2FKN8",
-      title: "OpenAI Pauses Frontier Training, Elon's 100X Prediction Lands, Robot Beats Usain Bolt | EP#282",
+      title: "Elon Says 100X, Memory Prices Spike 500%, Unitree Robot Outruns Usain Bolt with Emad Mostaque | #282",
       url: "https://www.youtube.com/watch?v=TaJH0D2FKN8",
       embedUrl: "https://www.youtube.com/embed/TaJH0D2FKN8",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Bernie Demands the Labs Stop, Wall Street Turns GPUs Into Bonds, Grok 4.7 Takes #1 ft. Emad Mostaque",
       url: "https://www.youtube.com/watch?v=uoGnH0REG7A",
       embedUrl: "https://www.youtube.com/embed/uoGnH0REG7A",
-    },
-    {
-      id: "Q6PTLG71NGc",
-      title: "Bots Hit 57% of the Web, China Simulates 1B Agents, 4 Labs Lose Containment w/ Kush Bavaria | EP 278",
-      url: "https://www.youtube.com/watch?v=Q6PTLG71NGc",
-      embedUrl: "https://www.youtube.com/embed/Q6PTLG71NGc",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
