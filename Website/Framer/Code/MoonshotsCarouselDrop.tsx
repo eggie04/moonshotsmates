@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "tfBEWh9ibfU",
+      title: "NVIDIA's $96.2B Quarter, China's 200,000 Fake Accounts, & OpenAI's New Chip | EP #284",
+      url: "https://www.youtube.com/watch?v=tfBEWh9ibfU",
+      embedUrl: "https://www.youtube.com/embed/tfBEWh9ibfU",
+    },
+    {
       id: "0mOXQ4_kY04",
       title: "Sam Altman: Singularity Slow-Down, Emad Runs 18 Grokbots, Waymo Slashes Hardware 83% | EP #283",
       url: "https://www.youtube.com/watch?v=0mOXQ4_kY04",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "200GW Hiding in Grid, Sodium Batteries 10x Cheaper, Wave-Powered Datacenters w/ Ramez Naam | EP #280",
       url: "https://www.youtube.com/watch?v=LUFJE5QkINg",
       embedUrl: "https://www.youtube.com/embed/LUFJE5QkINg",
-    },
-    {
-      id: "uoGnH0REG7A",
-      title: "Bernie Demands the Labs Stop, Wall Street Turns GPUs Into Bonds, Grok 4.7 Takes #1 ft. Emad Mostaque",
-      url: "https://www.youtube.com/watch?v=uoGnH0REG7A",
-      embedUrl: "https://www.youtube.com/embed/uoGnH0REG7A",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
