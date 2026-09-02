@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "JywXvB8PpTs",
+      title: "Humanity's First Star Probe, Architect Labs Beats NVIDIA 3.4x, Musk Wants Satellites to Cool Earth",
+      url: "https://www.youtube.com/watch?v=JywXvB8PpTs",
+      embedUrl: "https://www.youtube.com/embed/JywXvB8PpTs",
+    },
+    {
       id: "tfBEWh9ibfU",
       title: "NVIDIA's $96.2B Quarter, China's 200,000 Fake Accounts, & OpenAI's New Chip | EP #284",
       url: "https://www.youtube.com/watch?v=tfBEWh9ibfU",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "China’s Endgame: ASI Timelines, US-China Relations, and the $1.7T AI Bubble With Alvin Graylin | 281",
       url: "https://www.youtube.com/watch?v=Slle5_AxBzs",
       embedUrl: "https://www.youtube.com/embed/Slle5_AxBzs",
-    },
-    {
-      id: "LUFJE5QkINg",
-      title: "200GW Hiding in Grid, Sodium Batteries 10x Cheaper, Wave-Powered Datacenters w/ Ramez Naam | EP #280",
-      url: "https://www.youtube.com/watch?v=LUFJE5QkINg",
-      embedUrl: "https://www.youtube.com/embed/LUFJE5QkINg",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
