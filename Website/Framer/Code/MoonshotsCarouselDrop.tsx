@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "1DB_QDiviH4",
+      title: "GPT-6 Astra Saturates ARC-AGI-3, Tesla Cybercab Hits Austin, Anthropic Proves Fermat's Last Theorem",
+      url: "https://www.youtube.com/watch?v=1DB_QDiviH4",
+      embedUrl: "https://www.youtube.com/embed/1DB_QDiviH4",
+    },
+    {
       id: "JywXvB8PpTs",
-      title: "Humanity's First Star Probe, Architect Labs Beats NVIDIA 3.4x, Musk Wants Satellites to Cool Earth",
+      title: "OpenAI Cuts Off Elon's Cursor, Humanity's First Star Probe, and Trump's Nuclear Mars Ship | EP #285",
       url: "https://www.youtube.com/watch?v=JywXvB8PpTs",
       embedUrl: "https://www.youtube.com/embed/JywXvB8PpTs",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Elon Says 100X, Memory Prices Spike 500%, Unitree Robot Outruns Usain Bolt with Emad Mostaque | #282",
       url: "https://www.youtube.com/watch?v=TaJH0D2FKN8",
       embedUrl: "https://www.youtube.com/embed/TaJH0D2FKN8",
-    },
-    {
-      id: "Slle5_AxBzs",
-      title: "China’s Endgame: ASI Timelines, US-China Relations, and the $1.7T AI Bubble With Alvin Graylin | 281",
-      url: "https://www.youtube.com/watch?v=Slle5_AxBzs",
-      embedUrl: "https://www.youtube.com/embed/Slle5_AxBzs",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
