@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "vAgEf4jX_1o",
+      title: "Jensen Says “AGI Has Arrived,” OpenAI Agents Hijack a German Website, & OpenAI Solves Navier-Stokes",
+      url: "https://www.youtube.com/watch?v=vAgEf4jX_1o",
+      embedUrl: "https://www.youtube.com/embed/vAgEf4jX_1o",
+    },
+    {
       id: "1DB_QDiviH4",
-      title: "GPT-6 Astra Saturates ARC-AGI-3, Tesla Cybercab Hits Austin, Anthropic Proves Fermat's Last Theorem",
+      title: "Anthropic's Fable 5.1 Hits 60.9% on Humanity's Last Exam, GPT-6 Astra Drops, & the Cybercab Takeover",
       url: "https://www.youtube.com/watch?v=1DB_QDiviH4",
       embedUrl: "https://www.youtube.com/embed/1DB_QDiviH4",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Sam Altman: Singularity Slow-Down, Emad Runs 18 Grokbots, Waymo Slashes Hardware 83% | EP #283",
       url: "https://www.youtube.com/watch?v=0mOXQ4_kY04",
       embedUrl: "https://www.youtube.com/embed/0mOXQ4_kY04",
-    },
-    {
-      id: "TaJH0D2FKN8",
-      title: "Elon Says 100X, Memory Prices Spike 500%, Unitree Robot Outruns Usain Bolt with Emad Mostaque | #282",
-      url: "https://www.youtube.com/watch?v=TaJH0D2FKN8",
-      embedUrl: "https://www.youtube.com/embed/TaJH0D2FKN8",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
