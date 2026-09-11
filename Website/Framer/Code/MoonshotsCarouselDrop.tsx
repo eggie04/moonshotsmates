@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "AxzcWOxzkiw",
+      title: "Researcher Quits: “Gambling With Our Lives,” Altman Calls for Slowdown, and Labs Race",
+      url: "https://www.youtube.com/watch?v=AxzcWOxzkiw",
+      embedUrl: "https://www.youtube.com/embed/AxzcWOxzkiw",
+    },
+    {
       id: "vAgEf4jX_1o",
-      title: "Jensen Says “AGI Has Arrived,” OpenAI Agents Hijack a German Website, & OpenAI Solves Navier-Stokes",
+      title: "OpenAI Agents Hijack a German Website, Jensen Declares AGI Arrived, and OpenAI Solves Navier-Stokes",
       url: "https://www.youtube.com/watch?v=vAgEf4jX_1o",
       embedUrl: "https://www.youtube.com/embed/vAgEf4jX_1o",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "NVIDIA's $96.2B Quarter, China's 200,000 Fake Accounts, & OpenAI's New Chip | EP #284",
       url: "https://www.youtube.com/watch?v=tfBEWh9ibfU",
       embedUrl: "https://www.youtube.com/embed/tfBEWh9ibfU",
-    },
-    {
-      id: "0mOXQ4_kY04",
-      title: "Sam Altman: Singularity Slow-Down, Emad Runs 18 Grokbots, Waymo Slashes Hardware 83% | EP #283",
-      url: "https://www.youtube.com/watch?v=0mOXQ4_kY04",
-      embedUrl: "https://www.youtube.com/embed/0mOXQ4_kY04",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
