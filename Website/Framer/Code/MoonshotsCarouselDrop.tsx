@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "H5ZLorBJCDk",
+      title: "Ask the Mates anything | MOONSHOTS AMA  #289",
+      url: "https://www.youtube.com/watch?v=H5ZLorBJCDk",
+      embedUrl: "https://www.youtube.com/embed/H5ZLorBJCDk",
+    },
+    {
       id: "AxzcWOxzkiw",
-      title: "Researcher Quits: “Gambling With Our Lives,” Altman Calls for Slowdown, and Labs Race",
+      title: "Three Lab Warnings in Five Days, Researcher Flags “Gambling with Our Lives,” and Labs Race",
       url: "https://www.youtube.com/watch?v=AxzcWOxzkiw",
       embedUrl: "https://www.youtube.com/embed/AxzcWOxzkiw",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "OpenAI Cuts Off Elon's Cursor, Humanity's First Star Probe, and Trump's Nuclear Mars Ship | EP #285",
       url: "https://www.youtube.com/watch?v=JywXvB8PpTs",
       embedUrl: "https://www.youtube.com/embed/JywXvB8PpTs",
-    },
-    {
-      id: "tfBEWh9ibfU",
-      title: "NVIDIA's $96.2B Quarter, China's 200,000 Fake Accounts, & OpenAI's New Chip | EP #284",
-      url: "https://www.youtube.com/watch?v=tfBEWh9ibfU",
-      embedUrl: "https://www.youtube.com/embed/tfBEWh9ibfU",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
