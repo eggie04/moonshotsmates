@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "2uiIEdmL040",
+      title: "Martine Rothblatt: Growing Unlimited Organs, AI Consciousness, & Digital Personhood by 2030 | EP#290",
+      url: "https://www.youtube.com/watch?v=2uiIEdmL040",
+      embedUrl: "https://www.youtube.com/embed/2uiIEdmL040",
+    },
+    {
       id: "H5ZLorBJCDk",
       title: "Ask the Mates anything | MOONSHOTS AMA  #289",
       url: "https://www.youtube.com/watch?v=H5ZLorBJCDk",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic's Fable 5.1 Hits 60.9% on Humanity's Last Exam, GPT-6 Astra Drops, & the Cybercab Takeover",
       url: "https://www.youtube.com/watch?v=1DB_QDiviH4",
       embedUrl: "https://www.youtube.com/embed/1DB_QDiviH4",
-    },
-    {
-      id: "JywXvB8PpTs",
-      title: "OpenAI Cuts Off Elon's Cursor, Humanity's First Star Probe, and Trump's Nuclear Mars Ship | EP #285",
-      url: "https://www.youtube.com/watch?v=JywXvB8PpTs",
-      embedUrl: "https://www.youtube.com/embed/JywXvB8PpTs",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
