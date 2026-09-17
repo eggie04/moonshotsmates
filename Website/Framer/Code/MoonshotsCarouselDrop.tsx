@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "DrV4WwNEAZE",
+      title: "Frontier Labs Want to Slow Down, OpenAI Delays Its 2026 IPO, Anthropic Flags 5 Bioweapon Cases",
+      url: "https://www.youtube.com/watch?v=DrV4WwNEAZE",
+      embedUrl: "https://www.youtube.com/embed/DrV4WwNEAZE",
+    },
+    {
       id: "2uiIEdmL040",
       title: "Martine Rothblatt: Growing Unlimited Organs, AI Consciousness, & Digital Personhood by 2030 | EP#290",
       url: "https://www.youtube.com/watch?v=2uiIEdmL040",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "OpenAI Agents Hijack a German Website, Jensen Declares AGI Arrived, and OpenAI Solves Navier-Stokes",
       url: "https://www.youtube.com/watch?v=vAgEf4jX_1o",
       embedUrl: "https://www.youtube.com/embed/vAgEf4jX_1o",
-    },
-    {
-      id: "1DB_QDiviH4",
-      title: "Anthropic's Fable 5.1 Hits 60.9% on Humanity's Last Exam, GPT-6 Astra Drops, & the Cybercab Takeover",
-      url: "https://www.youtube.com/watch?v=1DB_QDiviH4",
-      embedUrl: "https://www.youtube.com/embed/1DB_QDiviH4",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
