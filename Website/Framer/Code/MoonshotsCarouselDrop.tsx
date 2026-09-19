@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "LNBzLTLuLUo",
+      title: "Robinhood's Vlad Tenev on Tokenizing Everything, OpenAI's 6 Misalignment Reports, Figure's Robot",
+      url: "https://www.youtube.com/watch?v=LNBzLTLuLUo",
+      embedUrl: "https://www.youtube.com/embed/LNBzLTLuLUo",
+    },
+    {
       id: "DrV4WwNEAZE",
       title: "Frontier Labs Want to Slow Down, OpenAI Delays Its 2026 IPO, Anthropic Flags 5 Bioweapon Cases",
       url: "https://www.youtube.com/watch?v=DrV4WwNEAZE",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Three Lab Warnings in Five Days, Researcher Flags “Gambling with Our Lives,” and Labs Race",
       url: "https://www.youtube.com/watch?v=AxzcWOxzkiw",
       embedUrl: "https://www.youtube.com/embed/AxzcWOxzkiw",
-    },
-    {
-      id: "vAgEf4jX_1o",
-      title: "OpenAI Agents Hijack a German Website, Jensen Declares AGI Arrived, and OpenAI Solves Navier-Stokes",
-      url: "https://www.youtube.com/watch?v=vAgEf4jX_1o",
-      embedUrl: "https://www.youtube.com/embed/vAgEf4jX_1o",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
