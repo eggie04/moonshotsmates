@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "s5BFumpCH_Q",
+      title: "Ask the Mates Anything Round #2 | MOONSHOTS AMA  #293",
+      url: "https://www.youtube.com/watch?v=s5BFumpCH_Q",
+      embedUrl: "https://www.youtube.com/embed/s5BFumpCH_Q",
+    },
+    {
       id: "LNBzLTLuLUo",
       title: "Robinhood's Vlad Tenev on Tokenizing Everything, OpenAI's 6 Misalignment Reports, Figure's Robot",
       url: "https://www.youtube.com/watch?v=LNBzLTLuLUo",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Ask the Mates anything | MOONSHOTS AMA  #289",
       url: "https://www.youtube.com/watch?v=H5ZLorBJCDk",
       embedUrl: "https://www.youtube.com/embed/H5ZLorBJCDk",
-    },
-    {
-      id: "AxzcWOxzkiw",
-      title: "Three Lab Warnings in Five Days, Researcher Flags “Gambling with Our Lives,” and Labs Race",
-      url: "https://www.youtube.com/watch?v=AxzcWOxzkiw",
-      embedUrl: "https://www.youtube.com/embed/AxzcWOxzkiw",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
