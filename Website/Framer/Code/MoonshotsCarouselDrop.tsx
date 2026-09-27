@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "Cbk7hdOwJj4",
+      title: "Jensen Pushes Back on Doomers, Xi & Trump Talk AI, and “AI” Gets a Rebrand | #294 MOONSHOTS Live",
+      url: "https://www.youtube.com/watch?v=Cbk7hdOwJj4",
+      embedUrl: "https://www.youtube.com/embed/Cbk7hdOwJj4",
+    },
+    {
       id: "s5BFumpCH_Q",
       title: "Ask the Mates Anything Round #2 | MOONSHOTS AMA  #293",
       url: "https://www.youtube.com/watch?v=s5BFumpCH_Q",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Martine Rothblatt: Growing Unlimited Organs, AI Consciousness, & Digital Personhood by 2030 | EP#290",
       url: "https://www.youtube.com/watch?v=2uiIEdmL040",
       embedUrl: "https://www.youtube.com/embed/2uiIEdmL040",
-    },
-    {
-      id: "H5ZLorBJCDk",
-      title: "Ask the Mates anything | MOONSHOTS AMA  #289",
-      url: "https://www.youtube.com/watch?v=H5ZLorBJCDk",
-      embedUrl: "https://www.youtube.com/embed/H5ZLorBJCDk",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
