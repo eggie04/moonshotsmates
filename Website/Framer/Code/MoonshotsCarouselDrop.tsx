@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "ZOhUSIaa2MA",
+      title: "We Gave Away $2,000,000 To 5 AI Builders | MOONSHOTS Live",
+      url: "https://www.youtube.com/watch?v=ZOhUSIaa2MA",
+      embedUrl: "https://www.youtube.com/embed/ZOhUSIaa2MA",
+    },
+    {
       id: "_8pHsq0YoNE",
       title: "Why We Gave Away $3,500,000.00 for Someone to Build the Next Star Trek | Moonshots Live",
       url: "https://www.youtube.com/watch?v=_8pHsq0YoNE",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Ask the Mates Anything Round #2 | MOONSHOTS AMA  #293",
       url: "https://www.youtube.com/watch?v=s5BFumpCH_Q",
       embedUrl: "https://www.youtube.com/embed/s5BFumpCH_Q",
-    },
-    {
-      id: "LNBzLTLuLUo",
-      title: "Robinhood's Vlad Tenev on Tokenizing Everything, OpenAI's 6 Misalignment Reports, Figure's Robot",
-      url: "https://www.youtube.com/watch?v=LNBzLTLuLUo",
-      embedUrl: "https://www.youtube.com/embed/LNBzLTLuLUo",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
