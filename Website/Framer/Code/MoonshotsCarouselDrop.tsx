@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "_8pHsq0YoNE",
+      title: "Why We Gave Away $3,500,000.00 for Someone to Build the Next Star Trek | Moonshots Live",
+      url: "https://www.youtube.com/watch?v=_8pHsq0YoNE",
+      embedUrl: "https://www.youtube.com/embed/_8pHsq0YoNE",
+    },
+    {
       id: "wRY9XCrT0eg",
       title: "Palmer Luckey: Autonomous Weapons Are Ancient and Why Anduril Won't Build Humanoids | EP #295",
       url: "https://www.youtube.com/watch?v=wRY9XCrT0eg",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Robinhood's Vlad Tenev on Tokenizing Everything, OpenAI's 6 Misalignment Reports, Figure's Robot",
       url: "https://www.youtube.com/watch?v=LNBzLTLuLUo",
       embedUrl: "https://www.youtube.com/embed/LNBzLTLuLUo",
-    },
-    {
-      id: "DrV4WwNEAZE",
-      title: "Frontier Labs Want to Slow Down, OpenAI Delays Its 2026 IPO, Anthropic Flags 5 Bioweapon Cases",
-      url: "https://www.youtube.com/watch?v=DrV4WwNEAZE",
-      embedUrl: "https://www.youtube.com/embed/DrV4WwNEAZE",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
