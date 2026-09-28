@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "wRY9XCrT0eg",
+      title: "Palmer Luckey: Autonomous Weapons Are Ancient and Why Anduril Won't Build Humanoids | EP #295",
+      url: "https://www.youtube.com/watch?v=wRY9XCrT0eg",
+      embedUrl: "https://www.youtube.com/embed/wRY9XCrT0eg",
+    },
+    {
       id: "Cbk7hdOwJj4",
       title: "Jensen Pushes Back on Doomers, Xi & Trump Talk AI, and “AI” Gets a Rebrand | #294 MOONSHOTS Live",
       url: "https://www.youtube.com/watch?v=Cbk7hdOwJj4",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Frontier Labs Want to Slow Down, OpenAI Delays Its 2026 IPO, Anthropic Flags 5 Bioweapon Cases",
       url: "https://www.youtube.com/watch?v=DrV4WwNEAZE",
       embedUrl: "https://www.youtube.com/embed/DrV4WwNEAZE",
-    },
-    {
-      id: "2uiIEdmL040",
-      title: "Martine Rothblatt: Growing Unlimited Organs, AI Consciousness, & Digital Personhood by 2030 | EP#290",
-      url: "https://www.youtube.com/watch?v=2uiIEdmL040",
-      embedUrl: "https://www.youtube.com/embed/2uiIEdmL040",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
