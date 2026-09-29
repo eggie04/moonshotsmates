@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "orUDz9N9Q48",
+      title: "Cathie Wood on Tesla-SpaceX Merger, $1M Bitcoin, More AIs Than Humans | EP #296 | Moonshots Live",
+      url: "https://www.youtube.com/watch?v=orUDz9N9Q48",
+      embedUrl: "https://www.youtube.com/embed/orUDz9N9Q48",
+    },
+    {
       id: "ZOhUSIaa2MA",
-      title: "We Gave Away $2,000,000 To 5 AI Builders | MOONSHOTS Live",
+      title: "We Gave $2M To The AI Startup That Could Help The Most People | MOONSHOTS Live",
       url: "https://www.youtube.com/watch?v=ZOhUSIaa2MA",
       embedUrl: "https://www.youtube.com/embed/ZOhUSIaa2MA",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Jensen Pushes Back on Doomers, Xi & Trump Talk AI, and “AI” Gets a Rebrand | #294 MOONSHOTS Live",
       url: "https://www.youtube.com/watch?v=Cbk7hdOwJj4",
       embedUrl: "https://www.youtube.com/embed/Cbk7hdOwJj4",
-    },
-    {
-      id: "s5BFumpCH_Q",
-      title: "Ask the Mates Anything Round #2 | MOONSHOTS AMA  #293",
-      url: "https://www.youtube.com/watch?v=s5BFumpCH_Q",
-      embedUrl: "https://www.youtube.com/embed/s5BFumpCH_Q",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
