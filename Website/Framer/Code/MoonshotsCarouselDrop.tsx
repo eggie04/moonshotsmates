@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "VHg3oX1ytYQ",
+      title: "Ben LammWhy We're Living in a Biological Singularity With Ben Lamm | MOONSHOTS Live #297",
+      url: "https://www.youtube.com/watch?v=VHg3oX1ytYQ",
+      embedUrl: "https://www.youtube.com/embed/VHg3oX1ytYQ",
+    },
+    {
       id: "orUDz9N9Q48",
       title: "Cathie Wood on Tesla-SpaceX Merger, $1M Bitcoin, More AIs Than Humans | EP #296 | Moonshots Live",
       url: "https://www.youtube.com/watch?v=orUDz9N9Q48",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Palmer Luckey: Autonomous Weapons Are Ancient and Why Anduril Won't Build Humanoids | EP #295",
       url: "https://www.youtube.com/watch?v=wRY9XCrT0eg",
       embedUrl: "https://www.youtube.com/embed/wRY9XCrT0eg",
-    },
-    {
-      id: "Cbk7hdOwJj4",
-      title: "Jensen Pushes Back on Doomers, Xi & Trump Talk AI, and “AI” Gets a Rebrand | #294 MOONSHOTS Live",
-      url: "https://www.youtube.com/watch?v=Cbk7hdOwJj4",
-      embedUrl: "https://www.youtube.com/embed/Cbk7hdOwJj4",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
