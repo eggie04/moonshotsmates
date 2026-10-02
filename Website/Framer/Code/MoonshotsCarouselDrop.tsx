@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "mZh8IUuNnvs",
+      title: "Why AI Leaders Have Changed Their Minds About AI Safety, Elon on UHI, Anthropic’s IPO",
+      url: "https://www.youtube.com/watch?v=mZh8IUuNnvs",
+      embedUrl: "https://www.youtube.com/embed/mZh8IUuNnvs",
+    },
+    {
       id: "VHg3oX1ytYQ",
-      title: "Ben LammWhy We're Living in a Biological Singularity With Ben Lamm | MOONSHOTS Live #297",
+      title: "Anthropic's Wet Lab, Artificial Wombs in 24 Months, and Scalable Gene Editing | MOONSHOTS Live #297",
       url: "https://www.youtube.com/watch?v=VHg3oX1ytYQ",
       embedUrl: "https://www.youtube.com/embed/VHg3oX1ytYQ",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Why We Gave Away $3,500,000.00 for Someone to Build the Next Star Trek | Moonshots Live",
       url: "https://www.youtube.com/watch?v=_8pHsq0YoNE",
       embedUrl: "https://www.youtube.com/embed/_8pHsq0YoNE",
-    },
-    {
-      id: "wRY9XCrT0eg",
-      title: "Palmer Luckey: Autonomous Weapons Are Ancient and Why Anduril Won't Build Humanoids | EP #295",
-      url: "https://www.youtube.com/watch?v=wRY9XCrT0eg",
-      embedUrl: "https://www.youtube.com/embed/wRY9XCrT0eg",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
