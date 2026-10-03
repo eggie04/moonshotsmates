@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "Blyb1D927pM",
+      title: "Recursive's $670M Bet on Self-Improving AI, Sonnet 5.5 Hits 70%, Elon Co-Leads Pentagon Push EP 299",
+      url: "https://www.youtube.com/watch?v=Blyb1D927pM",
+      embedUrl: "https://www.youtube.com/embed/Blyb1D927pM",
+    },
+    {
       id: "mZh8IUuNnvs",
       title: "Why AI Leaders Have Changed Their Minds About AI Safety, Elon on UHI, Anthropic’s IPO",
       url: "https://www.youtube.com/watch?v=mZh8IUuNnvs",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "We Gave $2M To The AI Startup That Could Help The Most People | MOONSHOTS Live",
       url: "https://www.youtube.com/watch?v=ZOhUSIaa2MA",
       embedUrl: "https://www.youtube.com/embed/ZOhUSIaa2MA",
-    },
-    {
-      id: "_8pHsq0YoNE",
-      title: "Why We Gave Away $3,500,000.00 for Someone to Build the Next Star Trek | Moonshots Live",
-      url: "https://www.youtube.com/watch?v=_8pHsq0YoNE",
-      embedUrl: "https://www.youtube.com/embed/_8pHsq0YoNE",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
