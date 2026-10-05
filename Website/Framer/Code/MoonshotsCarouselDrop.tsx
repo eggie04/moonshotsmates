@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "FO8VXvS8aw4",
+      title: "Astro Teller: The $1B Bet No CEO Will Back, Moonshots 3x Cheaper in 16 yrs, and Clean Water at 1¢/L",
+      url: "https://www.youtube.com/watch?v=FO8VXvS8aw4",
+      embedUrl: "https://www.youtube.com/embed/FO8VXvS8aw4",
+    },
+    {
       id: "Blyb1D927pM",
       title: "Recursive's $670M Bet on Self-Improving AI, Sonnet 5.5 Hits 70%, Elon Co-Leads Pentagon Push EP 299",
       url: "https://www.youtube.com/watch?v=Blyb1D927pM",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Cathie Wood on Tesla-SpaceX Merger, $1M Bitcoin, More AIs Than Humans | EP #296 | Moonshots Live",
       url: "https://www.youtube.com/watch?v=orUDz9N9Q48",
       embedUrl: "https://www.youtube.com/embed/orUDz9N9Q48",
-    },
-    {
-      id: "ZOhUSIaa2MA",
-      title: "We Gave $2M To The AI Startup That Could Help The Most People | MOONSHOTS Live",
-      url: "https://www.youtube.com/watch?v=ZOhUSIaa2MA",
-      embedUrl: "https://www.youtube.com/embed/ZOhUSIaa2MA",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
