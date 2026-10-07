@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "LRdb8UmPnh0",
+      title: "The Fight Over Claude's Consciousness, AI's 1942 Moment, & Why Altman Says \"Accept Some Bad Things\"",
+      url: "https://www.youtube.com/watch?v=LRdb8UmPnh0",
+      embedUrl: "https://www.youtube.com/embed/LRdb8UmPnh0",
+    },
+    {
       id: "FO8VXvS8aw4",
-      title: "Astro Teller: The $1B Bet No CEO Will Back, Moonshots 3x Cheaper in 16 yrs, and Clean Water at 1¢/L",
+      title: "Astro Teller: Inside Google X's 2,000-Idea Moonshot Factory & How Google Brain Made the T in ChatGPT",
       url: "https://www.youtube.com/watch?v=FO8VXvS8aw4",
       embedUrl: "https://www.youtube.com/embed/FO8VXvS8aw4",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic's Wet Lab, Artificial Wombs in 24 Months, and Scalable Gene Editing | MOONSHOTS Live #297",
       url: "https://www.youtube.com/watch?v=VHg3oX1ytYQ",
       embedUrl: "https://www.youtube.com/embed/VHg3oX1ytYQ",
-    },
-    {
-      id: "orUDz9N9Q48",
-      title: "Cathie Wood on Tesla-SpaceX Merger, $1M Bitcoin, More AIs Than Humans | EP #296 | Moonshots Live",
-      url: "https://www.youtube.com/watch?v=orUDz9N9Q48",
-      embedUrl: "https://www.youtube.com/embed/orUDz9N9Q48",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
