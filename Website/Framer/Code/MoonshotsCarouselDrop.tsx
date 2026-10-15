@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "A5YVqEpbgaU",
+      title: "OpenAI Bulk-Solves 722 Math Problems, Anthropic’s Cruelty Policy, & Elon’s Quadrillion-Dollar SpaceX",
+      url: "https://www.youtube.com/watch?v=A5YVqEpbgaU",
+      embedUrl: "https://www.youtube.com/embed/A5YVqEpbgaU",
+    },
+    {
       id: "LRdb8UmPnh0",
-      title: "The Fight Over Claude's Consciousness, AI's 1942 Moment, & Why Altman Says \"Accept Some Bad Things\"",
+      title: "The Coming Manhattan Project, Fight’s Over Claude's Consciousness & Altman Says \"Accept Bad Things\"",
       url: "https://www.youtube.com/watch?v=LRdb8UmPnh0",
       embedUrl: "https://www.youtube.com/embed/LRdb8UmPnh0",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Why AI Leaders Have Changed Their Minds About AI Safety, Elon on UHI, Anthropic’s IPO",
       url: "https://www.youtube.com/watch?v=mZh8IUuNnvs",
       embedUrl: "https://www.youtube.com/embed/mZh8IUuNnvs",
-    },
-    {
-      id: "VHg3oX1ytYQ",
-      title: "Anthropic's Wet Lab, Artificial Wombs in 24 Months, and Scalable Gene Editing | MOONSHOTS Live #297",
-      url: "https://www.youtube.com/watch?v=VHg3oX1ytYQ",
-      embedUrl: "https://www.youtube.com/embed/VHg3oX1ytYQ",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
