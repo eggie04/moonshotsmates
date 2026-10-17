@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "dthaDyttHns",
+      title: "Flying Tesla Car, Robot Brains Halving in Cost Every 3 Weeks, and Why Incentives Decide AI Alignment",
+      url: "https://www.youtube.com/watch?v=dthaDyttHns",
+      embedUrl: "https://www.youtube.com/embed/dthaDyttHns",
+    },
+    {
       id: "A5YVqEpbgaU",
       title: "OpenAI Bulk-Solves 722 Math Problems, Anthropic’s Cruelty Policy, & Elon’s Quadrillion-Dollar SpaceX",
       url: "https://www.youtube.com/watch?v=A5YVqEpbgaU",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Recursive's $670M Bet on Self-Improving AI, Sonnet 5.5 Hits 70%, Elon Co-Leads Pentagon Push EP 299",
       url: "https://www.youtube.com/watch?v=Blyb1D927pM",
       embedUrl: "https://www.youtube.com/embed/Blyb1D927pM",
-    },
-    {
-      id: "mZh8IUuNnvs",
-      title: "Why AI Leaders Have Changed Their Minds About AI Safety, Elon on UHI, Anthropic’s IPO",
-      url: "https://www.youtube.com/watch?v=mZh8IUuNnvs",
-      embedUrl: "https://www.youtube.com/embed/mZh8IUuNnvs",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
