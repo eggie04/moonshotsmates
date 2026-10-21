@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "kAwG9E1W_ME",
+      title: "Chamath: AGI Is Here, Anthropic’s $100B Giveaway, Elon’s SpaceX Shares for 72M Kids | EP #304",
+      url: "https://www.youtube.com/watch?v=kAwG9E1W_ME",
+      embedUrl: "https://www.youtube.com/embed/kAwG9E1W_ME",
+    },
+    {
       id: "dthaDyttHns",
       title: "Flying Tesla Car, Robot Brains Halving in Cost Every 3 Weeks, and Why Incentives Decide AI Alignment",
       url: "https://www.youtube.com/watch?v=dthaDyttHns",
@@ -17,7 +23,7 @@ export default function MoonshotsCarouselDrop() {
     },
     {
       id: "A5YVqEpbgaU",
-      title: "OpenAI Bulk-Solves 722 Math Problems, Anthropic’s Cruelty Policy, & Elon’s Quadrillion-Dollar SpaceX",
+      title: "AI Solves 722 Math Problems at Once, $1.8B Race to Build Virtual Cell, Elon Sees Quadrillion SpaceX",
       url: "https://www.youtube.com/watch?v=A5YVqEpbgaU",
       embedUrl: "https://www.youtube.com/embed/A5YVqEpbgaU",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Astro Teller: Inside Google X's 2,000-Idea Moonshot Factory & How Google Brain Made the T in ChatGPT",
       url: "https://www.youtube.com/watch?v=FO8VXvS8aw4",
       embedUrl: "https://www.youtube.com/embed/FO8VXvS8aw4",
-    },
-    {
-      id: "Blyb1D927pM",
-      title: "Recursive's $670M Bet on Self-Improving AI, Sonnet 5.5 Hits 70%, Elon Co-Leads Pentagon Push EP 299",
-      url: "https://www.youtube.com/watch?v=Blyb1D927pM",
-      embedUrl: "https://www.youtube.com/embed/Blyb1D927pM",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
