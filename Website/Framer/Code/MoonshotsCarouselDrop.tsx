@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "LeSIe50WfLI",
+      title: "SpaceX’s AI Business Up 830%, OpenAI Agents Lie, and Startup Turns Mercury Into Gold | EP #305",
+      url: "https://www.youtube.com/watch?v=LeSIe50WfLI",
+      embedUrl: "https://www.youtube.com/embed/LeSIe50WfLI",
+    },
+    {
       id: "kAwG9E1W_ME",
       title: "Chamath: AGI Is Here, Anthropic’s $100B Giveaway, Elon’s SpaceX Shares for 72M Kids | EP #304",
       url: "https://www.youtube.com/watch?v=kAwG9E1W_ME",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "The Coming Manhattan Project, Fight’s Over Claude's Consciousness & Altman Says \"Accept Bad Things\"",
       url: "https://www.youtube.com/watch?v=LRdb8UmPnh0",
       embedUrl: "https://www.youtube.com/embed/LRdb8UmPnh0",
-    },
-    {
-      id: "FO8VXvS8aw4",
-      title: "Astro Teller: Inside Google X's 2,000-Idea Moonshot Factory & How Google Brain Made the T in ChatGPT",
-      url: "https://www.youtube.com/watch?v=FO8VXvS8aw4",
-      embedUrl: "https://www.youtube.com/embed/FO8VXvS8aw4",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
