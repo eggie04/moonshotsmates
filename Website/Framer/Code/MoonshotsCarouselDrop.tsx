@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "WXELsIk4o0g",
+      title: "Anthropic’s $2T IPO, Elon Predicts Neocloud Death, and China’s Kimi Catches Up | #306",
+      url: "https://www.youtube.com/watch?v=WXELsIk4o0g",
+      embedUrl: "https://www.youtube.com/embed/WXELsIk4o0g",
+    },
+    {
       id: "LeSIe50WfLI",
       title: "SpaceX’s AI Business Up 830%, OpenAI Agents Lie, and Startup Turns Mercury Into Gold | EP #305",
       url: "https://www.youtube.com/watch?v=LeSIe50WfLI",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "AI Solves 722 Math Problems at Once, $1.8B Race to Build Virtual Cell, Elon Sees Quadrillion SpaceX",
       url: "https://www.youtube.com/watch?v=A5YVqEpbgaU",
       embedUrl: "https://www.youtube.com/embed/A5YVqEpbgaU",
-    },
-    {
-      id: "LRdb8UmPnh0",
-      title: "The Coming Manhattan Project, Fight’s Over Claude's Consciousness & Altman Says \"Accept Bad Things\"",
-      url: "https://www.youtube.com/watch?v=LRdb8UmPnh0",
-      embedUrl: "https://www.youtube.com/embed/LRdb8UmPnh0",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
