@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "yHMU5ql7O6o",
+      title: "AI’s Stock Market Fallout, Google’s Profit Problem, and Altman’s “Hold My Beer” Moment | #307",
+      url: "https://www.youtube.com/watch?v=yHMU5ql7O6o",
+      embedUrl: "https://www.youtube.com/embed/yHMU5ql7O6o",
+    },
+    {
       id: "WXELsIk4o0g",
-      title: "Anthropic’s $2T IPO, Elon Predicts Neocloud Death, and China’s Kimi Catches Up | #306",
+      title: "Anthropic’s $2T Cash Machine, the End of Neoclouds, and Chinese Models Catch Up | #306",
       url: "https://www.youtube.com/watch?v=WXELsIk4o0g",
       embedUrl: "https://www.youtube.com/embed/WXELsIk4o0g",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Flying Tesla Car, Robot Brains Halving in Cost Every 3 Weeks, and Why Incentives Decide AI Alignment",
       url: "https://www.youtube.com/watch?v=dthaDyttHns",
       embedUrl: "https://www.youtube.com/embed/dthaDyttHns",
-    },
-    {
-      id: "A5YVqEpbgaU",
-      title: "AI Solves 722 Math Problems at Once, $1.8B Race to Build Virtual Cell, Elon Sees Quadrillion SpaceX",
-      url: "https://www.youtube.com/watch?v=A5YVqEpbgaU",
-      embedUrl: "https://www.youtube.com/embed/A5YVqEpbgaU",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
