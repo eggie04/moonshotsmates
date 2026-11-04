@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "x09f_BuJsoY",
+      title: "Big Tech’s $3T AI Bet, Claude Writes 90% of Anthropic’s Code, AIs Editing AI Brains | EP #307",
+      url: "https://www.youtube.com/watch?v=x09f_BuJsoY",
+      embedUrl: "https://www.youtube.com/embed/x09f_BuJsoY",
+    },
+    {
       id: "yHMU5ql7O6o",
       title: "AI’s Stock Market Fallout, Google’s Profit Problem, and Altman’s “Hold My Beer” Moment | #307",
       url: "https://www.youtube.com/watch?v=yHMU5ql7O6o",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Chamath: AGI Is Here, Anthropic’s $100B Giveaway, Elon’s SpaceX Shares for 72M Kids | EP #304",
       url: "https://www.youtube.com/watch?v=kAwG9E1W_ME",
       embedUrl: "https://www.youtube.com/embed/kAwG9E1W_ME",
-    },
-    {
-      id: "dthaDyttHns",
-      title: "Flying Tesla Car, Robot Brains Halving in Cost Every 3 Weeks, and Why Incentives Decide AI Alignment",
-      url: "https://www.youtube.com/watch?v=dthaDyttHns",
-      embedUrl: "https://www.youtube.com/embed/dthaDyttHns",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
