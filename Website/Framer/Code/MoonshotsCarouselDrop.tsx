@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "WF-ADiC7Khs",
+      title: "Anthropic’s IPO in Question,  Midterms Hit AI, Nasdaq Drops 5%, and RSI Accelerates | #309",
+      url: "https://www.youtube.com/watch?v=WF-ADiC7Khs",
+      embedUrl: "https://www.youtube.com/embed/WF-ADiC7Khs",
+    },
+    {
       id: "x09f_BuJsoY",
-      title: "Big Tech’s $3T AI Bet, Claude Writes 90% of Anthropic’s Code, AIs Editing AI Brains | EP #307",
+      title: "Big Tech’s $3T AI Bet, Claude Writes 90% of Anthropic’s Code, AIs Editing AI Brains | EP #308",
       url: "https://www.youtube.com/watch?v=x09f_BuJsoY",
       embedUrl: "https://www.youtube.com/embed/x09f_BuJsoY",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "SpaceX’s AI Business Up 830%, OpenAI Agents Lie, and Startup Turns Mercury Into Gold | EP #305",
       url: "https://www.youtube.com/watch?v=LeSIe50WfLI",
       embedUrl: "https://www.youtube.com/embed/LeSIe50WfLI",
-    },
-    {
-      id: "kAwG9E1W_ME",
-      title: "Chamath: AGI Is Here, Anthropic’s $100B Giveaway, Elon’s SpaceX Shares for 72M Kids | EP #304",
-      url: "https://www.youtube.com/watch?v=kAwG9E1W_ME",
-      embedUrl: "https://www.youtube.com/embed/kAwG9E1W_ME",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
