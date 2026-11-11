@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "ILQwMvCA2_o",
+      title: "Jensen’s Spy Probe, Anthropic’s Debut Week, and Elon’s 30M Robot Workforce | #310",
+      url: "https://www.youtube.com/watch?v=ILQwMvCA2_o",
+      embedUrl: "https://www.youtube.com/embed/ILQwMvCA2_o",
+    },
+    {
       id: "WF-ADiC7Khs",
       title: "Anthropic’s IPO in Question,  Midterms Hit AI, Nasdaq Drops 5%, and RSI Accelerates | #309",
       url: "https://www.youtube.com/watch?v=WF-ADiC7Khs",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic’s $2T Cash Machine, the End of Neoclouds, and Chinese Models Catch Up | #306",
       url: "https://www.youtube.com/watch?v=WXELsIk4o0g",
       embedUrl: "https://www.youtube.com/embed/WXELsIk4o0g",
-    },
-    {
-      id: "LeSIe50WfLI",
-      title: "SpaceX’s AI Business Up 830%, OpenAI Agents Lie, and Startup Turns Mercury Into Gold | EP #305",
-      url: "https://www.youtube.com/watch?v=LeSIe50WfLI",
-      embedUrl: "https://www.youtube.com/embed/LeSIe50WfLI",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
