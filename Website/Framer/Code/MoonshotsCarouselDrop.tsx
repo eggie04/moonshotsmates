@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "GZrDapFXk0I",
+      title: "Live: Our Thoughts on Jensen’s Departure | MOONSHOTS EP #311",
+      url: "https://www.youtube.com/watch?v=GZrDapFXk0I",
+      embedUrl: "https://www.youtube.com/embed/GZrDapFXk0I",
+    },
+    {
       id: "ILQwMvCA2_o",
       title: "Jensen’s Spy Probe, Anthropic’s Debut Week, and Elon’s 30M Robot Workforce | #310",
       url: "https://www.youtube.com/watch?v=ILQwMvCA2_o",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "AI’s Stock Market Fallout, Google’s Profit Problem, and Altman’s “Hold My Beer” Moment | #307",
       url: "https://www.youtube.com/watch?v=yHMU5ql7O6o",
       embedUrl: "https://www.youtube.com/embed/yHMU5ql7O6o",
-    },
-    {
-      id: "WXELsIk4o0g",
-      title: "Anthropic’s $2T Cash Machine, the End of Neoclouds, and Chinese Models Catch Up | #306",
-      url: "https://www.youtube.com/watch?v=WXELsIk4o0g",
-      embedUrl: "https://www.youtube.com/embed/WXELsIk4o0g",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
