@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "E864U582FVY",
+      title: "Robotic Deep-Dive: Beating China, the Race Against Tesla, & New Robotics Timeline With Brett Adcock",
+      url: "https://www.youtube.com/watch?v=E864U582FVY",
+      embedUrl: "https://www.youtube.com/embed/E864U582FVY",
+    },
+    {
       id: "GZrDapFXk0I",
-      title: "Live: Our Thoughts on Jensen’s Departure | MOONSHOTS EP #311",
+      title: "Jensen’s Departure, NVIDIA’s Succession Plan, AI Doomer Response, and Demis Talks RSI | #311 (Live)",
       url: "https://www.youtube.com/watch?v=GZrDapFXk0I",
       embedUrl: "https://www.youtube.com/embed/GZrDapFXk0I",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Big Tech’s $3T AI Bet, Claude Writes 90% of Anthropic’s Code, AIs Editing AI Brains | EP #308",
       url: "https://www.youtube.com/watch?v=x09f_BuJsoY",
       embedUrl: "https://www.youtube.com/embed/x09f_BuJsoY",
-    },
-    {
-      id: "yHMU5ql7O6o",
-      title: "AI’s Stock Market Fallout, Google’s Profit Problem, and Altman’s “Hold My Beer” Moment | #307",
-      url: "https://www.youtube.com/watch?v=yHMU5ql7O6o",
-      embedUrl: "https://www.youtube.com/embed/yHMU5ql7O6o",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
