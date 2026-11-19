@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "SMDmpHAWAck",
+      title: "SpaceX Catches Starship, Anthropic’s $72M Average Employee, and One Hack Hits 178 Sites",
+      url: "https://www.youtube.com/watch?v=SMDmpHAWAck",
+      embedUrl: "https://www.youtube.com/embed/SMDmpHAWAck",
+    },
+    {
       id: "E864U582FVY",
       title: "Robotic Deep-Dive: Beating China, the Race Against Tesla, & New Robotics Timeline With Brett Adcock",
       url: "https://www.youtube.com/watch?v=E864U582FVY",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic’s IPO in Question,  Midterms Hit AI, Nasdaq Drops 5%, and RSI Accelerates | #309",
       url: "https://www.youtube.com/watch?v=WF-ADiC7Khs",
       embedUrl: "https://www.youtube.com/embed/WF-ADiC7Khs",
-    },
-    {
-      id: "x09f_BuJsoY",
-      title: "Big Tech’s $3T AI Bet, Claude Writes 90% of Anthropic’s Code, AIs Editing AI Brains | EP #308",
-      url: "https://www.youtube.com/watch?v=x09f_BuJsoY",
-      embedUrl: "https://www.youtube.com/embed/x09f_BuJsoY",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
