@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "_7FICfOHTV8",
+      title: "Steve Jurvetson: IPO-ing the Singularity, SpaceX Bet VCs Rejected, & Voyager’s 1 Light Day | EP #314",
+      url: "https://www.youtube.com/watch?v=_7FICfOHTV8",
+      embedUrl: "https://www.youtube.com/embed/_7FICfOHTV8",
+    },
+    {
       id: "SMDmpHAWAck",
-      title: "SpaceX Catches Starship, Anthropic’s $72M Average Employee, and One Hack Hits 178 Sites",
+      title: "Anthropic's $72M Average Employee, the FAA's 4-Hour Ground Stop, and Starship Caught | EP #313",
       url: "https://www.youtube.com/watch?v=SMDmpHAWAck",
       embedUrl: "https://www.youtube.com/embed/SMDmpHAWAck",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Jensen’s Spy Probe, Anthropic’s Debut Week, and Elon’s 30M Robot Workforce | #310",
       url: "https://www.youtube.com/watch?v=ILQwMvCA2_o",
       embedUrl: "https://www.youtube.com/embed/ILQwMvCA2_o",
-    },
-    {
-      id: "WF-ADiC7Khs",
-      title: "Anthropic’s IPO in Question,  Midterms Hit AI, Nasdaq Drops 5%, and RSI Accelerates | #309",
-      url: "https://www.youtube.com/watch?v=WF-ADiC7Khs",
-      embedUrl: "https://www.youtube.com/embed/WF-ADiC7Khs",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
