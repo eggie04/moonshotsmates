@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "CDN5X5z4gLw",
+      title: "Trump Brings Back Jensen, OpenAI Pitches an AI Speed Limit, and AI Passes the Mirror Test | EP #315",
+      url: "https://www.youtube.com/watch?v=CDN5X5z4gLw",
+      embedUrl: "https://www.youtube.com/embed/CDN5X5z4gLw",
+    },
+    {
       id: "_7FICfOHTV8",
-      title: "Steve Jurvetson: IPO-ing the Singularity, SpaceX Bet VCs Rejected, & Voyager’s 1 Light Day | EP #314",
+      title: "AI Market Shocks, Anthropic’s Stock Slide, Gemini Releases, and Elon’s $435M Bet | #314",
       url: "https://www.youtube.com/watch?v=_7FICfOHTV8",
       embedUrl: "https://www.youtube.com/embed/_7FICfOHTV8",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Jensen’s Departure, NVIDIA’s Succession Plan, AI Doomer Response, and Demis Talks RSI | #311 (Live)",
       url: "https://www.youtube.com/watch?v=GZrDapFXk0I",
       embedUrl: "https://www.youtube.com/embed/GZrDapFXk0I",
-    },
-    {
-      id: "ILQwMvCA2_o",
-      title: "Jensen’s Spy Probe, Anthropic’s Debut Week, and Elon’s 30M Robot Workforce | #310",
-      url: "https://www.youtube.com/watch?v=ILQwMvCA2_o",
-      embedUrl: "https://www.youtube.com/embed/ILQwMvCA2_o",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
