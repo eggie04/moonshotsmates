@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "FX5PQjxdo9Q",
+      title: "Neil deGrasse Tyson Judged 5 Visions of the Future. One Won $3.5M.",
+      url: "https://www.youtube.com/watch?v=FX5PQjxdo9Q",
+      embedUrl: "https://www.youtube.com/embed/FX5PQjxdo9Q",
+    },
+    {
       id: "CDN5X5z4gLw",
       title: "Trump Brings Back Jensen, OpenAI Pitches an AI Speed Limit, and AI Passes the Mirror Test | EP #315",
       url: "https://www.youtube.com/watch?v=CDN5X5z4gLw",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Robotic Deep-Dive: Beating China, the Race Against Tesla, & New Robotics Timeline With Brett Adcock",
       url: "https://www.youtube.com/watch?v=E864U582FVY",
       embedUrl: "https://www.youtube.com/embed/E864U582FVY",
-    },
-    {
-      id: "GZrDapFXk0I",
-      title: "Jensen’s Departure, NVIDIA’s Succession Plan, AI Doomer Response, and Demis Talks RSI | #311 (Live)",
-      url: "https://www.youtube.com/watch?v=GZrDapFXk0I",
-      embedUrl: "https://www.youtube.com/embed/GZrDapFXk0I",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
