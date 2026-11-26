@@ -10,6 +10,12 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "xdcC1VjJ4jU",
+      title: "Thanksgiving Special: The Moments That Almost Ended Us (And Why We’re Grateful) | EP #316",
+      url: "https://www.youtube.com/watch?v=xdcC1VjJ4jU",
+      embedUrl: "https://www.youtube.com/embed/xdcC1VjJ4jU",
+    },
+    {
       id: "FX5PQjxdo9Q",
       title: "Neil deGrasse Tyson Judged 5 Visions of the Future. One Won $3.5M.",
       url: "https://www.youtube.com/watch?v=FX5PQjxdo9Q",
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "Anthropic's $72M Average Employee, the FAA's 4-Hour Ground Stop, and Starship Caught | EP #313",
       url: "https://www.youtube.com/watch?v=SMDmpHAWAck",
       embedUrl: "https://www.youtube.com/embed/SMDmpHAWAck",
-    },
-    {
-      id: "E864U582FVY",
-      title: "Robotic Deep-Dive: Beating China, the Race Against Tesla, & New Robotics Timeline With Brett Adcock",
-      url: "https://www.youtube.com/watch?v=E864U582FVY",
-      embedUrl: "https://www.youtube.com/embed/E864U582FVY",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
