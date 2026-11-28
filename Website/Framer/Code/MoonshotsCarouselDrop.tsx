@@ -10,8 +10,14 @@ export default function MoonshotsCarouselDrop() {
   // AUTO-GENERATED START: latestMoonshotVideoItems
   const videos = [
     {
+      id: "svdww-tW3Ys",
+      title: "Longevity Update: Age Reversal Timelines, GLP-1s vs. AI, and the First Human Trials | David Sinclair",
+      url: "https://www.youtube.com/watch?v=svdww-tW3Ys",
+      embedUrl: "https://www.youtube.com/embed/svdww-tW3Ys",
+    },
+    {
       id: "xdcC1VjJ4jU",
-      title: "Thanksgiving Special: The Moments That Almost Ended Us (And Why We’re Grateful) | EP #316",
+      title: "The 7% Alive for the Singularity, Curing All Disease & Bringing Back the Dead | Thanksgiving EP #316",
       url: "https://www.youtube.com/watch?v=xdcC1VjJ4jU",
       embedUrl: "https://www.youtube.com/embed/xdcC1VjJ4jU",
     },
@@ -32,12 +38,6 @@ export default function MoonshotsCarouselDrop() {
       title: "AI Market Shocks, Anthropic’s Stock Slide, Gemini Releases, and Elon’s $435M Bet | #314",
       url: "https://www.youtube.com/watch?v=_7FICfOHTV8",
       embedUrl: "https://www.youtube.com/embed/_7FICfOHTV8",
-    },
-    {
-      id: "SMDmpHAWAck",
-      title: "Anthropic's $72M Average Employee, the FAA's 4-Hour Ground Stop, and Starship Caught | EP #313",
-      url: "https://www.youtube.com/watch?v=SMDmpHAWAck",
-      embedUrl: "https://www.youtube.com/embed/SMDmpHAWAck",
     },
   ]
   // AUTO-GENERATED END: latestMoonshotVideoItems
